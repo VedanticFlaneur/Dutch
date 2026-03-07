@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gedichten — German & Dutch Poetry</title>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1208;
+    --parchment: #f5eed8;
+    --parchment-deep: #ede0c0;
+    --gold: #b8860b;
+    --gold-light: #d4a820;
+    --rust: #8b3a1a;
+    --muted: #6b5d45;
+    --paper: #faf6ec;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--parchment);
+    color: var(--ink);
+    font-family: 'Cormorant Garamond', serif;
+    min-height: 100vh;
+    background-image:
+      radial-gradient(ellipse at 20% 10%, rgba(184,134,11,0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 90%, rgba(139,58,26,0.06) 0%, transparent 50%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  }
+
+  header {
+    text-align: center;
+    padding: 3.5rem 1rem 2rem;
+    border-bottom: 1px solid rgba(184,134,11,0.3);
+    position: relative;
+  }
+
+  header::before, header::after {
+    content: '❧';
+    color: var(--gold);
+    font-size: 1.4rem;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.6;
+  }
+  header::before { left: 2rem; }
+  header::after { right: 2rem; transform: translateY(-50%) scaleX(-1); }
+
+  h1 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.6rem, 4vw, 2.8rem);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--ink);
+  }
+
+  .subtitle {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    color: var(--muted);
+    font-size: 1.05rem;
+    margin-top: 0.5rem;
+    letter-spacing: 0.03em;
+  }
+
+  .ornament {
+    color: var(--gold);
+    font-size: 1.1rem;
+    letter-spacing: 0.5em;
+    margin-top: 0.8rem;
+    opacity: 0.7;
+  }
+
+  /* Language tabs */
+  .lang-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    margin: 2rem auto 0;
+    max-width: 340px;
+    border: 1px solid rgba(184,134,11,0.4);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .lang-tab {
+    flex: 1;
+    padding: 0.55rem 1.5rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    transition: all 0.25s;
+    border-right: 1px solid rgba(184,134,11,0.4);
+  }
+  .lang-tab:last-child { border-right: none; }
+  .lang-tab.active {
+    background: var(--gold);
+    color: var(--parchment);
+  }
+  .lang-tab:hover:not(.active) {
+    background: rgba(184,134,11,0.1);
+    color: var(--ink);
+  }
+
+  /* Poem selector */
+  .poem-nav {
+    max-width: 820px;
+    margin: 2.5rem auto 0;
+    padding: 0 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+
+  .poem-btn {
+    background: transparent;
+    border: 1px solid rgba(184,134,11,0.35);
+    color: var(--muted);
+    padding: 0.4rem 1rem;
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border-radius: 1px;
+    transition: all 0.2s;
+  }
+  .poem-btn:hover, .poem-btn.active {
+    background: var(--parchment-deep);
+    border-color: var(--gold);
+    color: var(--ink);
+  }
+
+  /* Main poem card */
+  .poem-card {
+    max-width: 820px;
+    margin: 2.5rem auto 4rem;
+    padding: 0 1.5rem;
+    animation: fadeIn 0.5s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .card-inner {
+    background: var(--paper);
+    border: 1px solid rgba(184,134,11,0.25);
+    box-shadow:
+      0 2px 8px rgba(26,18,8,0.06),
+      inset 0 0 40px rgba(184,134,11,0.03);
+    padding: 2.5rem 3rem;
+    position: relative;
+  }
+
+  .card-inner::before {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    border: 1px solid rgba(184,134,11,0.12);
+    pointer-events: none;
+  }
+
+  .poem-meta {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .poem-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.45rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+  }
+
+  .poem-author {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    color: var(--muted);
+    margin-top: 0.3rem;
+    font-size: 1rem;
+  }
+
+  .lang-badge {
+    display: inline-block;
+    margin-top: 0.6rem;
+    padding: 0.2rem 0.8rem;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    border-radius: 1px;
+  }
+
+  /* Audio button */
+  .audio-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 1.2rem auto 0;
+    background: transparent;
+    border: 1px solid rgba(139,58,26,0.4);
+    color: var(--rust);
+    padding: 0.45rem 1.2rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.95rem;
+    cursor: pointer;
+    border-radius: 1px;
+    transition: all 0.2s;
+    letter-spacing: 0.04em;
+  }
+  .audio-btn:hover {
+    background: rgba(139,58,26,0.06);
+    border-color: var(--rust);
+  }
+  .audio-btn.playing {
+    background: var(--rust);
+    color: var(--parchment);
+    border-color: var(--rust);
+  }
+  .audio-btn svg { flex-shrink: 0; }
+
+  /* Poem columns */
+  .columns {
+    display: grid;
+    gap: 2rem;
+    margin-top: 2.2rem;
+  }
+  .columns.two { grid-template-columns: 1fr 1fr; }
+  .columns.three { grid-template-columns: 1fr 1fr 1fr; }
+
+  @media (max-width: 640px) {
+    .columns.two, .columns.three { grid-template-columns: 1fr; }
+    .card-inner { padding: 1.8rem 1.4rem; }
+  }
+
+  .col-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(184,134,11,0.2);
+    padding-bottom: 0.4rem;
+  }
+
+  .poem-text {
+    font-family: 'IM Fell English', serif;
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: var(--ink);
+  }
+
+  .poem-text .stanza {
+    margin-bottom: 1.2rem;
+  }
+
+  .poem-text .stanza:last-child { margin-bottom: 0; }
+
+  .poem-text.original { font-size: 1.1rem; }
+
+  .poem-text.translation {
+    color: #3a3020;
+    font-style: italic;
+    font-size: 1rem;
+  }
+
+  .divider {
+    text-align: center;
+    color: var(--gold);
+    opacity: 0.5;
+    margin: 2rem 0;
+    font-size: 1.1rem;
+    letter-spacing: 0.4em;
+  }
+
+  .speaking-indicator {
+    display: inline-block;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--parchment);
+    animation: pulse 0.6s ease-in-out infinite alternate;
+  }
+  @keyframes pulse { to { transform: scale(1.5); opacity: 0.6; } }
+
+  .error-msg {
+    text-align: center;
+    color: var(--muted);
+    font-style: italic;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+
+  .audio-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-top: 1.2rem;
+  }
+
+  .voice-select {
+    background: var(--paper);
+    border: 1px solid rgba(184,134,11,0.4);
+    color: var(--ink);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.9rem;
+    padding: 0.42rem 0.8rem;
+    border-radius: 1px;
+    cursor: pointer;
+    max-width: 220px;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23b8860b'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    padding-right: 2rem;
+  }
+  .voice-select:focus { outline: none; border-color: var(--gold); }
+
+  .rate-control {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.88rem;
+    color: var(--muted);
+  }
+  .rate-control input[type=range] {
+    -webkit-appearance: none;
+    width: 80px;
+    height: 3px;
+    background: rgba(184,134,11,0.35);
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+  }
+  .rate-control input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--gold);
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Gedichten</h1>
+  <p class="subtitle">German &amp; Dutch Poetry with Translations</p>
+  <p class="ornament">✦ ✦ ✦</p>
+  <div class="lang-tabs">
+    <button class="lang-tab active" onclick="setLang('de')">Deutsch</button>
+    <button class="lang-tab" onclick="setLang('nl')">Nederlands</button>
+  </div>
+</header>
+
+<nav class="poem-nav" id="poemNav"></nav>
+
+<main class="poem-card" id="poemCard"></main>
+
+<script>
+const poems = {
+  de: [
+    {
+      title: "Der Erlkönig",
+      author: "Johann Wolfgang von Goethe",
+      original: [
+        ["Wer reitet so spät durch Nacht und Wind?",
+         "Es ist der Vater mit seinem Kind;",
+         "Er hat den Knaben wohl in dem Arm,",
+         "Er fasst ihn sicher, er hält ihn warm."],
+        ["Mein Sohn, was birgst du so bang dein Gesicht?",
+         "Siehst, Vater, du den Erlkönig nicht?",
+         "Den Erlenkönig mit Kron und Schweif?",
+         "Mein Sohn, es ist ein Nebelstreif."],
+        ["Du liebes Kind, komm, geh mit mir!",
+         "Gar schöne Spiele spiel ich mit dir;",
+         "Manch bunte Blumen sind an dem Strand,",
+         "Meine Mutter hat manch gülden Gewand."]
+      ],
+      english: [
+        ["Who rides so late through night and wind?",
+         "It is the father with his child;",
+         "He holds the boy clasped in his arm,",
+         "He holds him safely, he keeps him warm."],
+        ["My son, why hide your face in fear?",
+         "Father, do you not see the Erl-King?",
+         "The Erl-King with his crown and train?",
+         "My son, it is a streak of mist."],
+        ["Dear child, come away with me!",
+         "Such lovely games I'll play with thee;",
+         "Many coloured flowers grow by the shore,",
+         "My mother has many golden robes in store."]
+      ],
+      dutch: [
+        ["Wie rijdt zo laat door nacht en wind?",
+         "Het is de vader met zijn kind;",
+         "Hij houdt de knaap vast in zijn arm,",
+         "Hij houdt hem veilig, hij houdt hem warm."],
+        ["Mijn zoon, waarom verberg je zo bang je gezicht?",
+         "Vader, zie jij de Erlkoning niet?",
+         "De Erlkoning met zijn kroon en sleep?",
+         "Mijn zoon, dat is maar een miststreep."],
+        ["Lief kind, kom ga met mij mee!",
+         "Heerlijke spelletjes speel ik met jou;",
+         "Mooie bloemen staan er aan het strand,",
+         "Mijn moeder heeft menig gouden gewaad."]
+      ]
+    },
+    {
+      title: "Wandrers Nachtlied",
+      author: "Johann Wolfgang von Goethe",
+      original: [
+        ["Über allen Gipfeln",
+         "Ist Ruh,",
+         "In allen Wipfeln",
+         "Spürest du",
+         "Kaum einen Hauch;",
+         "Die Vögelein schweigen im Walde.",
+         "Warte nur, balde",
+         "Ruhest du auch."]
+      ],
+      english: [
+        ["Over all the hilltops",
+         "Is quiet now,",
+         "In all the treetops",
+         "You can feel",
+         "Hardly a breath;",
+         "The birds are asleep in the forest.",
+         "Wait — soon",
+         "You will rest, too."]
+      ],
+      dutch: [
+        ["Boven alle bergtoppen",
+         "Is rust,",
+         "In alle boomkruinen",
+         "Voel je",
+         "Nauwelijks een zucht;",
+         "De vogeltjes zwijgen in het woud.",
+         "Wacht slechts, spoedig",
+         "Rust jij ook."]
+      ]
+    },
+    {
+      title: "Der Tod und das Mädchen",
+      author: "Matthias Claudius",
+      original: [
+        ["Das Mädchen:",
+         "Vorüber! Ach, vorüber!",
+         "Geh, wilder Knochenmann!",
+         "Ich bin noch jung, geh Lieber!",
+         "Und rühre mich nicht an."],
+        ["Der Tod:",
+         "Gib deine Hand, du schön und zart Gebild!",
+         "Bin Freund und komme nicht zu strafen.",
+         "Sei gutes Muts! Ich bin nicht wild,",
+         "Sollst sanft in meinen Armen schlafen!"]
+      ],
+      english: [
+        ["The Maiden:",
+         "Pass me by! Oh, pass me by!",
+         "Go, wild man of bones!",
+         "I am still young, dear one!",
+         "And do not touch me."],
+        ["Death:",
+         "Give me your hand, you lovely, tender form!",
+         "I am a friend, I come not to punish.",
+         "Be of good cheer! I am not fierce,",
+         "You shall sleep softly in my arms!"]
+      ],
+      dutch: [
+        ["Het Meisje:",
+         "Ga voorbij! Ach, ga voorbij!",
+         "Ga, wilde beenderman!",
+         "Ik ben nog jong, lieve vriend!",
+         "En raak mij niet aan."],
+        ["De Dood:",
+         "Geef mij je hand, jij mooi en teer wezen!",
+         "Ik ben een vriend en kom niet om te straffen.",
+         "Wees gerust! Ik ben niet wild,",
+         "Je zult zacht in mijn armen slapen!"]
+      ]
+    },
+    {
+      title: "Die Lorelei",
+      author: "Heinrich Heine",
+      original: [
+        ["Ich weiß nicht, was soll es bedeuten,",
+         "Dass ich so traurig bin;",
+         "Ein Märchen aus alten Zeiten,",
+         "Das kommt mir nicht aus dem Sinn."],
+        ["Die Luft ist kühl und es dunkelt,",
+         "Und ruhig fließt der Rhein;",
+         "Der Gipfel des Berges funkelt",
+         "Im Abendsonnenschein."],
+        ["Die schönste Jungfrau sitzet",
+         "Dort oben wunderbar,",
+         "Ihr gold'nes Geschmeide blitzet,",
+         "Sie kämmt ihr gold'nes Haar."]
+      ],
+      english: [
+        ["I do not know what it may mean",
+         "That I am so melancholy;",
+         "A tale from olden times",
+         "I cannot get out of my mind."],
+        ["The air is cool and twilight falls",
+         "And the Rhine flows quietly past;",
+         "The peak of the mountain glitters",
+         "In the evening sun's last rays."],
+        ["The most beautiful maiden sits",
+         "Up there, wondrously fair,",
+         "Her golden jewels are gleaming,",
+         "She combs her golden hair."]
+      ],
+      dutch: [
+        ["Ik weet niet wat het mag betekenen",
+         "Dat ik zo bedroefd ben;",
+         "Een sprookje uit oude tijden",
+         "Gaat mij niet uit het hoofd."],
+        ["De lucht is koel en het schemert,",
+         "En de Rijn stroomt kalm voorbij;",
+         "De bergtop schittert",
+         "In het avondzonlicht."],
+        ["De mooiste maagd zit",
+         "Daar boven wonderbaarlijk mooi,",
+         "Haar gouden sieraden glinsteren,",
+         "Ze kamt haar gouden haar."]
+      ]
+    }
+  ],
+  nl: [
+    {
+      title: "Gebed om een goed einde",
+      author: "Guido Gezelle",
+      original: [
+        ["Geef mij, o Heer, een goed einde.",
+         "Geef mij een einde, stil als de nacht,",
+         "Wanneer het hart zijn last heeft afgelegd",
+         "En naar de vrede wacht."],
+        ["Geef mij het sterven van de zomerdag,",
+         "Die langzaam ondergaat,",
+         "En in zijn rosse gloedglans slapend zakt",
+         "En zo de morgen wacht."]
+      ],
+      english: [
+        ["Grant me, O Lord, a good ending.",
+         "Grant me an end as still as the night,",
+         "When the heart has laid down its burden",
+         "And waits for peace."],
+        ["Grant me the dying of a summer day,",
+         "That slowly fades away,",
+         "And sinking into its rosy glow sleeps",
+         "And so awaits the morning."]
+      ]
+    },
+    {
+      title: "Het leven is een feest",
+      author: "Herman Gorter",
+      original: [
+        ["Een nieuwe lente en een nieuw geluid:",
+         "Ik ga mijn liefste zingen een lied,",
+         "Ik ga haar zingen, al zingt zij 't ook niet,",
+         "Een lied van de lente die wacht."],
+        ["De lente wacht. In de morgen vroeg",
+         "Gaat zij door veld en door bos en land,",
+         "Zij raakt de bloemen aan met haar hand,",
+         "De bloemen bloeien in de morgen vroeg."]
+      ],
+      english: [
+        ["A new spring and a new sound:",
+         "I shall sing my beloved a song,",
+         "I shall sing to her, though she sings not,",
+         "A song of spring that waits."],
+        ["Spring waits. In the early morning",
+         "She goes through field and wood and land,",
+         "She touches the flowers with her hand,",
+         "The flowers bloom in the early morning."]
+      ]
+    },
+    {
+      title: "Aan de Schelde",
+      author: "Guido Gezelle",
+      original: [
+        ["Schelde, o Schelde, hoe vleit gij zo zacht",
+         "Met uw zilver en met uw goud,",
+         "De oevers die gij beglinstert en houdt",
+         "In uw vlietende, vliedende macht!"],
+        ["Gij stroomt en gij zingt en gij spreekt",
+         "Met een taal die geen tong u naspreke;",
+         "Gij weet wat het herte bebreekt,",
+         "Wat het zucht en wat het bewreke."]
+      ],
+      english: [
+        ["Scheldt, o Scheldt, how gently you caress",
+         "With your silver and with your gold,",
+         "The banks you shimmer over and hold",
+         "In your flowing, fleeting power!"],
+        ["You stream and you sing and you speak",
+         "With a tongue no other tongue can echo;",
+         "You know what breaks the heart,",
+         "What makes it sigh and what it must avenge."]
+      ]
+    },
+    {
+      title: "Winter op zee",
+      author: "J.J. Slauerhoff",
+      original: [
+        ["De kim wordt wreed, de golven tuimlen wild,",
+         "Van mild en groen, spoorslags hardgrijs en grauw;",
+         "Eén nacht waarin de wind door 't luchtruim rilt,",
+         "Dan, als een plotselinge dood, de kou."],
+        ["Om rotseilanden zonder boom en gras,",
+         "Liggend verlaten in het oeroud ruim,",
+         "Bloeit slechts 't onstuimig en verward gewas",
+         "Van 't snel opschietend, snel verwelkend schuim."],
+        ["Op 't schip waarin geen vuren troostend branden,",
+         "Nestelt de kou zich voor een lange reis;",
+         "Tegen de 's nachts wakkergekraakte wanden",
+         "Kruit en verbrijzelt zich het drijvend ijs."]
+      ],
+      english: [
+        ["The horizon turns cruel, the waves tumble wild,",
+         "From mild and green, suddenly leaden and grey;",
+         "One night in which the wind shivers through the sky,",
+         "Then, like a sudden death, the cold."],
+        ["Around rock islands without tree or grass,",
+         "Lying abandoned in time-worn space,",
+         "There blooms only the fierce and tangled growth",
+         "Of foam that rises fast and wilts as fast."],
+        ["On the ship where no fires burn with comfort,",
+         "The cold settles in for a long voyage;",
+         "Against the walls that crack awake at night,",
+         "The drifting ice grinds itself to nothing."]
+      ]
+    },
+    {
+      title: "O, als de zee",
+      author: "Hendrik Marsman",
+      original: [
+        ["O, als de zee, de grijze en de stille,",
+         "Het hart omspoelt met koud en zwaar geluid,",
+         "Dan weet ik dat de wens van iedere wille",
+         "Gaat naar wat is en nimmer wordt volbracht."],
+        ["En als de nacht de hemel heeft gesloten",
+         "En alle licht verdronken is in zee,",
+         "Dan voel ik dat mijn hart, de rust genoten,",
+         "Stil zinkt en treurt om wat voorbij moet gee."]
+      ],
+      english: [
+        ["Oh, as the sea, the grey and silent one,",
+         "Washes the heart with cold and heavy sound,",
+         "Then I know that the wish of every will",
+         "Goes toward what is and is never fulfilled."],
+        ["And when the night has sealed the sky",
+         "And all the light is drowned within the sea,",
+         "Then I feel my heart, having tasted rest,",
+         "Sink quietly and mourn what must pass by."]
+      ]
+    }
+  ]
+};
+
+let currentLang = 'de';
+let currentIdx = 0;
+let speaking = false;
+let utterance = null;
+let speechRate = 0.72;
+let selectedVoiceName = null; // per-language remembered choice
+
+function setLang(lang) {
+  currentLang = lang;
+  currentIdx = 0;
+  document.querySelectorAll('.lang-tab').forEach((t, i) => {
+    t.classList.toggle('active', (i === 0 && lang === 'de') || (i === 1 && lang === 'nl'));
+  });
+  stopSpeech();
+  renderNav();
+  renderPoem();
+}
+
+function renderNav() {
+  const nav = document.getElementById('poemNav');
+  const list = poems[currentLang];
+  nav.innerHTML = list.map((p, i) =>
+    `<button class="poem-btn ${i === currentIdx ? 'active' : ''}" onclick="selectPoem(${i})">${p.title}</button>`
+  ).join('');
+}
+
+function selectPoem(idx) {
+  currentIdx = idx;
+  stopSpeech();
+  renderNav();
+  renderPoem();
+}
+
+function stopSpeech() {
+  if (window.speechSynthesis) window.speechSynthesis.cancel();
+  speaking = false;
+}
+
+function populateVoiceSelect() {
+  const sel = document.getElementById('voiceSelect');
+  if (!sel) return;
+  const isGerman = currentLang === 'de';
+  const prefix = isGerman ? 'de' : 'nl';
+  const voices = window.speechSynthesis.getVoices().filter(v => v.lang.toLowerCase().startsWith(prefix));
+  sel.innerHTML = '';
+  if (voices.length === 0) {
+    sel.innerHTML = '<option value="">No voices found</option>';
+    return;
+  }
+  voices.forEach(v => {
+    const opt = document.createElement('option');
+    opt.value = v.name;
+    opt.textContent = v.name.replace(/^(Microsoft|Google|Apple)\s+/i, '') + (v.localService ? '' : ' ☁');
+    sel.appendChild(opt);
+  });
+  // Restore remembered choice or pick first
+  const remembered = isGerman ? selectedVoiceName?.de : selectedVoiceName?.nl;
+  if (remembered && voices.find(v => v.name === remembered)) {
+    sel.value = remembered;
+  }
+}
+
+function onVoiceChange() {
+  const sel = document.getElementById('voiceSelect');
+  if (!sel) return;
+  const isGerman = currentLang === 'de';
+  if (!selectedVoiceName) selectedVoiceName = {};
+  selectedVoiceName[isGerman ? 'de' : 'nl'] = sel.value;
+}
+
+function onRateChange(val) {
+  speechRate = parseFloat(val);
+  const lbl = document.getElementById('rateLabel');
+  if (lbl) lbl.textContent = parseFloat(val).toFixed(2);
+}
+
+function renderPoem() {
+  const card = document.getElementById('poemCard');
+  const poem = poems[currentLang][currentIdx];
+  const isGerman = currentLang === 'de';
+
+  const origLang = isGerman ? 'de-DE' : 'nl-NL';
+  const langLabel = isGerman ? 'DEUTSCH' : 'NEDERLANDS';
+
+  let stanzasOrig = poem.original.map(s =>
+    `<div class="stanza">${s.map(l => l + '<br>').join('')}</div>`
+  ).join('');
+
+  let stanzasEn = poem.english.map(s =>
+    `<div class="stanza">${s.map(l => l + '<br>').join('')}</div>`
+  ).join('');
+
+  let dutchCol = '';
+  let colClass = 'two';
+
+  if (isGerman && poem.dutch) {
+    let stanzasDu = poem.dutch.map(s =>
+      `<div class="stanza">${s.map(l => l + '<br>').join('')}</div>`
+    ).join('');
+    dutchCol = `
+      <div>
+        <div class="col-label">Nederlands</div>
+        <div class="poem-text translation">${stanzasDu}</div>
+      </div>`;
+    colClass = 'three';
+  }
+
+  card.innerHTML = `
+    <div class="card-inner">
+      <div class="poem-meta">
+        <div class="poem-title">${poem.title}</div>
+        <div class="poem-author">${poem.author}</div>
+        <span class="lang-badge">${langLabel}</span>
+        <br>
+        <div class="audio-controls">
+          <button class="audio-btn" id="audioBtn" onclick="toggleSpeech()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
+            </svg>
+            Listen in ${isGerman ? 'German' : 'Dutch'}
+          </button>
+          <select class="voice-select" id="voiceSelect" onchange="onVoiceChange()" title="Choose voice"></select>
+          <div class="rate-control">
+            <span>pace</span>
+            <input type="range" id="rateSlider" min="0.4" max="1.2" step="0.05" value="0.72" oninput="onRateChange(this.value)">
+            <span id="rateLabel">0.72</span>
+          </div>
+        </div>
+      </div>
+      <div class="divider">✦</div>
+      <div class="columns ${colClass}">
+        <div>
+          <div class="col-label">${langLabel}</div>
+          <div class="poem-text original">${stanzasOrig}</div>
+        </div>
+        ${dutchCol}
+        <div>
+          <div class="col-label">English</div>
+          <div class="poem-text translation">${stanzasEn}</div>
+        </div>
+      </div>
+    </div>
+  `;
+  card.style.animation = 'none';
+  void card.offsetWidth;
+  card.style.animation = 'fadeIn 0.45s ease';
+
+  // Restore slider value
+  const slider = document.getElementById('rateSlider');
+  const lbl = document.getElementById('rateLabel');
+  if (slider) { slider.value = speechRate; }
+  if (lbl) { lbl.textContent = speechRate.toFixed(2); }
+
+  // Populate voice picker after voices load
+  if (window.speechSynthesis) {
+    if (window.speechSynthesis.getVoices().length > 0) {
+      populateVoiceSelect();
+    }
+  }
+}
+
+function toggleSpeech() {
+  if (!window.speechSynthesis) {
+    document.getElementById('audioBtn').insertAdjacentHTML('afterend',
+      '<p class="error-msg">Speech not supported in this browser.</p>');
+    return;
+  }
+
+  if (speaking) {
+    stopSpeech();
+    updateAudioBtn(false);
+    return;
+  }
+
+  const poem = poems[currentLang][currentIdx];
+  const isGerman = currentLang === 'de';
+  const langCode = isGerman ? 'de-DE' : 'nl-NL';
+
+  const text = poem.original.map(s => s.join('... ')).join('...... ');
+  utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = langCode;
+  utterance.rate = speechRate;
+  utterance.pitch = 0.95;
+
+  // Use selected voice from picker
+  const sel = document.getElementById('voiceSelect');
+  const voices = window.speechSynthesis.getVoices();
+  const chosenName = sel ? sel.value : null;
+  if (chosenName) {
+    const v = voices.find(v => v.name === chosenName);
+    if (v) utterance.voice = v;
+  } else {
+    const match = voices.find(v => v.lang.toLowerCase().startsWith(isGerman ? 'de' : 'nl'));
+    if (match) utterance.voice = match;
+  }
+
+  utterance.onstart = () => { speaking = true; updateAudioBtn(true); };
+  utterance.onend = () => { speaking = false; updateAudioBtn(false); };
+  utterance.onerror = () => { speaking = false; updateAudioBtn(false); };
+
+  window.speechSynthesis.speak(utterance);
+}
+
+function updateAudioBtn(isPlaying) {
+  const btn = document.getElementById('audioBtn');
+  if (!btn) return;
+  btn.classList.toggle('playing', isPlaying);
+  const poem = poems[currentLang][currentIdx];
+  const isGerman = currentLang === 'de';
+  btn.innerHTML = isPlaying
+    ? `<span class="speaking-indicator"></span> Stop`
+    : `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+       Listen in ${isGerman ? 'German' : 'Dutch'}`;
+}
+
+// Voices load async on many browsers
+if (window.speechSynthesis) {
+  window.speechSynthesis.addEventListener('voiceschanged', () => {
+    populateVoiceSelect();
+  });
+}
+
+renderNav();
+renderPoem();
+</script>
+</body>
+</html>
