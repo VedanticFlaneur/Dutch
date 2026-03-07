@@ -276,6 +276,48 @@
     font-size: 1rem;
   }
 
+  .intro-panel {
+    margin: 1.8rem 0 0;
+    border-top: 1px solid rgba(184,134,11,0.2);
+    padding-top: 1.4rem;
+  }
+  .intro-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(184,134,11,0.3);
+    border-radius: 1px;
+    overflow: hidden;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .intro-tab {
+    padding: 0.3rem 1rem;
+    background: transparent;
+    border: none;
+    border-right: 1px solid rgba(184,134,11,0.3);
+    cursor: pointer;
+    font-family: 'Cinzel', serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    transition: all 0.2s;
+  }
+  .intro-tab:last-child { border-right: none; }
+  .intro-tab.active { background: rgba(184,134,11,0.12); color: var(--ink); }
+  .intro-tab:hover:not(.active) { background: rgba(184,134,11,0.06); }
+  .intro-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--muted);
+    font-style: italic;
+    text-align: center;
+    max-width: 580px;
+    margin: 0 auto;
+  }
+
   .divider {
     text-align: center;
     color: var(--gold);
@@ -377,6 +419,11 @@ const poems = {
     {
       title: "Der Erlkönig",
       author: "Johann Wolfgang von Goethe",
+      intro: {
+        nl: "De Erlkönig is een figuur uit de Germaanse en Scandinavische folklore — letterlijk 'elzenkoning' (van het Deense ellerkonge, koning van de elzen). Hij is een bovennatuurlijk wezen dat in het woud leeft en mensen, vooral kinderen, naar de dood lokt. Zijn aanraking of zijn blik zou dodelijk zijn. In Goethes gedicht (1782) verschijnt hij als een verleidelijke maar dreigende gestalte — hij fluistert het zieke kind zoete beloften toe, maar de vader ziet alleen mist en wind. De spanning zit hem precies daarin: is de Erlkönig echt, of is het de koortsfantasie van een stervend kind? Schubert heeft het gedicht in 1815 op muziek gezet — de drie stemmen (verteller, vader, kind) en de Erlkönig zelf zijn allemaal herkenbaar in één en hetzelfde lied.",
+        de: "Der Erlkönig ist eine Gestalt aus der germanischen und skandinavischen Volksüberlieferung — wörtlich 'Erlenkönig' (vom dänischen ellerkonge, König der Erlen). Er ist ein übernatürliches Wesen, das im Wald lebt und Menschen, vor allem Kinder, in den Tod lockt. Seine Berührung oder sein Blick soll tödlich sein. In Goethes Gedicht (1782) erscheint er als verführerische, aber bedrohliche Gestalt — er flüstert dem kranken Kind süße Versprechungen zu, doch der Vater sieht nur Nebel und Wind. Genau darin liegt die Spannung: Ist der Erlkönig wirklich da, oder sind es die Fieberphantasien eines sterbenden Kindes? Schubert vertonte das Gedicht 1815 — die drei Stimmen (Erzähler, Vater, Kind) und der Erlkönig selbst sind alle in einem einzigen Lied erkennbar.",
+        en: "The Erlking is a figure from Germanic and Scandinavian folklore — literally 'alder king' (from the Danish ellerkonge, king of the alders). He is a supernatural being who lives in the forest and lures people, especially children, to their death. His touch or his gaze is said to be fatal. In Goethe's poem (1782) he appears as a seductive but menacing figure — he whispers sweet promises to the sick child, yet the father sees only mist and wind. That is precisely where the tension lies: is the Erlking truly there, or is it the fever-dream of a dying child? Schubert set the poem to music in 1815 — the three voices (narrator, father, child) and the Erlking himself are all distinguishable within a single song."
+      },
       original: [
         ["Wer reitet so spät durch Nacht und Wind?",
          "Es ist der Vater mit seinem Kind;",
@@ -678,7 +725,7 @@ let currentIdx = 0;
 let speaking = false;
 let utterance = null;
 let speechRate = 0.72;
-let selectedVoiceName = null; // per-language remembered choice
+let selectedVoiceName = {};
 
 function setLang(lang) {
   currentLang = lang;
@@ -711,36 +758,33 @@ function stopSpeech() {
   speaking = false;
 }
 
-function populateVoiceSelect() {
-  const sel = document.getElementById('voiceSelect');
+function _fillPicker(selId, langPrefix, storeKey) {
+  const sel = document.getElementById(selId);
   if (!sel) return;
-  const isGerman = currentLang === 'de';
-  const prefix = isGerman ? 'de' : 'nl';
-  const voices = window.speechSynthesis.getVoices().filter(v => v.lang.toLowerCase().startsWith(prefix));
+  const voices = window.speechSynthesis.getVoices().filter(v => v.lang.toLowerCase().startsWith(langPrefix));
   sel.innerHTML = '';
-  if (voices.length === 0) {
-    sel.innerHTML = '<option value="">No voices found</option>';
-    return;
-  }
+  if (voices.length === 0) { sel.innerHTML = `<option value="">No ${langPrefix} voices</option>`; return; }
   voices.forEach(v => {
     const opt = document.createElement('option');
     opt.value = v.name;
     opt.textContent = v.name.replace(/^(Microsoft|Google|Apple)\s+/i, '') + (v.localService ? '' : ' ☁');
     sel.appendChild(opt);
   });
-  // Restore remembered choice or pick first
-  const remembered = isGerman ? selectedVoiceName?.de : selectedVoiceName?.nl;
-  if (remembered && voices.find(v => v.name === remembered)) {
-    sel.value = remembered;
-  }
+  const remembered = selectedVoiceName[storeKey];
+  if (remembered && voices.find(v => v.name === remembered)) sel.value = remembered;
 }
 
-function onVoiceChange() {
-  const sel = document.getElementById('voiceSelect');
-  if (!sel) return;
+function populateVoiceSelect() {
   const isGerman = currentLang === 'de';
-  if (!selectedVoiceName) selectedVoiceName = {};
-  selectedVoiceName[isGerman ? 'de' : 'nl'] = sel.value;
+  _fillPicker('voiceSelect', isGerman ? 'de' : 'nl', isGerman ? 'de' : 'nl');
+  if (isGerman) _fillPicker('voiceSelectNl', 'nl', 'nl');
+}
+
+function onVoiceChange(which) {
+  const selId = which === 'nl' ? 'voiceSelectNl' : 'voiceSelect';
+  const storeKey = which === 'nl' ? 'nl' : (currentLang === 'de' ? 'de' : 'nl');
+  const sel = document.getElementById(selId);
+  if (sel) selectedVoiceName[storeKey] = sel.value;
 }
 
 function onRateChange(val) {
@@ -753,32 +797,25 @@ function renderPoem() {
   const card = document.getElementById('poemCard');
   const poem = poems[currentLang][currentIdx];
   const isGerman = currentLang === 'de';
-
-  const origLang = isGerman ? 'de-DE' : 'nl-NL';
   const langLabel = isGerman ? 'DEUTSCH' : 'NEDERLANDS';
+  const speakIcon = `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>`;
 
-  let stanzasOrig = poem.original.map(s =>
-    `<div class="stanza">${s.map(l => l + '<br>').join('')}</div>`
-  ).join('');
-
-  let stanzasEn = poem.english.map(s =>
-    `<div class="stanza">${s.map(l => l + '<br>').join('')}</div>`
-  ).join('');
-
+  let stanzasOrig = poem.original.map(s => `<div class="stanza">${s.map(l => l + '<br>').join('')}</div>`).join('');
+  let stanzasEn = poem.english.map(s => `<div class="stanza">${s.map(l => l + '<br>').join('')}</div>`).join('');
   let dutchCol = '';
   let colClass = 'two';
 
   if (isGerman && poem.dutch) {
-    let stanzasDu = poem.dutch.map(s =>
-      `<div class="stanza">${s.map(l => l + '<br>').join('')}</div>`
-    ).join('');
-    dutchCol = `
-      <div>
-        <div class="col-label">Nederlands</div>
-        <div class="poem-text translation">${stanzasDu}</div>
-      </div>`;
+    let stanzasDu = poem.dutch.map(s => `<div class="stanza">${s.map(l => l + '<br>').join('')}</div>`).join('');
+    dutchCol = `<div><div class="col-label">Nederlands</div><div class="poem-text translation">${stanzasDu}</div></div>`;
     colClass = 'three';
   }
+
+  const dutchAudioRow = (isGerman && poem.dutch) ? `
+    <div class="audio-controls" style="margin-top:0.4rem">
+      <button class="audio-btn" id="audioBtnNl" onclick="toggleSpeech('nl')">${speakIcon} Listen in Dutch</button>
+      <select class="voice-select" id="voiceSelectNl" onchange="onVoiceChange('nl')" title="Choose Dutch voice"></select>
+    </div>` : '';
 
   card.innerHTML = `
     <div class="card-inner">
@@ -788,111 +825,106 @@ function renderPoem() {
         <span class="lang-badge">${langLabel}</span>
         <br>
         <div class="audio-controls">
-          <button class="audio-btn" id="audioBtn" onclick="toggleSpeech()">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
-            </svg>
-            Listen in ${isGerman ? 'German' : 'Dutch'}
-          </button>
-          <select class="voice-select" id="voiceSelect" onchange="onVoiceChange()" title="Choose voice"></select>
+          <button class="audio-btn" id="audioBtn" onclick="toggleSpeech('orig')">${speakIcon} Listen in ${isGerman ? 'German' : 'Dutch'}</button>
+          <select class="voice-select" id="voiceSelect" onchange="onVoiceChange('orig')" title="Choose voice"></select>
+        </div>
+        ${dutchAudioRow}
+        <div class="audio-controls" style="margin-top:0.4rem">
           <div class="rate-control">
             <span>pace</span>
-            <input type="range" id="rateSlider" min="0.4" max="1.2" step="0.05" value="0.72" oninput="onRateChange(this.value)">
-            <span id="rateLabel">0.72</span>
+            <input type="range" id="rateSlider" min="0.4" max="1.2" step="0.05" value="${speechRate}" oninput="onRateChange(this.value)">
+            <span id="rateLabel">${speechRate.toFixed(2)}</span>
           </div>
         </div>
       </div>
       <div class="divider">✦</div>
+      ${poem.intro ? `
+      <div class="intro-panel">
+        <div class="intro-tabs">
+          <button class="intro-tab active" onclick="switchIntro('nl', this)">NL</button>
+          <button class="intro-tab" onclick="switchIntro('de', this)">DE</button>
+          <button class="intro-tab" onclick="switchIntro('en', this)">EN</button>
+        </div>
+        <p class="intro-text" id="introText">${poem.intro.nl}</p>
+      </div>
+      <div class="divider">✦</div>` : ''}
       <div class="columns ${colClass}">
-        <div>
-          <div class="col-label">${langLabel}</div>
-          <div class="poem-text original">${stanzasOrig}</div>
-        </div>
+        <div><div class="col-label">${langLabel}</div><div class="poem-text original">${stanzasOrig}</div></div>
         ${dutchCol}
-        <div>
-          <div class="col-label">English</div>
-          <div class="poem-text translation">${stanzasEn}</div>
-        </div>
+        <div><div class="col-label">English</div><div class="poem-text translation">${stanzasEn}</div></div>
       </div>
     </div>
   `;
   card.style.animation = 'none';
   void card.offsetWidth;
   card.style.animation = 'fadeIn 0.45s ease';
-
-  // Restore slider value
-  const slider = document.getElementById('rateSlider');
-  const lbl = document.getElementById('rateLabel');
-  if (slider) { slider.value = speechRate; }
-  if (lbl) { lbl.textContent = speechRate.toFixed(2); }
-
-  // Populate voice picker after voices load
-  if (window.speechSynthesis) {
-    if (window.speechSynthesis.getVoices().length > 0) {
-      populateVoiceSelect();
-    }
-  }
+  if (window.speechSynthesis && window.speechSynthesis.getVoices().length > 0) populateVoiceSelect();
 }
 
-function toggleSpeech() {
+function toggleSpeech(which) {
   if (!window.speechSynthesis) {
-    document.getElementById('audioBtn').insertAdjacentHTML('afterend',
-      '<p class="error-msg">Speech not supported in this browser.</p>');
+    document.getElementById('audioBtn').insertAdjacentHTML('afterend', '<p class="error-msg">Speech not supported in this browser.</p>');
     return;
   }
-
   if (speaking) {
     stopSpeech();
-    updateAudioBtn(false);
+    updateAudioBtn('audioBtn', false, 'orig');
+    updateAudioBtn('audioBtnNl', false, 'nl');
     return;
   }
-
   const poem = poems[currentLang][currentIdx];
   const isGerman = currentLang === 'de';
-  const langCode = isGerman ? 'de-DE' : 'nl-NL';
-
-  const text = poem.original.map(s => s.join('... ')).join('...... ');
+  const btnId = which === 'nl' ? 'audioBtnNl' : 'audioBtn';
+  let text, langCode;
+  if (which === 'nl' && isGerman && poem.dutch) {
+    text = poem.dutch.map(s => s.join('... ')).join('...... ');
+    langCode = 'nl-NL';
+  } else {
+    text = poem.original.map(s => s.join('... ')).join('...... ');
+    langCode = isGerman ? 'de-DE' : 'nl-NL';
+  }
   utterance = new SpeechSynthesisUtterance(text);
   utterance.lang = langCode;
   utterance.rate = speechRate;
   utterance.pitch = 0.95;
-
-  // Use selected voice from picker
-  const sel = document.getElementById('voiceSelect');
+  const selId = which === 'nl' ? 'voiceSelectNl' : 'voiceSelect';
+  const sel = document.getElementById(selId);
   const voices = window.speechSynthesis.getVoices();
   const chosenName = sel ? sel.value : null;
   if (chosenName) {
     const v = voices.find(v => v.name === chosenName);
     if (v) utterance.voice = v;
   } else {
-    const match = voices.find(v => v.lang.toLowerCase().startsWith(isGerman ? 'de' : 'nl'));
+    const prefix = langCode.startsWith('de') ? 'de' : 'nl';
+    const match = voices.find(v => v.lang.toLowerCase().startsWith(prefix));
     if (match) utterance.voice = match;
   }
-
-  utterance.onstart = () => { speaking = true; updateAudioBtn(true); };
-  utterance.onend = () => { speaking = false; updateAudioBtn(false); };
-  utterance.onerror = () => { speaking = false; updateAudioBtn(false); };
-
+  utterance.onstart = () => { speaking = true; updateAudioBtn(btnId, true, which); };
+  utterance.onend = () => { speaking = false; updateAudioBtn(btnId, false, which); };
+  utterance.onerror = () => { speaking = false; updateAudioBtn(btnId, false, which); };
   window.speechSynthesis.speak(utterance);
 }
 
-function updateAudioBtn(isPlaying) {
-  const btn = document.getElementById('audioBtn');
+function updateAudioBtn(btnId, isPlaying, which) {
+  const btn = document.getElementById(btnId);
   if (!btn) return;
   btn.classList.toggle('playing', isPlaying);
-  const poem = poems[currentLang][currentIdx];
   const isGerman = currentLang === 'de';
-  btn.innerHTML = isPlaying
-    ? `<span class="speaking-indicator"></span> Stop`
-    : `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
-       Listen in ${isGerman ? 'German' : 'Dutch'}`;
+  const label = which === 'nl' ? 'Dutch' : (isGerman ? 'German' : 'Dutch');
+  const icon = `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>`;
+  btn.innerHTML = isPlaying ? `<span class="speaking-indicator"></span> Stop` : `${icon} Listen in ${label}`;
 }
 
-// Voices load async on many browsers
 if (window.speechSynthesis) {
-  window.speechSynthesis.addEventListener('voiceschanged', () => {
-    populateVoiceSelect();
-  });
+  window.speechSynthesis.addEventListener('voiceschanged', populateVoiceSelect);
+}
+
+function switchIntro(lang, btn) {
+  const poem = poems[currentLang][currentIdx];
+  if (!poem.intro) return;
+  document.getElementById('introText').textContent = poem.intro[lang];
+  document.querySelectorAll('.intro-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
 }
 
 renderNav();
