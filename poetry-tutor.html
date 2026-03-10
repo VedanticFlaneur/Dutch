@@ -429,19 +429,16 @@ function wclick(el, i) {
   var pop = document.getElementById('pop');
   pop.classList.add('on');
   var r = el.getBoundingClientRect();
-  var left = r.left + window.scrollX;
-  var top  = r.bottom + window.scrollY + 8;
-  // clamp to viewport
-  var pw = 290;
-  var ph = 200;
+  // use fixed positioning - coordinates relative to viewport, no scrollY needed
+  var left = r.left;
+  var top  = r.bottom + 8;
+  var pw = 290, ph = 220;
   if (left + pw > window.innerWidth - 8) left = window.innerWidth - pw - 8;
   if (left < 8) left = 8;
-  if (top + ph > window.scrollY + window.innerHeight - 8) top = r.top + window.scrollY - ph - 8;
-  if (top < window.scrollY + 8) top = window.scrollY + 8;
+  if (top + ph > window.innerHeight - 8) top = r.top - ph - 8;
+  if (top < 8) top = 8;
   pop.style.left = left + 'px';
   pop.style.top  = top + 'px';
-  pop.style.zIndex = '99999';
-  console.log('popup at', left, top, 'viewport:', window.innerWidth, window.innerHeight);
 }
 function closePop() {
   document.getElementById('pop').classList.remove('on');
