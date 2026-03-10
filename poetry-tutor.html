@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gedichten</title>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1a1208;--gold:#b8860b;--rust:#8b3a1a;--muted:#6b5d45;--parchment:#f5eed8;--parchment-deep:#ede0c0;--paper:#faf6ec;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--parchment);color:var(--ink);font-family:'Cormorant Garamond',serif;padding-bottom:4rem;}
+header{text-align:center;padding:2.5rem 1rem 1.5rem;border-bottom:1px solid rgba(184,134,11,0.3);}
+h1{font-family:'Cinzel',serif;font-size:clamp(1.5rem,4vw,2.4rem);letter-spacing:0.12em;font-weight:600;}
+.sub{font-family:'IM Fell English',serif;font-style:italic;color:var(--muted);margin-top:0.4rem;}
+.orn{color:var(--gold);letter-spacing:0.5em;margin-top:0.5rem;opacity:0.7;}
+.lang-tabs{display:flex;justify-content:center;margin:1.5rem auto 0;max-width:280px;border:1px solid rgba(184,134,11,0.4);border-radius:2px;overflow:hidden;}
+.lt{flex:1;padding:0.5rem 1rem;background:transparent;border:none;cursor:pointer;font-family:'Cinzel',serif;font-size:0.75rem;letter-spacing:0.12em;color:var(--muted);border-right:1px solid rgba(184,134,11,0.4);transition:all 0.2s;}
+.lt:last-child{border-right:none;}
+.lt.on{background:var(--gold);color:var(--parchment);}
+#pnav{max-width:720px;margin:1.8rem auto 0;padding:0 1rem;display:flex;flex-wrap:wrap;gap:0.5rem;justify-content:center;}
+#pnav button{background:transparent;border:1px solid rgba(184,134,11,0.35);color:var(--muted);padding:0.3rem 0.85rem;font-family:'IM Fell English',serif;font-style:italic;font-size:0.88rem;cursor:pointer;border-radius:1px;transition:all 0.2s;}
+#pnav button.on{background:var(--parchment-deep);border-color:var(--gold);color:var(--ink);}
+.card{max-width:720px;margin:2rem auto;padding:0 1rem;}
+.ci{background:var(--paper);border:1px solid rgba(184,134,11,0.25);box-shadow:0 2px 8px rgba(26,18,8,0.06);padding:2rem 2.5rem;position:relative;}
+.ci::before{content:'';position:absolute;inset:5px;border:1px solid rgba(184,134,11,0.1);pointer-events:none;}
+.ptitle{font-family:'Cinzel',serif;font-size:1.25rem;letter-spacing:0.08em;font-weight:600;text-align:center;}
+.pauthor{font-family:'IM Fell English',serif;font-style:italic;color:var(--muted);text-align:center;margin-top:0.2rem;}
+.badge{display:inline-block;margin-top:0.5rem;padding:0.15rem 0.7rem;border:1px solid var(--gold);color:var(--gold);font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.2em;border-radius:1px;}
+/* audio */
+.arow{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:0.5rem;margin-top:0.9rem;}
+.abtn{display:flex;align-items:center;gap:0.4rem;background:transparent;border:1px solid rgba(139,58,26,0.4);color:var(--rust);padding:0.38rem 1rem;font-family:'Cormorant Garamond',serif;font-size:0.9rem;cursor:pointer;border-radius:1px;transition:all 0.2s;}
+.abtn:hover{background:rgba(139,58,26,0.06);}
+.abtn.playing{background:var(--rust);color:var(--parchment);}
+.vsel{background:var(--paper);border:1px solid rgba(184,134,11,0.4);color:var(--ink);font-family:'Cormorant Garamond',serif;font-size:0.85rem;padding:0.35rem 1.8rem 0.35rem 0.7rem;border-radius:1px;cursor:pointer;max-width:190px;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23b8860b'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 0.6rem center;}
+.rctl{display:flex;align-items:center;gap:0.4rem;font-family:'Cormorant Garamond',serif;font-size:0.85rem;color:var(--muted);}
+.rctl input[type=range]{-webkit-appearance:none;width:70px;height:3px;background:rgba(184,134,11,0.35);border-radius:2px;outline:none;cursor:pointer;}
+.rctl input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:11px;height:11px;border-radius:50%;background:var(--gold);cursor:pointer;}
+/* bio/intro panels */
+.divider{text-align:center;color:var(--gold);opacity:0.5;margin:1.4rem 0;letter-spacing:0.4em;}
+.panel{border-top:1px solid rgba(184,134,11,0.2);padding-top:1.2rem;margin-top:1.4rem;}
+.plabel{font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.22em;color:var(--gold);text-transform:uppercase;text-align:center;margin-bottom:0.7rem;}
+.ptabs{display:flex;border:1px solid rgba(184,134,11,0.3);border-radius:1px;overflow:hidden;width:fit-content;margin:0 auto 0.8rem;}
+.ptab{padding:0.25rem 0.85rem;background:transparent;border:none;border-right:1px solid rgba(184,134,11,0.3);cursor:pointer;font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.15em;color:var(--muted);transition:all 0.2s;}
+.ptab:last-child{border-right:none;}
+.ptab.on{background:rgba(184,134,11,0.12);color:var(--ink);}
+.ptext-panel{font-family:'Cormorant Garamond',serif;font-size:0.95rem;line-height:1.8;color:var(--muted);font-style:italic;text-align:center;max-width:540px;margin:0 auto;}
+/* columns */
+.cols{display:grid;gap:1.8rem;margin-top:1.6rem;}
+.cols.two{grid-template-columns:1fr 1fr;}
+.cols.three{grid-template-columns:1fr 1fr 1fr;}
+@media(max-width:580px){.cols.two,.cols.three{grid-template-columns:1fr;}.ci{padding:1.5rem 1.2rem;}}
+.clabel{font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.22em;color:var(--gold);text-transform:uppercase;border-bottom:1px solid rgba(184,134,11,0.2);padding-bottom:0.3rem;margin-bottom:0.8rem;}
+.ptext{font-family:'IM Fell English',serif;font-size:1.05rem;line-height:1.9;}
+.ptext .st{margin-bottom:1rem;}
+.transl{font-style:italic;color:#3a3020;font-size:0.97rem;}
+.hint{text-align:center;font-family:'IM Fell English',serif;font-style:italic;font-size:0.8rem;color:var(--muted);margin-top:1rem;}
+.spk-ind{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--parchment);animation:pulse 0.6s ease-in-out infinite alternate;}
+@keyframes pulse{to{transform:scale(1.5);opacity:0.6;}}
+/* popup */
+.w{cursor:pointer;border-bottom:1.5px dotted var(--gold);transition:color 0.15s;}
+.w:hover,.w.on{color:var(--rust);border-bottom-color:var(--rust);}
+#pop{display:none;position:fixed;z-index:9999;background:var(--paper);border:1px solid rgba(184,134,11,0.5);box-shadow:0 4px 18px rgba(26,18,8,0.18);padding:1rem 1.1rem 0.9rem;max-width:280px;min-width:200px;border-radius:2px;}
+#pop.on{display:block;}
+#pop .pw{font-family:'Cinzel',serif;font-size:1rem;font-weight:600;}
+#pop .pl{font-family:'IM Fell English',serif;font-style:italic;font-size:0.82rem;color:var(--muted);margin-bottom:0.45rem;}
+#pop .row{font-family:'Cormorant Garamond',serif;font-size:0.9rem;margin-bottom:0.22rem;line-height:1.4;}
+#pop .lbl{font-family:'Cinzel',serif;font-size:0.54rem;letter-spacing:0.12em;color:var(--gold);text-transform:uppercase;display:block;margin-bottom:0.06rem;}
+#pop .reg{display:inline-block;margin-top:0.35rem;padding:0.1rem 0.4rem;border:1px solid var(--rust);color:var(--rust);font-family:'Cinzel',serif;font-size:0.54rem;letter-spacing:0.1em;}
+#pop .spkbtn{display:flex;align-items:center;gap:0.3rem;margin-top:0.6rem;width:100%;background:transparent;border:1px solid rgba(139,58,26,0.4);color:var(--rust);padding:0.28rem;font-family:'Cormorant Garamond',serif;font-size:0.85rem;cursor:pointer;justify-content:center;border-radius:1px;}
+#pop .spkbtn:hover{background:rgba(139,58,26,0.06);}
+#pcls{position:absolute;top:0.3rem;right:0.4rem;background:none;border:none;cursor:pointer;color:var(--muted);font-size:0.9rem;}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Gedichten</h1>
+  <p class="sub">German &amp; Dutch Poetry with Translations</p>
+  <p class="orn">✦ ✦ ✦</p>
+  <div class="lang-tabs">
+    <button class="lt on" onclick="setLang('de')">Deutsch</button>
+    <button class="lt" onclick="setLang('nl')">Nederlands</button>
+  </div>
+</header>
+
+<div id="pnav"></div>
+<div class="card"><div class="ci" id="card"></div></div>
+
+<div id="pop">
+  <button id="pcls" onclick="closePop()">✕</button>
+  <div class="pw" id="pw"></div>
+  <div class="pl" id="pl"></div>
+  <div class="row"><span class="lbl">Type</span><span id="pt"></span></div>
+  <div class="row"><span class="lbl">English</span><span id="pe"></span></div>
+  <div class="row"><span class="lbl">Grammar</span><span id="pg"></span></div>
+  <div id="preg"></div>
+  <button class="spkbtn" onclick="spkWord()">
+    <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+    Hear it spoken
+  </button>
+</div>
+
+<script>
+const annotations = {
+
+  "Winter op zee": {
+    "kim":{ lemma:"de kim", type:"Noun (de-word)", en:"the horizon as seen from a ship", grammar:"Singular. Nautical term. Plural: kimmen.", register:"Literary / Nautical" },
+    "wreed":{ lemma:"wreed", type:"Adjective", en:"cruel, savage, merciless", grammar:"Predicative (after wordt). Attributive: wrede.", register:"Literary" },
+    "golven":{ lemma:"de golf", type:"Noun / Verb", en:"the waves; to undulate", grammar:"Plural noun here. Also 3rd pl. present of golven.", register:"Standard" },
+    "tuimlen":{ lemma:"tuimelen", type:"Verb (intransitive)", en:"to tumble, to toss, to roll chaotically", grammar:"3rd pl. present. Contracted poetic form of tuimelen.", register:"Literary / Archaic" },
+    "wild":{ lemma:"wild", type:"Adjective", en:"wild, fierce, violent", grammar:"Predicative (after tuimlen). Attributive: wilde.", register:"Standard" },
+    "mild":{ lemma:"mild", type:"Adjective", en:"mild, gentle, soft", grammar:"Predicative. Contrasts with wreed.", register:"Standard" },
+    "groen":{ lemma:"groen", type:"Adjective", en:"green", grammar:"Predicative. Describes the colour of a calm sea.", register:"Standard" },
+    "spoorslags":{ lemma:"spoorslags", type:"Adverb", en:"immediately, all at once, at full gallop", grammar:"From horsemanship: at the touch of the spurs. Suggests sudden violent change.", register:"Literary / Archaic" },
+    "hardgrijs":{ lemma:"hardgrijs", type:"Adjective", en:"hard grey, steely grey", grammar:"Slauerhoff's own compound coinage. Not standard Dutch.", register:"Poetic Coinage" },
+    "grauw":{ lemma:"grauw", type:"Adjective", en:"ashen, dull and leaden grey", grammar:"Stronger and bleaker than grijs — implies grimness.", register:"Literary" },
+    "nacht":{ lemma:"de nacht", type:"Noun (de-word)", en:"the night", grammar:"Singular. Plural: nachten.", register:"Standard" },
+    "wind":{ lemma:"de wind", type:"Noun (de-word)", en:"the wind", grammar:"Singular. Plural: winden.", register:"Standard" },
+    "luchtruim":{ lemma:"het luchtruim", type:"Noun (het-word)", en:"the sky, the airspace, the vault of the heavens", grammar:"Compound: lucht (air) + ruim (space).", register:"Literary / Formal" },
+    "rilt":{ lemma:"rillen", type:"Verb (intransitive)", en:"to shiver, to tremble, to quiver", grammar:"3rd sg. present. Applied to the wind — a striking personification.", register:"Literary" },
+    "plotselinge":{ lemma:"plotseling", type:"Adjective", en:"sudden, abrupt", grammar:"Attributive form with -e inflection before de-word dood.", register:"Standard" },
+    "dood":{ lemma:"de dood", type:"Noun (de-word)", en:"death", grammar:"Singular. No plural in this sense.", register:"Standard" },
+    "kou":{ lemma:"de kou", type:"Noun (de-word)", en:"the cold, the chill", grammar:"Uncountable. More poetic than koude. Final word of stanza one.", register:"Standard / Literary" },
+    "rotseilanden":{ lemma:"het rotseiland", type:"Noun (het-word)", en:"rocky islands, rocky islets", grammar:"Plural. Compound: rots (rock) + eiland (island).", register:"Standard" },
+    "boom":{ lemma:"de boom", type:"Noun (de-word)", en:"tree", grammar:"Singular. Plural: bomen.", register:"Standard" },
+    "gras":{ lemma:"het gras", type:"Noun (het-word)", en:"grass", grammar:"Uncountable in this usage.", register:"Standard" },
+    "verlaten":{ lemma:"verlaten", type:"Adjective / Verb", en:"abandoned, forsaken; to abandon", grammar:"Predicative adjective here (liggend verlaten = lying abandoned).", register:"Standard" },
+    "oeroud":{ lemma:"oeroud", type:"Adjective", en:"primordially old, ancient beyond memory", grammar:"Compound: oer- (primal) + oud (old). Intensifies to a mythic degree.", register:"Literary" },
+    "ruim":{ lemma:"het ruim", type:"Noun (het-word)", en:"space, expanse; also the hold of a ship", grammar:"Double meaning: the vast ocean AND the ship's hold.", register:"Literary / Nautical" },
+    "bloeit":{ lemma:"bloeien", type:"Verb", en:"to bloom, to flower", grammar:"3rd sg. present. Bitterly ironic — the only thing that blooms here is foam.", register:"Standard" },
+    "onstuimig":{ lemma:"onstuimig", type:"Adjective", en:"stormy, turbulent, impetuous", grammar:"Attributive with -e inflection. From on- + stuimig (from stuiven, to gust).", register:"Literary / Formal" },
+    "verward":{ lemma:"verward", type:"Adjective", en:"tangled, confused, disordered", grammar:"Attributive. Past participle of verwarren used as adjective.", register:"Standard" },
+    "gewas":{ lemma:"het gewas", type:"Noun (het-word)", en:"growth, vegetation, crop", grammar:"Ironic: foam described as a crop — the only harvest this barren sea yields.", register:"Literary / Archaic" },
+    "snel":{ lemma:"snel", type:"Adjective / Adverb", en:"fast, quick, rapid", grammar:"Adverb here. Repetition (snel… snel) mimics the brief life of the foam.", register:"Standard" },
+    "opschietend":{ lemma:"opschieten", type:"Verb", en:"to shoot up, to spring up rapidly", grammar:"Present participle as adjective. Vivid image of foam surging upward.", register:"Standard" },
+    "verwelkend":{ lemma:"verwelken", type:"Verb", en:"to wilt, to wither, to fade", grammar:"Present participle as adjective. Normally of flowers — applying to foam deepens the irony.", register:"Literary" },
+    "schuim":{ lemma:"het schuim", type:"Noun (het-word)", en:"foam, froth, spray", grammar:"Uncountable. Central image of stanza two.", register:"Standard" },
+    "schip":{ lemma:"het schip", type:"Noun (het-word)", en:"the ship", grammar:"Singular. Plural: schepen.", register:"Standard" },
+    "vuren":{ lemma:"het vuur", type:"Noun (het-word)", en:"fires (plural of vuur)", grammar:"Absence of fire = absence of warmth and comfort.", register:"Standard" },
+    "troostend":{ lemma:"troosten", type:"Adjective", en:"comforting, consoling", grammar:"Present participle of troosten. No fires burn with comfort.", register:"Literary" },
+    "branden":{ lemma:"branden", type:"Verb", en:"to burn, to blaze", grammar:"Negated here: geen vuren troostend branden.", register:"Standard" },
+    "nestelt":{ lemma:"nestelen", type:"Verb (reflexive)", en:"to nestle, to settle in", grammar:"3rd sg. Reflexive: nestelt zich. The cold nesting is a chilling personification.", register:"Standard / Literary" },
+    "reis":{ lemma:"de reis", type:"Noun (de-word)", en:"the journey, the voyage", grammar:"Possible double meaning: the voyage of life toward death.", register:"Standard" },
+    "wanden":{ lemma:"de wand", type:"Noun (de-word)", en:"the walls of the ship's hull", grammar:"Plural of wand. Inner hull walls that crack and groan.", register:"Standard" },
+    "wakkergekraakte":{ lemma:"wakkerkraken", type:"Compound verb (past participle)", en:"cracked awake, creaking into wakefulness", grammar:"Slauerhoff's own coinage. A bold expressionist formation.", register:"Poetic Coinage" },
+    "kruit":{ lemma:"kruien", type:"Verb", en:"to grind forward with crushing pressure", grammar:"3rd sg. of kruien. Used of ice floes grinding against the hull.", register:"Literary / Nautical" },
+    "verbrijzelt":{ lemma:"verbrijzelen", type:"Verb (reflexive)", en:"to shatter, to smash to pieces", grammar:"Reflexive: verbrijzelt zich = shatters itself against the ship.", register:"Literary / Formal" },
+    "drijvend":{ lemma:"drijven", type:"Adjective", en:"drifting, floating", grammar:"Present participle as adjective. Het drijvend ijs = the drifting ice.", register:"Standard" },
+    "ijs":{ lemma:"het ijs", type:"Noun (het-word)", en:"ice", grammar:"Uncountable. The final image — cold, drifting, shattering.", register:"Standard" }
+  },
+
+  "Der Erlkönig": {
+    "reitet":{ lemma:"reiten", type:"Verb (intransitive)", en:"to ride (on horseback)", grammar:"3rd sg. present. Strong verb. Imperfect: ritt.", register:"Standard / Literary" },
+    "Nacht":{ lemma:"die Nacht", type:"Noun (die-word)", en:"the night", grammar:"Singular. Plural: Nächte.", register:"Standard" },
+    "Wind":{ lemma:"der Wind", type:"Noun (der-word)", en:"the wind", grammar:"Singular. Plural: Winde.", register:"Standard" },
+    "Vater":{ lemma:"der Vater", type:"Noun (der-word)", en:"the father", grammar:"Singular. Plural: Väter.", register:"Standard" },
+    "Kind":{ lemma:"das Kind", type:"Noun (das-word)", en:"the child", grammar:"Singular. Plural: Kinder.", register:"Standard" },
+    "Knaben":{ lemma:"der Knabe", type:"Noun (der-word)", en:"the boy, the lad", grammar:"Genitive/dative singular (den Knaben = accusative). Slightly archaic; Junge is more common today.", register:"Literary / Archaic" },
+    "Arm":{ lemma:"der Arm", type:"Noun (der-word)", en:"the arm", grammar:"Singular. Plural: Arme. In dem Arm = in his arm.", register:"Standard" },
+    "warm":{ lemma:"warm", type:"Adjective", en:"warm", grammar:"Predicative here (hält ihn warm). Comparative: wärmer.", register:"Standard" },
+    "bang":{ lemma:"bang", type:"Adjective", en:"afraid, anxious, frightened", grammar:"Predicative. Also used as adverb: bang verstecken = to hide fearfully.", register:"Standard / Literary" },
+    "Gesicht":{ lemma:"das Gesicht", type:"Noun (das-word)", en:"the face", grammar:"Singular. Plural: Gesichter.", register:"Standard" },
+    "Erlkönig":{ lemma:"der Erlkönig", type:"Noun (proper)", en:"the Erl-King, the Alder-King", grammar:"From Danish ellerkonge (king of the elders). A supernatural figure from Germanic folklore.", register:"Mythological" },
+    "Kron":{ lemma:"die Krone", type:"Noun (die-word)", en:"the crown", grammar:"Archaic contracted form of Krone, used for metre.", register:"Archaic / Poetic" },
+    "Schweif":{ lemma:"der Schweif", type:"Noun (der-word)", en:"the train, the tail, the flowing robe", grammar:"Singular. Usually means an animal's tail; here a flowing robe or retinue.", register:"Literary / Archaic" },
+    "Nebelstreif":{ lemma:"der Nebelstreif", type:"Noun (der-word)", en:"a streak of mist, a wisp of fog", grammar:"Compound: Nebel (fog) + Streif (streak, strip).", register:"Literary" },
+    "Spiele":{ lemma:"das Spiel", type:"Noun (das-word)", en:"games, plays", grammar:"Plural of Spiel. Schöne Spiele = lovely games.", register:"Standard" },
+    "Strand":{ lemma:"der Strand", type:"Noun (der-word)", en:"the shore, the beach", grammar:"Singular. Plural: Strände.", register:"Standard" },
+    "Mutter":{ lemma:"die Mutter", type:"Noun (die-word)", en:"the mother", grammar:"Singular. Plural: Mütter.", register:"Standard" },
+    "gülden":{ lemma:"golden", type:"Adjective", en:"golden, made of gold", grammar:"Archaic form of golden, used in poetry and fairytale register.", register:"Archaic / Poetic" },
+    "Gewand":{ lemma:"das Gewand", type:"Noun (das-word)", en:"the robe, the garment", grammar:"Singular. Plural: Gewänder. Elevated register — not everyday clothing.", register:"Literary / Archaic" }
+  },
+
+  "Wandrers Nachtlied": {
+    "Gipfeln":{ lemma:"der Gipfel", type:"Noun (der-word)", en:"the summit, the peak", grammar:"Dative plural (über allen Gipfeln). Singular: der Gipfel.", register:"Standard" },
+    "Ruh":{ lemma:"die Ruhe", type:"Noun (die-word)", en:"rest, stillness, peace", grammar:"Contracted poetic form of Ruhe, used for metre. Uncountable.", register:"Poetic / Archaic" },
+    "Wipfeln":{ lemma:"der Wipfel", type:"Noun (der-word)", en:"the treetop, the crown of a tree", grammar:"Dative plural (in allen Wipfeln). Slightly elevated register.", register:"Literary" },
+    "Spürest":{ lemma:"spüren", type:"Verb (transitive)", en:"to feel, to sense, to perceive", grammar:"2nd sg. present, archaic form (du spürest = you feel). Modern: du spürst.", register:"Archaic / Poetic" },
+    "Hauch":{ lemma:"der Hauch", type:"Noun (der-word)", en:"a breath, a whisper of wind", grammar:"Singular. Uncountable in this usage. Implies barely perceptible movement.", register:"Literary" },
+    "Vögelein":{ lemma:"das Vögelein", type:"Noun (das-word)", en:"the little birds", grammar:"Diminutive plural of Vogel (bird). The -lein suffix is more archaic than -chen.", register:"Archaic / Poetic" },
+    "schweigen":{ lemma:"schweigen", type:"Verb (intransitive)", en:"to be silent, to fall quiet", grammar:"3rd pl. present. Strong verb. Implies a charged, meaningful silence.", register:"Standard / Literary" },
+    "Walde":{ lemma:"der Wald", type:"Noun (der-word)", en:"the forest, the wood", grammar:"Dative singular (im Walde). The -e ending is archaic dative; modern: im Wald.", register:"Archaic / Poetic" },
+    "balde":{ lemma:"bald", type:"Adverb", en:"soon, shortly", grammar:"Archaic form of bald with an extra -e, used in poetry for metre and rhyme.", register:"Archaic / Poetic" },
+    "Ruhest":{ lemma:"ruhen", type:"Verb (intransitive)", en:"to rest, to lie at rest", grammar:"2nd sg. present, archaic (du ruhest). Modern: du ruhst. Here implying the rest of death.", register:"Archaic / Poetic" }
+  },
+
+  "Der Tod und das Mädchen": {
+    "Mädchen":{ lemma:"das Mädchen", type:"Noun (das-word)", en:"the girl, the maiden", grammar:"Singular. Plural: Mädchen (unchanged). Das-word despite referring to a girl — diminutive suffix -chen is always neuter.", register:"Standard" },
+    "Vorüber":{ lemma:"vorüber", type:"Adverb / Prefix", en:"past, by, over", grammar:"Separable prefix here used as exclamation: pass by! go past!", register:"Standard / Literary" },
+    "wilder":{ lemma:"wild", type:"Adjective", en:"wild, savage", grammar:"Attributive form with strong inflection (wilder Knochenmann = wild bony man).", register:"Standard" },
+    "Knochenmann":{ lemma:"der Knochenmann", type:"Noun (der-word)", en:"the bone-man, the skeleton — Death personified", grammar:"Compound: Knochen (bone) + Mann (man). Vivid folk image of Death as a skeleton.", register:"Literary / Folk" },
+    "jung":{ lemma:"jung", type:"Adjective", en:"young", grammar:"Predicative here (ich bin noch jung). Comparative: jünger.", register:"Standard" },
+    "rühre":{ lemma:"rühren", type:"Verb (transitive)", en:"to touch, to stir, to move", grammar:"1st sg. present subjunctive / imperative negated: rühre mich nicht an = do not touch me.", register:"Standard / Literary" },
+    "zart":{ lemma:"zart", type:"Adjective", en:"tender, delicate, gentle", grammar:"Attributive here (zart Gebild = tender form). Comparative: zarter.", register:"Literary" },
+    "Gebild":{ lemma:"das Gebild", type:"Noun (das-word)", en:"the form, the figure, the image", grammar:"Archaic/poetic form of Gebilde. Here: the delicate human form of the girl.", register:"Archaic / Poetic" },
+    "strafen":{ lemma:"strafen", type:"Verb (transitive)", en:"to punish, to chastise", grammar:"Infinitive. Nicht zu strafen = not to punish.", register:"Standard / Formal" },
+    "Muts":{ lemma:"der Mut", type:"Noun (der-word)", en:"courage, spirit, cheer", grammar:"Genitive singular (gutes Muts). Sei gutes Muts = be of good cheer.", register:"Literary / Archaic" },
+    "sanft":{ lemma:"sanft", type:"Adjective / Adverb", en:"gently, softly, peacefully", grammar:"Adverb here (sanft schlafen = to sleep softly). Comparative: sanfter.", register:"Standard / Literary" },
+    "Armen":{ lemma:"der Arm", type:"Noun (der-word)", en:"arms (plural)", grammar:"Dative plural (in meinen Armen = in my arms).", register:"Standard" },
+    "schlafen":{ lemma:"schlafen", type:"Verb (intransitive)", en:"to sleep", grammar:"Infinitive. Strong verb. Here euphemism for death.", register:"Standard" }
+  },
+
+  "Die Lorelei": {
+    "weiß":{ lemma:"wissen", type:"Verb (irregular)", en:"to know", grammar:"1st sg. present of wissen (to know). Ich weiß = I know. Not to confuse with weiß (white).", register:"Standard" },
+    "traurig":{ lemma:"traurig", type:"Adjective", en:"sad, melancholy, sorrowful", grammar:"Predicative (ich bin so traurig). Comparative: trauriger.", register:"Standard" },
+    "Märchen":{ lemma:"das Märchen", type:"Noun (das-word)", en:"a fairy tale, a legend", grammar:"Singular and plural identical. Diminutive of Mär (tale, story).", register:"Standard / Literary" },
+    "Zeiten":{ lemma:"die Zeit", type:"Noun (die-word)", en:"times, ages", grammar:"Plural of Zeit. Aus alten Zeiten = from olden times.", register:"Standard" },
+    "Sinn":{ lemma:"der Sinn", type:"Noun (der-word)", en:"the mind, the sense, the head", grammar:"Singular. Nicht aus dem Sinn = not out of my mind (I cannot forget it).", register:"Standard / Literary" },
+    "dunkelt":{ lemma:"dunkeln", type:"Verb (intransitive)", en:"it grows dark, twilight falls", grammar:"3rd sg. present. Impersonal verb (es dunkelt = it is getting dark).", register:"Literary" },
+    "ruhig":{ lemma:"ruhig", type:"Adjective / Adverb", en:"quietly, calmly, peacefully", grammar:"Adverb here (ruhig fließt = flows quietly).", register:"Standard" },
+    "fließt":{ lemma:"fließen", type:"Verb (intransitive)", en:"to flow, to stream", grammar:"3rd sg. present. Strong verb. Imperfect: floss.", register:"Standard" },
+    "Rhein":{ lemma:"der Rhein", type:"Proper noun", en:"the Rhine (river)", grammar:"The great river of western Germany. Der Rhein is masculine.", register:"Proper / Geographic" },
+    "funkelt":{ lemma:"funkeln", type:"Verb (intransitive)", en:"to sparkle, to glitter, to gleam", grammar:"3rd sg. present. Suggests the sun catching on rock.", register:"Standard / Literary" },
+    "Abendsonnenschein":{ lemma:"der Abendsonnenschein", type:"Noun (der-word)", en:"the evening sunshine, the last rays of the setting sun", grammar:"Compound: Abend (evening) + Sonne (sun) + Schein (shine, light).", register:"Literary / Poetic" },
+    "Jungfrau":{ lemma:"die Jungfrau", type:"Noun (die-word)", en:"the maiden, the virgin", grammar:"Compound: jung (young) + Frau (woman). Literary term for an unmarried girl.", register:"Literary / Archaic" },
+    "sitzet":{ lemma:"sitzen", type:"Verb (intransitive)", en:"to sit", grammar:"3rd sg. present, archaic form (sie sitzet = she sits). Modern: sie sitzt.", register:"Archaic / Poetic" },
+    "Geschmeide":{ lemma:"das Geschmeide", type:"Noun (das-word)", en:"jewellery, ornaments, precious adornments", grammar:"Collective noun. Uncountable. Archaic and elevated register.", register:"Archaic / Poetic" },
+    "blitzet":{ lemma:"blitzen", type:"Verb (intransitive)", en:"to flash, to gleam, to glitter", grammar:"3rd sg. present, archaic form (es blitzet = it flashes). Modern: es blitzt.", register:"Archaic / Poetic" },
+    "kämmt":{ lemma:"kämmen", type:"Verb (transitive)", en:"to comb", grammar:"3rd sg. present. Reflexive here: sie kämmt ihr Haar = she combs her hair.", register:"Standard" },
+    "Haar":{ lemma:"das Haar", type:"Noun (das-word)", en:"hair", grammar:"Singular (collective). Plural: Haare. Gold'nes Haar = golden hair.", register:"Standard" }
+  },
+
+  "Gebed om een goed einde": {
+    "Geef":{ lemma:"geven", type:"Verb (transitive)", en:"give, grant", grammar:"2nd sg. imperative of geven. Addressed directly to God.", register:"Standard / Devotional" },
+    "Heer":{ lemma:"de Heer", type:"Noun (de-word)", en:"the Lord (God)", grammar:"Singular. Capitalised as title for God. Also: heer = gentleman, lord.", register:"Devotional / Formal" },
+    "einde":{ lemma:"het einde", type:"Noun (het-word)", en:"the end, the ending", grammar:"Singular. Plural: einden. Een goed einde = a good death / a good ending.", register:"Standard" },
+    "stil":{ lemma:"stil", type:"Adjective / Adverb", en:"still, quiet, peaceful", grammar:"Predicative (stil als de nacht = still as the night).", register:"Standard" },
+    "nacht":{ lemma:"de nacht", type:"Noun (de-word)", en:"the night", grammar:"Singular. Plural: nachten.", register:"Standard" },
+    "hart":{ lemma:"het hart", type:"Noun (het-word)", en:"the heart", grammar:"Singular. Plural: harten.", register:"Standard / Literary" },
+    "last":{ lemma:"de last", type:"Noun (de-word)", en:"the burden, the load, the weight", grammar:"Singular. Plural: lasten. Zijn last afleggen = to lay down one's burden.", register:"Standard / Literary" },
+    "vrede":{ lemma:"de vrede", type:"Noun (de-word)", en:"peace", grammar:"Uncountable. Naar de vrede wacht = waits for peace.", register:"Standard / Devotional" },
+    "sterven":{ lemma:"sterven", type:"Verb (intransitive)", en:"to die, to pass away", grammar:"Infinitive here used as noun (het sterven = the dying). Strong verb.", register:"Standard / Literary" },
+    "zomerdag":{ lemma:"de zomerdag", type:"Noun (de-word)", en:"the summer day", grammar:"Compound: zomer (summer) + dag (day).", register:"Standard" },
+    "langzaam":{ lemma:"langzaam", type:"Adjective / Adverb", en:"slowly, gradually", grammar:"Adverb here (langzaam ondergaat = slowly fades away).", register:"Standard" },
+    "ondergaat":{ lemma:"ondergaan", type:"Verb (intransitive)", en:"to set (of the sun), to fade, to go under", grammar:"3rd sg. present. Separable: gaat onder. Literally: to go under.", register:"Standard / Literary" },
+    "rosse":{ lemma:"ros", type:"Adjective", en:"reddish, russet, auburn", grammar:"Attributive form (with -e inflection). Describes the warm red glow of a sunset.", register:"Literary / Archaic" },
+    "gloedglans":{ lemma:"de gloedglans", type:"Noun (de-word)", en:"the glowing radiance, the fiery shimmer", grammar:"Compound: gloed (glow, blaze) + glans (gleam, lustre). Poetic coinage.", register:"Poetic" },
+    "morgen":{ lemma:"de morgen", type:"Noun (de-word)", en:"the morning; tomorrow", grammar:"Singular. Double meaning: the next morning AND the promise of resurrection.", register:"Standard / Literary" }
+  },
+
+  "Het leven is een feest": {
+    "lente":{ lemma:"de lente", type:"Noun (de-word)", en:"spring (the season)", grammar:"Singular. Uncountable in this usage. Plural rarely used.", register:"Standard" },
+    "geluid":{ lemma:"het geluid", type:"Noun (het-word)", en:"a sound, a tone", grammar:"Singular. Plural: geluiden. Een nieuw geluid = a new sound / a new voice.", register:"Standard" },
+    "liefste":{ lemma:"lief", type:"Adjective (superlative)", en:"dearest, beloved", grammar:"Superlative of lief (dear, sweet). Used as noun here: mijn liefste = my beloved.", register:"Literary / Intimate" },
+    "zingen":{ lemma:"zingen", type:"Verb (transitive/intransitive)", en:"to sing", grammar:"Infinitive. Strong verb. Imperfect: zong.", register:"Standard" },
+    "lied":{ lemma:"het lied", type:"Noun (het-word)", en:"a song", grammar:"Singular. Plural: liederen or liedjes.", register:"Standard" },
+    "zingt":{ lemma:"zingen", type:"Verb", en:"sings", grammar:"3rd sg. present. Al zingt zij 't ook niet = even though she does not sing it.", register:"Standard" },
+    "wacht":{ lemma:"wachten", type:"Verb (intransitive)", en:"to wait", grammar:"3rd sg. present. De lente die wacht = the spring that waits.", register:"Standard" },
+    "morgen":{ lemma:"de morgen", type:"Noun (de-word)", en:"the morning", grammar:"Singular. In de morgen vroeg = in the early morning.", register:"Standard" },
+    "vroeg":{ lemma:"vroeg", type:"Adjective / Adverb", en:"early", grammar:"Adverb here (in de morgen vroeg = in the early morning).", register:"Standard" },
+    "veld":{ lemma:"het veld", type:"Noun (het-word)", en:"the field, the open land", grammar:"Singular. Plural: velden.", register:"Standard" },
+    "bos":{ lemma:"het bos", type:"Noun (het-word)", en:"the forest, the wood", grammar:"Singular. Plural: bossen.", register:"Standard" },
+    "land":{ lemma:"het land", type:"Noun (het-word)", en:"the land, the countryside", grammar:"Singular. Plural: landen.", register:"Standard" },
+    "bloemen":{ lemma:"de bloem", type:"Noun (de-word)", en:"the flowers", grammar:"Plural of bloem. Singular: de bloem.", register:"Standard" },
+    "hand":{ lemma:"de hand", type:"Noun (de-word)", en:"the hand", grammar:"Singular. Plural: handen.", register:"Standard" },
+    "bloeien":{ lemma:"bloeien", type:"Verb (intransitive)", en:"to bloom, to flower, to blossom", grammar:"3rd pl. present here. The flowers bloom in response to spring's touch.", register:"Standard" }
+  },
+
+  "Aan de Schelde": {
+    "Schelde":{ lemma:"de Schelde", type:"Proper noun", en:"the Scheldt (river in Belgium and the Netherlands)", grammar:"One of the great rivers of the Low Countries, flowing through Ghent and Antwerp.", register:"Proper / Geographic" },
+    "vleit":{ lemma:"vleien", type:"Verb (transitive)", en:"to flatter, to caress, to stroke gently", grammar:"3rd sg. present. Hoe vleit gij zo zacht = how gently you caress.", register:"Literary / Archaic" },
+    "zacht":{ lemma:"zacht", type:"Adjective / Adverb", en:"soft, gentle, quietly", grammar:"Adverb here (zo zacht = so gently).", register:"Standard" },
+    "zilver":{ lemma:"het zilver", type:"Noun (het-word)", en:"silver", grammar:"Uncountable. Refers to the silver shimmer of the river's surface.", register:"Standard / Poetic" },
+    "goud":{ lemma:"het goud", type:"Noun (het-word)", en:"gold", grammar:"Uncountable. The river catches golden light — silver and gold = the play of light on water.", register:"Standard / Poetic" },
+    "oevers":{ lemma:"de oever", type:"Noun (de-word)", en:"the banks (of a river)", grammar:"Plural of oever. Singular: de oever.", register:"Standard" },
+    "beglinstert":{ lemma:"beglinsteren", type:"Verb (transitive)", en:"to shimmer over, to cast a gleam upon", grammar:"3rd sg. present. Archaic / poetic verb. The prefix be- makes it transitive.", register:"Literary / Archaic" },
+    "vlietende":{ lemma:"vlieten", type:"Verb", en:"flowing, streaming", grammar:"Present participle as adjective. Archaic form of vloeien (to flow). West Flemish dialect.", register:"Archaic / Dialectal" },
+    "vliedende":{ lemma:"vlieden", type:"Verb", en:"fleeting, fleeing, slipping away", grammar:"Present participle as adjective. From vlieden (to flee). The river both flows and flees.", register:"Archaic / Poetic" },
+    "macht":{ lemma:"de macht", type:"Noun (de-word)", en:"the power, the force", grammar:"Singular. Uncountable in this sense. In uw macht = in your power.", register:"Standard / Literary" },
+    "stroomt":{ lemma:"stromen", type:"Verb (intransitive)", en:"to stream, to flow", grammar:"3rd sg. present.", register:"Standard" },
+    "zingt":{ lemma:"zingen", type:"Verb (intransitive)", en:"to sing", grammar:"3rd sg. present. The river sings — a personification.", register:"Standard" },
+    "spreekt":{ lemma:"spreken", type:"Verb (intransitive)", en:"to speak", grammar:"3rd sg. present. The river speaks — deepening the personification.", register:"Standard" },
+    "taal":{ lemma:"de taal", type:"Noun (de-word)", en:"the language, the tongue", grammar:"Singular. Met een taal = with a language (that no human tongue can echo).", register:"Standard" },
+    "tong":{ lemma:"de tong", type:"Noun (de-word)", en:"the tongue", grammar:"Singular. Plural: tongen. Here: no tongue = no human language.", register:"Standard / Literary" },
+    "herte":{ lemma:"het hert / het harte", type:"Noun (het-word)", en:"the heart", grammar:"Archaic West Flemish form of hart. Gezelle uses dialect forms deliberately.", register:"Archaic / Dialectal" },
+    "bebreekt":{ lemma:"bebreken", type:"Verb (transitive)", en:"to break, to afflict, to pain", grammar:"3rd sg. present. Archaic West Flemish verb. Wat het herte bebreekt = what breaks the heart.", register:"Archaic / Dialectal" },
+    "zucht":{ lemma:"zuchten", type:"Verb (intransitive)", en:"to sigh", grammar:"3rd sg. present. Wat het zucht = what makes it sigh.", register:"Literary" },
+    "bewreke":{ lemma:"bewreken", type:"Verb (transitive)", en:"to avenge, to redress", grammar:"3rd sg. present subjunctive (archaic). West Flemish dialect. Wat het bewreke = what it must avenge.", register:"Archaic / Dialectal" }
+  },
+
+  "O, als de zee": {
+    "zee":{ lemma:"de zee", type:"Noun (de-word)", en:"the sea", grammar:"Singular. Uncountable in this sense. Plural rarely used.", register:"Standard" },
+    "grijze":{ lemma:"grijs", type:"Adjective", en:"grey", grammar:"Attributive form with -e inflection (de grijze zee = the grey sea).", register:"Standard" },
+    "stille":{ lemma:"stil", type:"Adjective", en:"still, silent, quiet", grammar:"Attributive form with -e inflection (de stille zee = the silent sea).", register:"Standard / Literary" },
+    "omspoelt":{ lemma:"omspoelen", type:"Verb (transitive)", en:"to wash over, to lap around, to bathe", grammar:"3rd sg. present. Prefix om- = around. The sea washes around the heart.", register:"Literary" },
+    "koud":{ lemma:"koud", type:"Adjective", en:"cold", grammar:"Attributive here (koud en zwaar geluid = cold and heavy sound).", register:"Standard" },
+    "zwaar":{ lemma:"zwaar", type:"Adjective", en:"heavy, weighty, deep", grammar:"Attributive. The sound of the sea is heavy, oppressive.", register:"Standard" },
+    "geluid":{ lemma:"het geluid", type:"Noun (het-word)", en:"the sound", grammar:"Singular. Plural: geluiden.", register:"Standard" },
+    "wens":{ lemma:"de wens", type:"Noun (de-word)", en:"the wish, the desire, the longing", grammar:"Singular. Plural: wensen.", register:"Standard / Literary" },
+    "wille":{ lemma:"de wil", type:"Noun (de-word)", en:"the will, the volition", grammar:"Archaic/poetic form of wil with extra -le, used for rhyme. Iedere wille = every will.", register:"Literary / Archaic" },
+    "nimmer":{ lemma:"nimmer", type:"Adverb", en:"never, not ever", grammar:"Archaic/poetic equivalent of nooit. Nimmer wordt volbracht = is never accomplished.", register:"Literary / Archaic" },
+    "volbracht":{ lemma:"volbrengen", type:"Verb (transitive)", en:"to accomplish, to fulfil, to carry out", grammar:"Past participle of volbrengen. Wordt volbracht = is fulfilled.", register:"Formal / Literary" },
+    "hemel":{ lemma:"de hemel", type:"Noun (de-word)", en:"the sky; heaven", grammar:"Singular. Both meanings active here: the physical sky and the divine heaven.", register:"Standard / Literary" },
+    "gesloten":{ lemma:"sluiten", type:"Verb (transitive)", en:"to close, to seal, to shut", grammar:"Past participle. De hemel heeft gesloten = the night has sealed the sky.", register:"Standard" },
+    "verdronken":{ lemma:"verdrinken", type:"Verb (intransitive)", en:"drowned, submerged", grammar:"Past participle as adjective. All the light is drowned in the sea.", register:"Standard / Literary" },
+    "genoten":{ lemma:"genieten", type:"Verb (transitive)", en:"having tasted, having enjoyed", grammar:"Past participle. De rust genoten = having tasted rest.", register:"Standard / Literary" },
+    "zinkt":{ lemma:"zinken", type:"Verb (intransitive)", en:"to sink, to go down", grammar:"3rd sg. present. The heart sinks quietly — an image of depression or resignation.", register:"Standard / Literary" },
+    "treurt":{ lemma:"treuren", type:"Verb (intransitive)", en:"to mourn, to grieve, to sorrow", grammar:"3rd sg. present. Om wat voorbij moet gee = for what must pass by.", register:"Literary" },
+    "voorbij":{ lemma:"voorbij", type:"Adverb / Preposition", en:"past, gone, over", grammar:"What must pass by = what must end, what cannot last.", register:"Standard" }
+  }
+};
+
+var poems = [
+  { title:"Der Erlkönig", lang:"de", author:"Johann Wolfgang von Goethe",
+    bio:{ nl:"Johann Wolfgang von Goethe (1749–1832) wordt beschouwd als de grootste schrijver uit de Duitse literatuur. Geboren in Frankfurt, studeerde hij rechten maar wijdde zijn leven aan literatuur, wetenschap en filosofie. Als dichter, toneelschrijver en denker belichaamde hij zowel de Sturm-und-Drang-beweging als het Weimar Classicisme. Zijn levenslange meesterwerk 'Faust' geldt als een van de hoogtepunten van de wereldliteratuur.", de:"Johann Wolfgang von Goethe (1749–1832) gilt als der bedeutendste Dichter der deutschen Literatur. Als Dichter, Dramatiker und Denker verkörperte er sowohl den Sturm und Drang als auch den Weimarer Klassizismus. Sein lebenslang gewachsenes Hauptwerk 'Faust' gilt als einer der Höhepunkte der Weltliteratur.", en:"Johann Wolfgang von Goethe (1749–1832) is regarded as the greatest writer in the German literary tradition. As poet, playwright and thinker he embodied both the Sturm und Drang movement and Weimar Classicism. His lifelong masterwork 'Faust' is considered one of the peaks of world literature." },
+    intro:{ nl:"De Erlkönig is een figuur uit de Germaanse folklore — letterlijk 'elzenkoning'. Hij is een bovennatuurlijk wezen dat kinderen naar de dood lokt. In Goethes gedicht (1782) fluistert hij het zieke kind zoete beloften toe, maar de vader ziet alleen mist en wind. Is de Erlkönig echt, of is het de koortsfantasie van een stervend kind? Schubert zette het in 1815 op muziek — vier stemmen in één lied.", de:"Der Erlkönig ist eine Gestalt aus der germanischen Volksüberlieferung. In Goethes Gedicht (1782) flüstert er dem kranken Kind süße Versprechungen zu, doch der Vater sieht nur Nebel und Wind. Ist der Erlkönig wirklich da, oder sind es Fieberphantasien? Schubert vertonte das Gedicht 1815.", en:"The Erlking is a figure from Germanic folklore who lures children to their death. In Goethe's poem (1782) he whispers sweet promises to a sick child, yet the father sees only mist and wind. Is the Erlking real, or is it the fever-dream of a dying child? Schubert set it to music in 1815." },
+    lines:["Wer reitet so spät durch Nacht und Wind?","Es ist der Vater mit seinem Kind;","Er hat den Knaben wohl in dem Arm,","Er fasst ihn sicher, er hält ihn warm.","","Mein Sohn, was birgst du so bang dein Gesicht?","Siehst, Vater, du den Erlkönig nicht?","Den Erlenkönig mit Kron und Schweif?","Mein Sohn, es ist ein Nebelstreif.","","Du liebes Kind, komm, geh mit mir!","Gar schöne Spiele spiel ich mit dir;","Manch bunte Blumen sind an dem Strand,","Meine Mutter hat manch gülden Gewand."],
+    dutch:["Wie rijdt zo laat door nacht en wind?","Het is de vader met zijn kind;","Hij houdt de knaap vast in zijn arm,","Hij houdt hem veilig, hij houdt hem warm.","","Mijn zoon, waarom verberg je zo bang je gezicht?","Vader, zie jij de Erlkoning niet?","De Erlkoning met zijn kroon en sleep?","Mijn zoon, dat is maar een miststreep.","","Lief kind, kom ga met mij mee!","Heerlijke spelletjes speel ik met jou;","Mooie bloemen staan er aan het strand,","Mijn moeder heeft menig gouden gewaad."],
+    trans:["Who rides so late through night and wind?","It is the father with his child;","He holds the boy clasped in his arm,","He holds him safely, he keeps him warm.","","My son, why hide your face in fear?","Father, do you not see the Erl-King?","The Erl-King with his crown and train?","My son, it is a streak of mist.","","Dear child, come away with me!","Such lovely games I'll play with thee;","Many coloured flowers grow by the shore,","My mother has many golden robes in store."]
+  },
+  { title:"Wandrers Nachtlied", lang:"de", author:"Johann Wolfgang von Goethe",
+    bio:{ nl:"Johann Wolfgang von Goethe (1749–1832) wordt beschouwd als de grootste schrijver uit de Duitse literatuur. Als dichter, toneelschrijver en denker belichaamde hij zowel de Sturm-und-Drang-beweging als het Weimar Classicisme. Zijn levenslange meesterwerk 'Faust' geldt als een van de hoogtepunten van de wereldliteratuur.", de:"Johann Wolfgang von Goethe (1749–1832) gilt als der bedeutendste Dichter der deutschen Literatur. Als Dichter, Dramatiker und Denker verkörperte er sowohl den Sturm und Drang als auch den Weimarer Klassizismus.", en:"Johann Wolfgang von Goethe (1749–1832) is regarded as the greatest writer in the German literary tradition. As poet, playwright and thinker he embodied both the Sturm und Drang movement and Weimar Classicism." },
+    lines:["Über allen Gipfeln","Ist Ruh,","In allen Wipfeln","Spürest du","Kaum einen Hauch;","Die Vögelein schweigen im Walde.","Warte nur, balde","Ruhest du auch."],
+    dutch:["Boven alle bergtoppen","Is rust,","In alle boomkruinen","Voel je","Nauwelijks een zucht;","De vogeltjes zwijgen in het woud.","Wacht slechts, spoedig","Rust jij ook."],
+    trans:["Over all the hilltops","Is quiet now,","In all the treetops","You can feel","Hardly a breath;","The birds are asleep in the forest.","Wait — soon","You will rest, too."]
+  },
+  { title:"Der Tod und das Mädchen", lang:"de", author:"Matthias Claudius",
+    bio:{ nl:"Matthias Claudius (1740–1815) was een Duitse dichter en journalist, bekend om zijn eenvoudige, innige toon en diepe vroomheid. 'Der Tod und das Mädchen' werd in 1817 door Franz Schubert op muziek gezet — eerst als lied, later als thema voor een beroemd strijkkwartet.", de:"Matthias Claudius (1740–1815) war ein deutscher Dichter und Journalist, bekannt für seinen schlichten, innigen Ton. 'Der Tod und das Mädchen' wurde 1817 von Franz Schubert vertont — zunächst als Lied, später als Thema eines berühmten Streichquartetts.", en:"Matthias Claudius (1740–1815) was a German poet and journalist known for his simple, heartfelt tone. 'Death and the Maiden' was set to music by Franz Schubert in 1817 — first as a song, later as the theme for a celebrated string quartet." },
+    lines:["Das Mädchen:","Vorüber! Ach, vorüber!","Geh, wilder Knochenmann!","Ich bin noch jung, geh Lieber!","Und rühre mich nicht an.","","Der Tod:","Gib deine Hand, du schön und zart Gebild!","Bin Freund und komme nicht zu strafen.","Sei gutes Muts! Ich bin nicht wild,","Sollst sanft in meinen Armen schlafen!"],
+    dutch:["Het Meisje:","Ga voorbij! Ach, ga voorbij!","Ga, wilde beenderman!","Ik ben nog jong, lieve vriend!","En raak mij niet aan.","","De Dood:","Geef mij je hand, jij mooi en teer wezen!","Ik ben een vriend en kom niet om te straffen.","Wees gerust! Ik ben niet wild,","Je zult zacht in mijn armen slapen!"],
+    trans:["The Maiden:","Pass me by! Oh, pass me by!","Go, wild man of bones!","I am still young, dear one!","And do not touch me.","","Death:","Give me your hand, you lovely, tender form!","I am a friend, I come not to punish.","Be of good cheer! I am not fierce,","You shall sleep softly in my arms!"]
+  },
+  { title:"Die Lorelei", lang:"de", author:"Heinrich Heine",
+    bio:{ nl:"Heinrich Heine (1797–1856) was een van de grootste Duitse dichters van de negentiende eeuw. Zijn werk combineert lyrische schoonheid met scherpe ironie en politieke kritiek. Vanwege zijn radicale opvattingen emigreerde hij in 1831 naar Parijs, waar hij de rest van zijn leven bleef.", de:"Heinrich Heine (1797–1856) war einer der bedeutendsten deutschen Dichter des neunzehnten Jahrhunderts. Sein Werk verbindet lyrische Schönheit mit scharfer Ironie und politischer Kritik. Wegen seiner radikalen Ansichten emigrierte er 1831 nach Paris.", en:"Heinrich Heine (1797–1856) was one of the greatest German poets of the nineteenth century. His work combines lyrical beauty with sharp irony and political criticism. Because of his radical views he emigrated to Paris in 1831." },
+    lines:["Ich weiß nicht, was soll es bedeuten,","Dass ich so traurig bin;","Ein Märchen aus alten Zeiten,","Das kommt mir nicht aus dem Sinn.","","Die Luft ist kühl und es dunkelt,","Und ruhig fließt der Rhein;","Der Gipfel des Berges funkelt","Im Abendsonnenschein.","","Die schönste Jungfrau sitzet","Dort oben wunderbar,","Ihr gold'nes Geschmeide blitzet,","Sie kämmt ihr gold'nes Haar."],
+    dutch:["Ik weet niet wat het mag betekenen","Dat ik zo bedroefd ben;","Een sprookje uit oude tijden","Gaat mij niet uit het hoofd.","","De lucht is koel en het schemert,","En de Rijn stroomt kalm voorbij;","De bergtop schittert","In het avondzonlicht.","","De mooiste maagd zit","Daar boven wonderbaarlijk mooi,","Haar gouden sieraden glinsteren,","Ze kamt haar gouden haar."],
+    trans:["I do not know what it may mean","That I am so melancholy;","A tale from olden times","I cannot get out of my mind.","","The air is cool and twilight falls","And the Rhine flows quietly past;","The peak of the mountain glitters","In the evening sun's last rays.","","The most beautiful maiden sits","Up there, wondrously fair,","Her golden jewels are gleaming,","She combs her golden hair."]
+  },
+  { title:"Gebed om een goed einde", lang:"nl", author:"Guido Gezelle",
+    bio:{ nl:"Guido Gezelle (1830–1899) was een Vlaams priester en dichter, geboren in Brugge. Hij wordt beschouwd als een van de grootste Nederlandse dichters aller tijden. Zijn werk is doordrongen van een innige gelovigheid en een buitengewone gevoeligheid voor natuur en taal. Hij schreef in een archaïsch West-Vlaams dialect.", de:"Guido Gezelle (1830–1899) war ein flämischer Priester und Dichter aus Brügge, bekannt für seine tiefe Frömmigkeit und sein feines Gespür für Natur und Sprache. Er schrieb in einem archaischen westflämischen Dialekt.", en:"Guido Gezelle (1830–1899) was a Flemish priest and poet, born in Bruges. He is considered one of the greatest poets ever to write in Dutch, known for his heartfelt piety and extraordinary sensitivity to nature and language." },
+    lines:["Geef mij, o Heer, een goed einde.","Geef mij een einde, stil als de nacht,","Wanneer het hart zijn last heeft afgelegd","En naar de vrede wacht.","","Geef mij het sterven van de zomerdag,","Die langzaam ondergaat,","En in zijn rosse gloedglans slapend zakt","En zo de morgen wacht."],
+    trans:["Grant me, O Lord, a good ending.","Grant me an end as still as the night,","When the heart has laid down its burden","And waits for peace.","","Grant me the dying of a summer day,","That slowly fades away,","And sinking into its rosy glow sleeps","And so awaits the morning."]
+  },
+  { title:"Het leven is een feest", lang:"nl", author:"Herman Gorter",
+    bio:{ nl:"Herman Gorter (1864–1927) was een Nederlands dichter en marxistisch activist. Zijn lange gedicht 'Mei' (1889) gold als een doorbraak in de Nederlandse literatuur — een lyrisch epos vol zinnelijke beelden en muzikale taal dat de Tachtigers-beweging belichaamde.", de:"Herman Gorter (1864–1927) war ein niederländischer Dichter und marxistischer Aktivist. Sein langes Gedicht 'Mei' (1889) galt als Durchbruch in der niederländischen Literatur.", en:"Herman Gorter (1864–1927) was a Dutch poet and Marxist activist. His long poem 'May' (1889) was considered a breakthrough in Dutch literature — a lyrical epic full of sensuous imagery and musical language." },
+    lines:["Een nieuwe lente en een nieuw geluid:","Ik ga mijn liefste zingen een lied,","Ik ga haar zingen, al zingt zij 't ook niet,","Een lied van de lente die wacht.","","De lente wacht. In de morgen vroeg","Gaat zij door veld en door bos en land,","Zij raakt de bloemen aan met haar hand,","De bloemen bloeien in de morgen vroeg."],
+    trans:["A new spring and a new sound:","I shall sing my beloved a song,","I shall sing to her, though she sings not,","A song of spring that waits.","","Spring waits. In the early morning","She goes through field and wood and land,","She touches the flowers with her hand,","The flowers bloom in the early morning."]
+  },
+  { title:"Aan de Schelde", lang:"nl", author:"Guido Gezelle",
+    bio:{ nl:"Guido Gezelle (1830–1899) was een Vlaams priester en dichter, geboren in Brugge. Hij wordt beschouwd als een van de grootste Nederlandse dichters aller tijden. Zijn werk is doordrongen van een innige gelovigheid en buitengewone gevoeligheid voor taal en natuur.", de:"Guido Gezelle (1830–1899) war ein flämischer Priester und Dichter aus Brügge, bekannt für seine Frömmigkeit und sein feines Gespür für Natur und Sprache.", en:"Guido Gezelle (1830–1899) was a Flemish priest and poet, born in Bruges, known for his heartfelt piety and extraordinary sensitivity to nature and language." },
+    lines:["Schelde, o Schelde, hoe vleit gij zo zacht","Met uw zilver en met uw goud,","De oevers die gij beglinstert en houdt","In uw vlietende, vliedende macht!","","Gij stroomt en gij zingt en gij spreekt","Met een taal die geen tong u naspreke;","Gij weet wat het herte bebreekt,","Wat het zucht en wat het bewreke."],
+    trans:["Scheldt, o Scheldt, how gently you caress","With your silver and with your gold,","The banks you shimmer over and hold","In your flowing, fleeting power!","","You stream and you sing and you speak","With a tongue no other tongue can echo;","You know what breaks the heart,","What makes it sigh and what it must avenge."]
+  },
+  { title:"Winter op zee", lang:"nl", author:"J.J. Slauerhoff",
+    bio:{ nl:"Jan Jacob Slauerhoff (1898–1936) was een Nederlands dichter, romancier en scheepsarts. Geboren in Leeuwarden, bracht hij grote delen van zijn leven op zee door op routes naar Oost-Azië en Zuid-Amerika. Die rusteloze levensstijl doordringt al zijn werk. Hij stierf jong, op 37-jarige leeftijd.", de:"Jan Jacob Slauerhoff (1898–1936) war ein niederländischer Dichter und Schiffsarzt, der große Teile seines Lebens auf See verbrachte. Er starb jung, im Alter von 37 Jahren.", en:"Jan Jacob Slauerhoff (1898–1936) was a Dutch poet, novelist and ship's doctor who spent large parts of his life at sea. He died young, at the age of 37." },
+    lines:["De kim wordt wreed, de golven tuimlen wild,","Van mild en groen, spoorslags hardgrijs en grauw;","Eén nacht waarin de wind door 't luchtruim rilt,","Dan, als een plotselinge dood, de kou.","","Om rotseilanden zonder boom en gras,","Liggend verlaten in het oeroud ruim,","Bloeit slechts 't onstuimig en verward gewas","Van 't snel opschietend, snel verwelkend schuim.","","Op 't schip waarin geen vuren troostend branden,","Nestelt de kou zich voor een lange reis;","Tegen de 's nachts wakkergekraakte wanden","Kruit en verbrijzelt zich het drijvend ijs."],
+    trans:["The horizon turns cruel, the waves tumble wild,","From mild and green, suddenly leaden and grey;","One night in which the wind shivers through the sky,","Then, like a sudden death, the cold.","","Around rock islands without tree or grass,","Lying abandoned in time-worn space,","There blooms only the fierce and tangled growth","Of foam that rises fast and wilts as fast.","","On the ship where no fires burn with comfort,","The cold settles in for a long voyage;","Against the walls that crack awake at night,","The drifting ice grinds itself to nothing."]
+  },
+  { title:"O, als de zee", lang:"nl", author:"Hendrik Marsman",
+    bio:{ nl:"Hendrik Marsman (1899–1940) was een Nederlands dichter en criticus. Hij stierf op 40-jarige leeftijd toen het schip waarmee hij naar Engeland vluchtte door een Duitse onderzeeër werd getorpedeerd. Zijn 'Herinnering aan Holland' met de openingsregel 'Denkend aan Holland zie ik brede rivieren' behoort tot de bekendste regels in de Nederlandse literatuur.", de:"Hendrik Marsman (1899–1940) war ein niederländischer Dichter und Kritiker. Er starb mit 40 Jahren, als sein Schiff von einem deutschen U-Boot torpediert wurde.", en:"Hendrik Marsman (1899–1940) was a Dutch poet and critic who died at 40 when the ship carrying him to England was torpedoed by a German submarine. His 'Memory of Holland' is among the most celebrated poems in Dutch literature." },
+    lines:["O, als de zee, de grijze en de stille,","Het hart omspoelt met koud en zwaar geluid,","Dan weet ik dat de wens van iedere wille","Gaat naar wat is en nimmer wordt volbracht.","","En als de nacht de hemel heeft gesloten","En alle licht verdronken is in zee,","Dan voel ik dat mijn hart, de rust genoten,","Stil zinkt en treurt om wat voorbij moet gee."],
+    trans:["Oh, as the sea, the grey and silent one,","Washes the heart with cold and heavy sound,","Then I know that the wish of every will","Goes toward what is and is never fulfilled.","","And when the night has sealed the sky","And all the light is drowned within the sea,","Then I feel my heart, having tasted rest,","Sink quietly and mourn what must pass by."]
+  }
+];
+
+// ── state ──
+var curLang = 'de', curIdx = 0;
+var W = [];
+var curWord = '', curLangCode = 'de-DE';
+var speaking = false, utt = null, rate = 0.72, voiceNames = {};
+var ICON = '<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>';
+
+// ── language switch ──
+function setLang(lang) {
+  curLang = lang; curIdx = 0;
+  document.querySelectorAll('.lt').forEach(function(b,i){ b.classList.toggle('on', (i===0&&lang==='de')||(i===1&&lang==='nl')); });
+  stopSpeech(); closePop(); buildNav(); buildPoem();
+}
+
+// ── nav ──
+function buildNav() {
+  var nav = document.getElementById('pnav');
+  nav.innerHTML = '';
+  poems.forEach(function(p, i) {
+    if (p.lang !== curLang) return;
+    var b = document.createElement('button');
+    b.textContent = p.title;
+    if (i === curIdx) b.className = 'on';
+    b.onclick = function(){ curIdx = i; stopSpeech(); closePop(); buildNav(); buildPoem(); };
+    nav.appendChild(b);
+  });
+}
+
+// ── word annotation ──
+function tok(word, poemTitle) {
+  var clean = word.replace(/[.,;:!?''’‘"()]/g, '').trim();
+  if (!clean) return word;
+  var anns = annotations[poemTitle];
+  if (!anns) return word;
+  var ann = anns[clean] || anns[clean.toLowerCase()];
+  if (!ann) return word;
+  var i = W.length;
+  W.push({word: clean, ann: ann});
+  return '<span class="w" onclick="wclick(this,' + i + ')">' + word + '</span>';
+}
+
+function renderLine(line, poemTitle) {
+  return line.split(' ').map(function(w){ return tok(w, poemTitle); }).join(' ');
+}
+
+function linesHTML(arr, poemTitle) {
+  var html = '', inStanza = false;
+  arr.forEach(function(line) {
+    if (!line) {
+      if (inStanza) { html += '</div>'; inStanza = false; }
+    } else {
+      if (!inStanza) { html += '<div class="st">'; inStanza = true; }
+      html += (poemTitle ? renderLine(line, poemTitle) : line) + '<br>';
+    }
+  });
+  if (inStanza) html += '</div>';
+  return html;
+}
+
+// ── popup ──
+function wclick(el, i) {
+  var e = W[i]; if (!e) return;
+  curWord = e.word;
+  document.querySelectorAll('.w.on').forEach(function(s){ s.classList.remove('on'); });
+  el.classList.add('on');
+  document.getElementById('pw').textContent = e.word;
+  document.getElementById('pl').textContent = e.ann.lemma;
+  document.getElementById('pt').textContent = e.ann.type;
+  document.getElementById('pe').textContent = e.ann.en;
+  document.getElementById('pg').textContent = e.ann.grammar;
+  document.getElementById('preg').innerHTML = e.ann.register ? '<span class="reg">' + e.ann.register + '</span>' : '';
+  var pop = document.getElementById('pop');
+  pop.classList.add('on');
+  var r = el.getBoundingClientRect();
+  var left = r.left + window.scrollX;
+  var top  = r.bottom + window.scrollY + 8;
+  if (left + 290 > window.innerWidth - 8) left = window.innerWidth - 298;
+  pop.style.left = Math.max(4, left) + 'px';
+  pop.style.top  = top + 'px';
+}
+function closePop() {
+  document.getElementById('pop').classList.remove('on');
+  document.querySelectorAll('.w.on').forEach(function(s){ s.classList.remove('on'); });
+}
+document.addEventListener('click', function(e) {
+  if (!e.target.classList.contains('w') && !document.getElementById('pop').contains(e.target)) closePop();
+});
+
+// ── bio / intro tabs ──
+function switchPanel(id, lang, btn) {
+  var p = poems[curIdx];
+  var src = id === 'bioTxt' ? 'bio' : 'intro';
+  if (!p[src]) return;
+  document.getElementById(id).textContent = p[src][lang];
+  btn.closest('.ptabs').querySelectorAll('.ptab').forEach(function(t){ t.classList.remove('on'); });
+  btn.classList.add('on');
+}
+
+function panelHTML(label, id, src) {
+  var p = poems[curIdx];
+  if (!p[src]) return '';
+  return '<div class="panel">' +
+    '<div class="plabel">' + label + '</div>' +
+    '<div class="ptabs">' +
+      '<button class="ptab on" onclick="switchPanel(&quot;' + id + '&quot;,&quot;nl&quot;,this)">NL</button>' +
+      '<button class="ptab" onclick="switchPanel(&quot;' + id + '&quot;,&quot;de&quot;,this)">DE</button>' +
+      '<button class="ptab" onclick="switchPanel(&quot;' + id + '&quot;,&quot;en&quot;,this)">EN</button>' +
+    '</div>' +
+    '<p class="ptext-panel" id="' + id + '">' + p[src].nl + '</p>' +
+  '</div><div class="divider">&#10022;</div>';
+}
+
+// ── audio ──
+function fillPicker(id, pfx, key) {
+  var sel = document.getElementById(id); if (!sel) return;
+  var vs = window.speechSynthesis.getVoices().filter(function(v){ return v.lang.toLowerCase().startsWith(pfx); });
+  sel.innerHTML = '';
+  if (!vs.length) { sel.innerHTML = '<option>' + pfx + ' — no voices</option>'; return; }
+  vs.forEach(function(v){ var o = document.createElement('option'); o.value = v.name; o.textContent = v.name.replace(/^(Microsoft|Google|Apple)\s+/i,'') + (v.localService ? '' : ' ☁'); sel.appendChild(o); });
+  if (voiceNames[key]) { var m = vs.find(function(v){ return v.name === voiceNames[key]; }); if (m) sel.value = voiceNames[key]; }
+}
+function populateVoices() {
+  var g = curLang === 'de';
+  fillPicker('vsel', g ? 'de' : 'nl', g ? 'de' : 'nl');
+  if (g) fillPicker('vselNl', 'nl', 'nl');
+}
+function onVoiceChange(which) {
+  var id = which === 'nl' ? 'vselNl' : 'vsel', key = which === 'nl' ? 'nl' : (curLang === 'de' ? 'de' : 'nl');
+  var sel = document.getElementById(id); if (sel) voiceNames[key] = sel.value;
+}
+function onRateChange(v) {
+  rate = parseFloat(v);
+  var l = document.getElementById('rateLabel'); if (l) l.textContent = parseFloat(v).toFixed(2);
+}
+function stopSpeech() {
+  if (window.speechSynthesis) window.speechSynthesis.cancel();
+  speaking = false;
+}
+function toggleSpeech(which) {
+  if (!window.speechSynthesis) return;
+  if (speaking) { stopSpeech(); updateBtn('abtn', false, 'orig'); updateBtn('abtnNl', false, 'nl'); return; }
+  var p = poems[curIdx], isG = curLang === 'de', text, lc;
+  if (which === 'nl' && isG && p.dutch) { text = p.dutch.filter(function(l){ return l; }).join('... '); lc = 'nl-NL'; }
+  else { text = p.lines.filter(function(l){ return l; }).join('... '); lc = isG ? 'de-DE' : 'nl-NL'; }
+  utt = new SpeechSynthesisUtterance(text); utt.lang = lc; utt.rate = rate; utt.pitch = 0.95;
+  var selId = which === 'nl' ? 'vselNl' : 'vsel', sel = document.getElementById(selId), voices = window.speechSynthesis.getVoices(), chosen = sel ? sel.value : '';
+  if (chosen) { var v = voices.find(function(v){ return v.name === chosen; }); if (v) utt.voice = v; }
+  else { var pfx = lc.startsWith('de') ? 'de' : 'nl', m = voices.find(function(v){ return v.lang.toLowerCase().startsWith(pfx); }); if (m) utt.voice = m; }
+  var btnId = which === 'nl' ? 'abtnNl' : 'abtn';
+  utt.onstart = function(){ speaking = true; updateBtn(btnId, true, which); };
+  utt.onend = function(){ speaking = false; updateBtn(btnId, false, which); };
+  utt.onerror = function(){ speaking = false; updateBtn(btnId, false, which); };
+  window.speechSynthesis.speak(utt);
+}
+function updateBtn(id, playing, which) {
+  var btn = document.getElementById(id); if (!btn) return;
+  btn.classList.toggle('playing', playing);
+  var lbl = which === 'nl' ? 'Dutch' : (curLang === 'de' ? 'German' : 'Dutch');
+  btn.innerHTML = playing ? '<span class="spk-ind"></span> Stop' : ICON + ' Listen in ' + lbl;
+}
+function spkWord() {
+  if (!window.speechSynthesis || !curWord) return;
+  window.speechSynthesis.cancel();
+  var u = new SpeechSynthesisUtterance(curWord); u.lang = curLangCode; u.rate = 0.7;
+  var m = window.speechSynthesis.getVoices().find(function(v){ return v.lang.toLowerCase().startsWith(curLangCode.substring(0,2)); });
+  if (m) u.voice = m;
+  window.speechSynthesis.speak(u);
+}
+if (window.speechSynthesis) window.speechSynthesis.addEventListener('voiceschanged', populateVoices);
+
+// ── render poem ──
+function buildPoem() {
+  W = [];
+  var p = poems[curIdx];
+  var isG = curLang === 'de';
+  curLangCode = isG ? 'de-DE' : 'nl-NL';
+  var hasAnn = !!annotations[p.title];
+  var label = isG ? 'DEUTSCH' : 'NEDERLANDS';
+
+  var origHTML = linesHTML(p.lines, hasAnn ? p.title : null);
+  var transHTML = linesHTML(p.trans, null);
+  var dutchCol = '', colClass = 'two';
+  if (isG && p.dutch) {
+    dutchCol = '<div><div class="clabel">Nederlands</div><div class="ptext transl">' + linesHTML(p.dutch, null) + '</div></div>';
+    colClass = 'three';
+  }
+
+  var nlBtn = (isG && p.dutch) ? (
+    '<div class="arow" style="margin-top:.35rem">' +
+    '<button class="abtn" id="abtnNl" onclick="toggleSpeech(&quot;nl&quot;)">' + ICON + ' Listen in Dutch</button>' +
+    '<select class="vsel" id="vselNl" onchange="onVoiceChange(&quot;nl&quot;)"></select></div>'
+  ) : '';
+
+  document.getElementById('card').innerHTML =
+    '<div class="ptitle">' + p.title + '</div>' +
+    '<div class="pauthor">' + p.author + '</div>' +
+    '<div style="text-align:center"><span class="badge">' + label + '</span></div>' +
+    '<div class="arow">' +
+      '<button class="abtn" id="abtn" onclick="toggleSpeech(&quot;orig&quot;)">' + ICON + ' Listen in ' + (isG ? 'German' : 'Dutch') + '</button>' +
+      '<select class="vsel" id="vsel" onchange="onVoiceChange(&quot;orig&quot;)"></select>' +
+    '</div>' +
+    nlBtn +
+    '<div class="arow" style="margin-top:.35rem">' +
+      '<div class="rctl"><span>pace</span>' +
+      '<input type="range" id="rateSlider" min="0.4" max="1.2" step="0.05" value="' + rate + '" oninput="onRateChange(this.value)">' +
+      '<span id="rateLabel">' + rate.toFixed(2) + '</span></div>' +
+    '</div>' +
+    '<div class="divider">✦</div>' +
+    panelHTML('Over de dichter', 'bioTxt', 'bio') +
+    panelHTML('Over het gedicht', 'introTxt', 'intro') +
+    '<div class="cols ' + colClass + '">' +
+      '<div><div class="clabel">' + label + '</div><div class="ptext">' + origHTML + '</div></div>' +
+      dutchCol +
+      '<div><div class="clabel">English</div><div class="ptext transl">' + transHTML + '</div></div>' +
+    '</div>' +
+    (hasAnn ? '<p class="hint">Click any underlined word to see its meaning.</p>' : '');
+
+  if (window.speechSynthesis && window.speechSynthesis.getVoices().length) populateVoices();
+}
+
+buildNav();
+buildPoem();
+</script>
+</body>
+</html>
