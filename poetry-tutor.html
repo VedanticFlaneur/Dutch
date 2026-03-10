@@ -362,7 +362,9 @@ var ICON = '<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
 
 // ── language switch ──
 function setLang(lang) {
-  curLang = lang; curIdx = 0;
+  curLang = lang;
+  // set curIdx to first poem of this language
+  for (var i = 0; i < poems.length; i++) { if (poems[i].lang === lang) { curIdx = i; break; } }
   document.querySelectorAll('.lt').forEach(function(b,i){ b.classList.toggle('on', (i===0&&lang==='de')||(i===1&&lang==='nl')); });
   stopSpeech(); closePop(); buildNav(); buildPoem();
 }
@@ -429,9 +431,17 @@ function wclick(el, i) {
   var r = el.getBoundingClientRect();
   var left = r.left + window.scrollX;
   var top  = r.bottom + window.scrollY + 8;
-  if (left + 290 > window.innerWidth - 8) left = window.innerWidth - 298;
-  pop.style.left = Math.max(4, left) + 'px';
+  // clamp to viewport
+  var pw = 290;
+  var ph = 200;
+  if (left + pw > window.innerWidth - 8) left = window.innerWidth - pw - 8;
+  if (left < 8) left = 8;
+  if (top + ph > window.scrollY + window.innerHeight - 8) top = r.top + window.scrollY - ph - 8;
+  if (top < window.scrollY + 8) top = window.scrollY + 8;
+  pop.style.left = left + 'px';
   pop.style.top  = top + 'px';
+  pop.style.zIndex = '99999';
+  console.log('popup at', left, top, 'viewport:', window.innerWidth, window.innerHeight);
 }
 function closePop() {
   document.getElementById('pop').classList.remove('on');
