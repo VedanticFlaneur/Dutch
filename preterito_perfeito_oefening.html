@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pretérito Perfeito Simples – Oefening</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #faf6ef;
+  --ink: #1c1810;
+  --gold: #b8860b;
+  --gold-light: #d4a017;
+  --rust: #8b3a1a;
+  --sage: #4a6741;
+  --blue-ink: #1a3a5c;
+  --pale-gold: #f5e9c8;
+  --border: #d4c4a0;
+  --correct: #2d6a2d;
+  --wrong: #8b1a1a;
+  --muted: #7a6e5f;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-weight: 300;
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+/* HEADER */
+.header {
+  background: var(--blue-ink);
+  color: var(--cream);
+  padding: 48px 40px 36px;
+  position: relative;
+  overflow: hidden;
+}
+.header::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 280px; height: 280px;
+  border: 40px solid rgba(180,134,11,0.2);
+  border-radius: 50%;
+}
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: -40px; left: 30%;
+  width: 160px; height: 160px;
+  border: 25px solid rgba(180,134,11,0.12);
+  border-radius: 50%;
+}
+.header-inner { max-width: 860px; margin: 0 auto; position: relative; z-index: 1; }
+.header-label {
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.72em;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 10px;
+}
+.header h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.6em;
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 8px;
+}
+.header h1 em {
+  font-style: italic;
+  color: var(--gold-light);
+}
+.header-sub {
+  color: rgba(250,246,239,0.7);
+  font-size: 0.95em;
+  font-style: italic;
+}
+
+/* MAIN */
+.main { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+
+/* SECTION TITLES */
+.section-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.5em;
+  font-weight: 700;
+  color: var(--blue-ink);
+  margin: 48px 0 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-title .icon {
+  width: 32px; height: 32px;
+  background: var(--blue-ink);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.75em;
+  color: var(--gold-light);
+  flex-shrink: 0;
+}
+
+/* GRAMMAR BOX */
+.grammar-box {
+  background: white;
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--gold);
+  border-radius: 4px;
+  padding: 28px 32px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 12px rgba(28,24,16,0.06);
+}
+.grammar-box h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1em;
+  color: var(--rust);
+  margin-bottom: 14px;
+}
+.grammar-box p { margin-bottom: 10px; font-size: 0.95em; }
+.grammar-box ul { margin-left: 20px; margin-bottom: 10px; }
+.grammar-box li { margin-bottom: 4px; font-size: 0.95em; }
+
+/* CONJUGATION TABLE */
+.conj-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9em;
+  margin: 16px 0;
+}
+.conj-table th {
+  background: var(--blue-ink);
+  color: var(--cream);
+  padding: 8px 14px;
+  text-align: left;
+  font-family: 'Source Serif 4', serif;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+.conj-table td {
+  padding: 7px 14px;
+  border-bottom: 1px solid var(--border);
+}
+.conj-table tr:nth-child(odd) td { background: var(--pale-gold); }
+.conj-table tr:nth-child(even) td { background: white; }
+.conj-table .pt { color: var(--rust); font-weight: 600; }
+.conj-table .nl { color: var(--muted); font-style: italic; }
+
+/* EXAMPLE SENTENCES */
+.example {
+  background: var(--pale-gold);
+  border-left: 3px solid var(--gold);
+  padding: 10px 16px;
+  margin: 8px 0;
+  border-radius: 0 4px 4px 0;
+  font-size: 0.93em;
+}
+.example .pt { color: var(--rust); font-weight: 600; }
+.example .nl { color: var(--muted); font-style: italic; font-size: 0.92em; }
+
+/* SOUND BUTTON */
+.snd {
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--rust); color: white; border: none;
+  border-radius: 50%; width: 26px; height: 26px;
+  cursor: pointer; font-size: 12px; margin-left: 7px;
+  vertical-align: middle; flex-shrink: 0;
+  transition: background 0.15s, transform 0.1s;
+  line-height: 1;
+}
+.snd:hover  { background: #6b2a10; }
+.snd:active { transform: scale(0.88); }
+.snd.nl-btn { background: var(--blue-ink); }
+.snd.nl-btn:hover { background: #0f2540; }
+
+/* VOICE STATUS */
+#voice-status {
+  font-size: 0.82em; color: var(--muted); font-style: italic;
+  margin-top: 8px; min-height: 18px;
+}
+
+/* IRREGULAR TABLE */
+.irreg-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88em;
+  margin: 16px 0;
+}
+.irreg-table th {
+  background: var(--rust);
+  color: white;
+  padding: 8px 12px;
+  text-align: left;
+}
+.irreg-table td { padding: 7px 12px; border-bottom: 1px solid var(--border); }
+.irreg-table tr:nth-child(odd) td { background: #fff8f5; }
+.irreg-table tr:nth-child(even) td { background: white; }
+.irreg-table .form { color: var(--rust); font-weight: 600; }
+
+/* EXERCISES */
+.exercise-intro {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 18px 24px;
+  margin-bottom: 28px;
+  font-style: italic;
+  color: var(--muted);
+  font-size: 0.92em;
+}
+
+.sentence-block {
+  margin-bottom: 28px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+}
+.sentence-block:last-child { border-bottom: none; }
+
+.sentence-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.78em;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.sentence-pt {
+  font-size: 1.08em;
+  color: var(--ink);
+  margin-bottom: 6px;
+  line-height: 1.8;
+}
+
+.sentence-nl {
+  font-size: 0.88em;
+  color: var(--muted);
+  font-style: italic;
+  margin-bottom: 4px;
+}
+
+.hint-word {
+  display: inline-block;
+  font-size: 0.78em;
+  background: var(--pale-gold);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 1px 8px;
+  color: var(--sage);
+  font-family: 'Source Serif 4', serif;
+  font-style: normal;
+  margin-left: 4px;
+}
+
+/* BLANK INPUT */
+.blank-wrap { display: inline-block; position: relative; }
+.blank {
+  display: inline-block;
+  border: none;
+  border-bottom: 2px solid var(--blue-ink);
+  background: transparent;
+  font-family: 'Source Serif 4', serif;
+  font-size: 1em;
+  font-weight: 600;
+  color: var(--blue-ink);
+  padding: 0 6px 2px;
+  width: 140px;
+  outline: none;
+  transition: border-color 0.2s;
+  vertical-align: baseline;
+}
+.blank:focus { border-color: var(--gold); }
+.blank.correct { border-color: var(--correct); color: var(--correct); background: rgba(45,106,45,0.06); border-radius: 3px 3px 0 0; }
+.blank.wrong   { border-color: var(--wrong);   color: var(--wrong);   background: rgba(139,26,26,0.06); border-radius: 3px 3px 0 0; }
+
+.feedback-inline { font-size: 0.78em; display: block; margin-top: 2px; min-height: 16px; }
+.feedback-inline.ok  { color: var(--correct); }
+.feedback-inline.err { color: var(--wrong); }
+
+/* BUTTONS */
+.btn-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 32px; }
+.btn {
+  padding: 12px 28px;
+  border: none;
+  border-radius: 3px;
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.95em;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  transition: all 0.2s;
+}
+.btn-primary { background: var(--blue-ink); color: var(--cream); }
+.btn-primary:hover { background: #0f2540; }
+.btn-secondary { background: transparent; border: 1px solid var(--border); color: var(--muted); }
+.btn-secondary:hover { border-color: var(--ink); color: var(--ink); }
+.score-bar {
+  margin-top: 20px;
+  padding: 16px 20px;
+  background: var(--pale-gold);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1em;
+  color: var(--blue-ink);
+  display: none;
+}
+
+/* ANSWERS SECTION */
+.answers-section {
+  margin-top: 60px;
+  padding-top: 40px;
+  border-top: 3px double var(--border);
+}
+.answers-header {
+  background: var(--ink);
+  color: var(--cream);
+  padding: 20px 28px;
+  border-radius: 4px;
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.answers-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4em;
+}
+.answers-header p { font-size: 0.85em; color: rgba(250,246,239,0.65); font-style: italic; }
+
+.answer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 10px;
+}
+.answer-item {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 10px 14px;
+  font-size: 0.9em;
+}
+.answer-item .ans-num { color: var(--gold); font-weight: 600; font-size: 0.85em; }
+.answer-item .ans-val { color: var(--rust); font-weight: 600; }
+.answer-item .ans-nl  { color: var(--muted); font-style: italic; font-size: 0.85em; }
+
+@media (max-width: 600px) {
+  .header h1 { font-size: 1.8em; }
+  .blank { width: 110px; }
+  .answer-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media print {
+  .btn-row, .score-bar { display: none !important; }
+  .blank { border-bottom: 1px solid #999; }
+  .answers-section { page-break-before: always; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="header-label">Portugees — Intermediair niveau</div>
+    <h1>Pretérito <em>Perfeito</em> Simples</h1>
+    <div class="header-sub">Grammatica-uitleg &amp; 30 invuloefeningen voor Nederlandstaligen</div>
+    <div id="voice-status">🔊 Audioknopjes laden…</div>
+  </div>
+</div>
+
+<div class="main">
+
+<!-- ══════════ GRAMMAR SECTION ══════════ -->
+<div class="section-title"><span class="icon">§</span> Grammatica-uitleg</div>
+
+<!-- WHAT IS IT -->
+<div class="grammar-box">
+  <h3>Wat is het pretérito perfeito simples?</h3>
+  <p>Het <strong>pretérito perfeito simples</strong> (ook wel <em>pretérito perfeito</em> genoemd) is de verleden tijd in het Portugees voor <strong>afgeronde handelingen</strong> in het verleden. Het komt overeen met de Nederlandse verleden tijd (o.t.t. of o.v.t.):</p>
+  <ul>
+    <li><em>Eu comi.</em> → Ik heb gegeten. / Ik at.</li>
+    <li><em>Ela falou.</em> → Ze heeft gesproken. / Ze sprak.</li>
+  </ul>
+  <p>Gebruik het voor: een actie die <strong>volledig voltooid</strong> is, een reeks acties in het verleden, of een actie die plaatsvond op een <strong>specifiek moment</strong>.</p>
+</div>
+
+<!-- REGULAR VERBS -->
+<div class="grammar-box">
+  <h3>Regelmatige werkwoorden</h3>
+  <p>Portugese werkwoorden eindigen in de infinitief op <strong>-ar</strong>, <strong>-er</strong> of <strong>-ir</strong>. Verwijder de uitgang en voeg de persoonsvorm toe:</p>
+
+  <table class="conj-table">
+    <thead>
+      <tr><th>Persoon</th><th class="pt">-ar &nbsp;(falar = spreken)</th><th class="pt">-er &nbsp;(comer = eten)</th><th class="pt">-ir &nbsp;(partir = vertrekken)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>eu</td><td class="pt">falei</td><td class="pt">comi</td><td class="pt">parti</td></tr>
+      <tr><td>ele/ela/você</td><td class="pt">falou</td><td class="pt">comeu</td><td class="pt">partiu</td></tr>
+      <tr><td>nós</td><td class="pt">falámos</td><td class="pt">comemos</td><td class="pt">partimos</td></tr>
+      <tr><td>eles/vocês</td><td class="pt">falaram</td><td class="pt">comeram</td><td class="pt">partiram</td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>Voorbeelden regelmatig:</strong></p>
+  <div class="example"><span class="pt">Eu trabalhei ontem.</span><button class="snd" data-speak="Eu trabalhei ontem.">🔊</button><br><span class="nl">Ik heb gisteren gewerkt.</span></div>
+  <div class="example"><span class="pt">Eles beberam muito café.</span><button class="snd" data-speak="Eles beberam muito café.">🔊</button><br><span class="nl">Ze hebben veel koffie gedronken.</span></div>
+  <div class="example"><span class="pt">Ela abriu a janela.</span><button class="snd" data-speak="Ela abriu a janela.">🔊</button><br><span class="nl">Ze heeft het raam geopend.</span></div>
+</div>
+
+<!-- IRREGULAR VERBS -->
+<div class="grammar-box">
+  <h3>Onregelmatige werkwoorden</h3>
+  <p>De meest gebruikte werkwoorden in het Portugees zijn onregelmatig. De <strong>stam verandert</strong> volledig — je moet deze uit het hoofd leren.</p>
+
+  <table class="irreg-table">
+    <thead>
+      <tr><th>Infinitief</th><th>Betekenis</th><th>eu</th><th>ele/ela/você</th><th>nós</th><th>eles/vocês</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>ser / ir</strong></td><td>zijn / gaan</td><td class="form">fui</td><td class="form">foi</td><td class="form">fomos</td><td class="form">foram</td></tr>
+      <tr><td><strong>ter</strong></td><td>hebben</td><td class="form">tive</td><td class="form">teve</td><td class="form">tivemos</td><td class="form">tiveram</td></tr>
+      <tr><td><strong>fazer</strong></td><td>doen / maken</td><td class="form">fiz</td><td class="form">fez</td><td class="form">fizemos</td><td class="form">fizeram</td></tr>
+      <tr><td><strong>dizer</strong></td><td>zeggen</td><td class="form">disse</td><td class="form">disse</td><td class="form">dissemos</td><td class="form">disseram</td></tr>
+      <tr><td><strong>poder</strong></td><td>kunnen</td><td class="form">pude</td><td class="form">pôde</td><td class="form">pudemos</td><td class="form">puderam</td></tr>
+      <tr><td><strong>querer</strong></td><td>willen</td><td class="form">quis</td><td class="form">quis</td><td class="form">quisemos</td><td class="form">quiseram</td></tr>
+      <tr><td><strong>vir</strong></td><td>komen</td><td class="form">vim</td><td class="form">veio</td><td class="form">viemos</td><td class="form">vieram</td></tr>
+      <tr><td><strong>ver</strong></td><td>zien</td><td class="form">vi</td><td class="form">viu</td><td class="form">vimos</td><td class="form">viram</td></tr>
+      <tr><td><strong>saber</strong></td><td>weten</td><td class="form">soube</td><td class="form">soube</td><td class="form">soubemos</td><td class="form">souberam</td></tr>
+      <tr><td><strong>pôr</strong></td><td>leggen / zetten</td><td class="form">pus</td><td class="form">pôs</td><td class="form">pusemos</td><td class="form">puseram</td></tr>
+      <tr><td><strong>dar</strong></td><td>geven</td><td class="form">dei</td><td class="form">deu</td><td class="form">demos</td><td class="form">deram</td></tr>
+      <tr><td><strong>estar</strong></td><td>zijn (tijdelijk)</td><td class="form">estive</td><td class="form">esteve</td><td class="form">estivemos</td><td class="form">estiveram</td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>Voorbeelden onregelmatig:</strong></p>
+  <div class="example"><span class="pt">Eu fui ao mercado.</span><button class="snd" onclick="speakPT('Eu fui ao mercado.')">🔊</button><br><span class="nl">Ik ben naar de markt gegaan.</span></div>
+  <div class="example"><span class="pt">Ela disse a verdade.</span><button class="snd" onclick="speakPT('Ela disse a verdade.')">🔊</button><br><span class="nl">Ze heeft de waarheid gezegd.</span></div>
+  <div class="example"><span class="pt">Eles fizeram um bolo.</span><button class="snd" onclick="speakPT('Eles fizeram um bolo.')">🔊</button><br><span class="nl">Ze hebben een taart gemaakt.</span></div>
+</div>
+
+<!-- ══════════ EXERCISES ══════════ -->
+<div class="section-title"><span class="icon">✎</span> Oefeningen</div>
+
+<div class="exercise-intro">
+  Vul het werkwoord in de juiste vorm van het <strong>pretérito perfeito simples</strong> in. Het werkwoord staat tussen haakjes. Onder elke zin staat de Nederlandse vertaling. De antwoorden staan onderaan de pagina.
+</div>
+
+<div id="exercises-container"></div>
+
+<div class="btn-row">
+  <button class="btn btn-primary" onclick="checkAll()">✔ Controleer alle antwoorden</button>
+  <button class="btn btn-secondary" onclick="resetAll()">↺ Opnieuw beginnen</button>
+</div>
+<div class="score-bar" id="score-bar"></div>
+
+<!-- ══════════ ANSWERS ══════════ -->
+<div class="answers-section">
+  <div class="answers-header">
+    <div>
+      <h2>✅ Antwoorden</h2>
+      <p>Kijk pas hier als je alle oefeningen hebt gemaakt!</p>
+    </div>
+  </div>
+  <div class="answer-grid" id="answer-grid"></div>
+</div>
+
+</div><!-- /main -->
+
+<script>
+// ─── TTS SETUP ───
+let ptVoice = null;
+let nlVoice = null;
+
+function loadVoices() {
+  const voices = window.speechSynthesis.getVoices();
+  // Portuguese (prefer pt-PT, fallback pt-BR)
+  ptVoice = voices.find(v => v.lang === 'pt-BR') ||
+            voices.find(v => v.lang === 'pt-PT') ||
+            voices.find(v => v.lang.startsWith('pt'));
+  // Dutch
+  nlVoice = voices.find(v => v.lang === 'nl-NL') ||
+            voices.find(v => v.lang === 'nl-BE') ||
+            voices.find(v => v.lang.startsWith('nl'));
+
+  const status = document.getElementById('voice-status');
+  if (ptVoice) {
+    status.textContent = `🔊 Portugese stem: ${ptVoice.name}${nlVoice ? ' | 🇳🇱 ' + nlVoice.name : ''}`;
+    status.style.color = '#d4a017';
+  } else {
+    status.textContent = '⚠️ Geen Portugese stem gevonden — installeer een pt-PT of pt-BR stem in je besturingssysteem.';
+    status.style.color = '#e74c3c';
+  }
+}
+
+if (typeof speechSynthesis !== 'undefined') {
+  speechSynthesis.onvoiceschanged = loadVoices;
+  loadVoices();
+}
+
+function speakPT(text) {
+  if (!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang  = ptVoice ? ptVoice.lang : 'pt-BR';
+  u.voice = ptVoice || null;
+  u.rate  = 0.85;
+  window.speechSynthesis.speak(u);
+}
+
+// Global handler for data-speak buttons (grammar examples)
+document.addEventListener('click', e => {
+  const btn = e.target.closest('[data-speak]');
+  if (btn) speakPT(btn.dataset.speak);
+});
+
+// ─── DATA ───
+const sentences = [
+  // REGELMATIG -ar
+  { pt_before: "Ontem eu ", answer: "falei",       pt_after: " com a minha professora.", nl: "Gisteren sprak ik met mijn lerares.",         hint: "falar" },
+  { pt_before: "Eles ",     answer: "trabalharam", pt_after: " muito este mês.",          nl: "Ze werkten deze maand heel hard.",              hint: "trabalhar" },
+  { pt_before: "Ela ",      answer: "comprou",     pt_after: " um livro novo.",            nl: "Ze kocht een nieuw boek.",                     hint: "comprar" },
+  { pt_before: "Nós ",      answer: "chegámos",    pt_after: " tarde ao comboio.",         nl: "We kwamen te laat voor de trein.",             hint: "chegar" },
+  { pt_before: "O João ",   answer: "estudou",     pt_after: " toda a tarde.",             nl: "João studeerde de hele middag.",               hint: "estudar" },
+  { pt_before: "Eu ",       answer: "cantei",      pt_after: " uma música bonita.",        nl: "Ik zong een mooi lied.",                       hint: "cantar" },
+  { pt_before: "Eles ",     answer: "jantaram",    pt_after: " no restaurante.",           nl: "Ze aten in het restaurant.",                   hint: "jantar" },
+  // REGELMATIG -er
+  { pt_before: "Eu não ",   answer: "comi",        pt_after: " nada de manhã.",            nl: "Ik at 's ochtends niets.",                     hint: "comer" },
+  { pt_before: "Ela ",      answer: "bebeu",       pt_after: " um copo de água.",          nl: "Ze dronk een glas water.",                     hint: "beber" },
+  { pt_before: "Nós ",      answer: "escrevemos",  pt_after: " uma carta longa.",          nl: "We schreven een lange brief.",                 hint: "escrever" },
+  { pt_before: "O Pedro ",  answer: "vendeu",      pt_after: " o carro antigo.",           nl: "Pedro verkocht de oude auto.",                 hint: "vender" },
+  { pt_before: "Eles ",     answer: "perceberam",  pt_after: " a explicação.",             nl: "Ze begrepen de uitleg.",                       hint: "perceber" },
+  // REGELMATIG -ir
+  { pt_before: "O avião ",  answer: "partiu",      pt_after: " a horas.",                  nl: "Het vliegtuig vertrok op tijd.",               hint: "partir" },
+  { pt_before: "Eu ",       answer: "abri",        pt_after: " a janela de manhã.",        nl: "Ik opende het raam 's ochtends.",              hint: "abrir" },
+  { pt_before: "Nós ",      answer: "descobrimos", pt_after: " um café novo.",             nl: "We ontdekten een nieuw café.",                 hint: "descobrir" },
+  // ONREGELMATIG - ser/ir
+  { pt_before: "Eu ",       answer: "fui",         pt_after: " ao supermercado ontem.",    nl: "Ik ging gisteren naar de supermarkt.",         hint: "ir" },
+  { pt_before: "Ela ",      answer: "foi",         pt_after: " a melhor aluna da turma.", nl: "Ze was de beste leerling van de klas.",         hint: "ser" },
+  { pt_before: "Eles ",     answer: "foram",       pt_after: " à praia no fim de semana.",nl: "Ze gingen in het weekend naar het strand.",     hint: "ir" },
+  // ONREGELMATIG - ter
+  { pt_before: "Eu ",       answer: "tive",        pt_after: " um sonho estranho.",        nl: "Ik had een vreemde droom.",                    hint: "ter" },
+  { pt_before: "Ela ",      answer: "teve",        pt_after: " um problema no trabalho.", nl: "Ze had een probleem op het werk.",              hint: "ter" },
+  // ONREGELMATIG - fazer
+  { pt_before: "O que é que ela ", answer: "fez",    pt_after: " ontem à noite?",          nl: "Wat deed zij gisteren avond?",                 hint: "fazer" },
+  { pt_before: "Eu ",       answer: "fiz",         pt_after: " os trabalhos de casa.",    nl: "Ik maakte mijn huiswerk.",                     hint: "fazer" },
+  // ONREGELMATIG - dizer/ver/vir
+  { pt_before: "Ela ",      answer: "disse",       pt_after: " que estava cansada.",      nl: "Ze zei dat ze moe was.",                       hint: "dizer" },
+  { pt_before: "Eu ",       answer: "vi",          pt_after: " um filme interessante.",   nl: "Ik zag een interessante film.",                 hint: "ver" },
+  { pt_before: "Eles ",     answer: "vieram",      pt_after: " de comboio.",              nl: "Ze kwamen met de trein.",                       hint: "vir" },
+  // ONREGELMATIG - estar/poder/querer
+  { pt_before: "Nós ",      answer: "estivemos",   pt_after: " em Lisboa três dias.",     nl: "We waren drie dagen in Lissabon.",              hint: "estar" },
+  { pt_before: "Ela não ",  answer: "pôde",        pt_after: " vir à festa.",             nl: "Ze kon niet naar het feest komen.",             hint: "poder" },
+  { pt_before: "Eu ",       answer: "quis",        pt_after: " sair mais cedo.",          nl: "Ik wilde vroeger weggaan.",                     hint: "querer" },
+  // ONREGELMATIG - dar/saber/pôr
+  { pt_before: "Ele me ",   answer: "deu",         pt_after: " um presente bonito.",      nl: "Hij gaf me een mooi cadeau.",                  hint: "dar" },
+  { pt_before: "Eu só ",    answer: "soube",       pt_after: " a notícia hoje.",          nl: "Ik hoorde het nieuws pas vandaag.",             hint: "saber" },
+  { pt_before: "Ela ",      answer: "pôs",         pt_after: " as chaves em cima da mesa.", nl: "Ze legde de sleutels op de tafel.",          hint: "pôr" },
+];
+
+// ─── BUILD EXERCISES ───
+const container  = document.getElementById('exercises-container');
+const answerGrid = document.getElementById('answer-grid');
+
+sentences.forEach((s, i) => {
+  const fullPT = s.pt_before + s.answer + s.pt_after;
+
+  // ── Exercise block ──
+  const block = document.createElement('div');
+  block.className = 'sentence-block';
+  block.innerHTML = `
+    <div class="sentence-num">Zin ${i+1} van 30</div>
+    <div class="sentence-pt" id="pt-line-${i}">
+      ${s.pt_before}<span class="blank-wrap"><input
+        class="blank" id="blank-${i}" type="text"
+        autocomplete="off" autocorrect="off" spellcheck="false"
+        placeholder="..."
+        data-answer="${s.answer}"
+      /><span class="feedback-inline" id="fb-${i}"></span></span>${s.pt_after}
+      <span class="hint-word">${s.hint}</span>
+    </div>
+    <div class="sentence-nl">🇳🇱 ${s.nl}</div>
+  `;
+
+  // add PT sound button via DOM (avoids innerHTML onclick issues)
+  const sndBtn = document.createElement('button');
+  sndBtn.className = 'snd';
+  sndBtn.title = 'Hoor de zin in het Portugees';
+  sndBtn.textContent = '🔊';
+  sndBtn.addEventListener('click', () => speakPT(fullPT));
+  block.querySelector(`#pt-line-${i}`).appendChild(sndBtn);
+
+  container.appendChild(block);
+
+  // ── Answer item ──
+  const aItem = document.createElement('div');
+  aItem.className = 'answer-item';
+  aItem.innerHTML = `
+    <span class="ans-num">${i+1}.</span>
+    <span class="ans-val">${s.answer}</span>
+    <br><span class="ans-nl">${s.nl}</span>
+  `;
+  const aSndBtn = document.createElement('button');
+  aSndBtn.className = 'snd';
+  aSndBtn.style.cssText = 'width:22px;height:22px;font-size:10px;';
+  aSndBtn.title = 'Hoor de zin';
+  aSndBtn.textContent = '🔊';
+  aSndBtn.addEventListener('click', () => speakPT(fullPT));
+  aItem.querySelector('.ans-val').after(aSndBtn);
+
+  answerGrid.appendChild(aItem);
+});
+
+// ─── CHECK / RESET ───
+function checkAll() {
+  let correct = 0;
+  sentences.forEach((s, i) => {
+    const inp = document.getElementById(`blank-${i}`);
+    const fb  = document.getElementById(`fb-${i}`);
+    const val = inp.value.trim().toLowerCase();
+    const ans = s.answer.toLowerCase();
+    if (val === ans) {
+      inp.className = 'blank correct';
+      fb.className  = 'feedback-inline ok';
+      fb.textContent = '✓';
+      correct++;
+    } else if (val === '') {
+      inp.className = 'blank';
+      fb.className  = 'feedback-inline';
+      fb.textContent = '';
+    } else {
+      inp.className = 'blank wrong';
+      fb.className  = 'feedback-inline err';
+      fb.textContent = '✗ → ' + s.answer;
+    }
+  });
+  const bar = document.getElementById('score-bar');
+  bar.style.display = 'block';
+  const pct = Math.round(correct / sentences.length * 100);
+  bar.textContent = `Score: ${correct} / ${sentences.length} correct (${pct}%) — ${pct >= 80 ? '🏆 Uitstekend!' : pct >= 60 ? '👍 Goed bezig!' : '📚 Blijf oefenen!'}`;
+}
+
+function resetAll() {
+  sentences.forEach((_, i) => {
+    const inp = document.getElementById(`blank-${i}`);
+    inp.value = '';
+    inp.className = 'blank';
+    document.getElementById(`fb-${i}`).textContent = '';
+  });
+  document.getElementById('score-bar').style.display = 'none';
+}
+</script>
+</body>
+</html>
