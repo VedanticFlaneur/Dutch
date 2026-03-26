@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Πορτογαλικά — Presente do Indicativo</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f3ee;
+    --surface: #ffffff;
+    --surface2: #f0ebe4;
+    --border: #ddd5c8;
+    --accent: #1a5c3a;
+    --accent2: #237a4e;
+    --accent-light: rgba(26,92,58,0.08);
+    --accent-mid: rgba(26,92,58,0.18);
+    --text: #1e1a16;
+    --text-muted: #7a6f63;
+    --green: #1a7a42;
+    --red: #b03a2e;
+    --blue: #1a4a7a;
+    --gold: #8a6a1a;
+    --radius: 10px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Lora', Georgia, serif;
+    font-size: 16.5px;
+    line-height: 1.75;
+  }
+
+  /* Header */
+  header {
+    background: var(--accent);
+    color: #fff;
+    padding: 3rem 2rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    top: -80px; left: 50%; transform: translateX(-50%);
+    width: 500px; height: 300px;
+    background: radial-gradient(ellipse, rgba(255,255,255,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .flag-row { font-size: 1.8rem; letter-spacing: 0.5rem; margin-bottom: 1rem; opacity: 0.9; }
+  header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    line-height: 1.15;
+    margin-bottom: 0.4rem;
+    color: #fff;
+  }
+  header .subtitle {
+    font-size: 0.95rem;
+    opacity: 0.75;
+    font-style: italic;
+    letter-spacing: 0.03em;
+  }
+  .level-badge {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.25rem 1rem;
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 20px;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-family: 'Lora', serif;
+  }
+
+  /* Layout */
+  .container { max-width: 860px; margin: 0 auto; padding: 2.5rem 1.5rem 5rem; }
+
+  /* Grammar card */
+  .grammar-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--accent);
+    border-radius: var(--radius);
+    padding: 2rem 2.5rem;
+    margin-bottom: 2.5rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  }
+  .grammar-section h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.55rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 0.8rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .grammar-section h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin: 1.8rem 0 0.6rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px dashed var(--border);
+  }
+  .grammar-section p {
+    color: var(--text-muted);
+    margin-bottom: 0.7rem;
+    font-size: 0.95rem;
+  }
+  .grammar-section p strong { color: var(--text); }
+
+  .note-box {
+    background: var(--accent-light);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 6px 6px 0;
+    padding: 0.7rem 1.2rem;
+    margin: 0.8rem 0;
+    font-size: 0.92rem;
+    color: var(--text-muted);
+  }
+  .note-box strong { color: var(--accent); }
+
+  .example-block {
+    background: var(--surface2);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 6px 6px 0;
+    padding: 0.55rem 1.1rem;
+    margin: 0.4rem 0;
+    font-size: 0.94rem;
+  }
+  .example-block .pt { color: var(--text); font-weight: 500; }
+  .example-block .el { color: var(--text-muted); font-style: italic; font-size: 0.87rem; }
+
+  /* Tables */
+  .table-wrap { overflow-x: auto; margin: 0.8rem 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  th {
+    background: var(--accent);
+    color: #fff;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.6rem 0.9rem;
+    text-align: left;
+  }
+  td { padding: 0.52rem 0.9rem; border-bottom: 1px solid var(--border); }
+  td:first-child { color: var(--text-muted); font-style: italic; }
+  td strong { color: var(--accent2); font-weight: 600; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: var(--accent-light); }
+  .irreg-table td:first-child { font-weight: 600; color: var(--accent); font-style: normal; font-size: 0.92rem; }
+  .irreg-table td:nth-child(2) { color: var(--text-muted); font-size: 0.85rem; }
+
+  /* Section divider */
+  .section-divider { border: none; border-top: 1px solid var(--border); margin: 2.5rem 0; }
+
+  /* Progress */
+  .progress-label { text-align: right; font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.35rem; letter-spacing: 0.04em; }
+  .progress-bar-wrap { background: var(--surface2); border-radius: 20px; height: 5px; margin-bottom: 2rem; overflow: hidden; }
+  .progress-bar { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent2)); border-radius: 20px; transition: width 0.4s ease; width: 0%; }
+
+  /* Exercise */
+  .exercise-header {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 0.3rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .exercise-intro { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.8rem; font-style: italic; }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.4rem 1.8rem;
+    margin-bottom: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    position: relative;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  }
+  .card:hover { box-shadow: 0 3px 10px rgba(0,0,0,0.07); }
+  .card.correct { border-color: var(--green); background: rgba(26,122,66,0.04); }
+  .card.incorrect { border-color: var(--red); background: rgba(176,58,46,0.04); }
+
+  .card-number { font-size: 0.7rem; letter-spacing: 0.1em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.5rem; }
+  .card-verb-hint {
+    position: absolute; top: 1.1rem; right: 1.4rem;
+    background: var(--accent-light);
+    color: var(--accent);
+    border: 1px solid var(--accent-mid);
+    border-radius: 20px;
+    padding: 0.18rem 0.75rem;
+    font-size: 0.78rem; font-style: italic;
+  }
+
+  .sentence-row {
+    display: flex; align-items: baseline; gap: 0.35rem; flex-wrap: wrap;
+    font-size: 1.03rem; margin-bottom: 0.5rem; color: var(--text);
+  }
+
+  .fill-input {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--accent2);
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    padding: 0.18rem 0.6rem;
+    min-width: 110px; width: 145px;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+    text-align: center;
+  }
+  .fill-input:focus { border-color: var(--accent); background: var(--accent-light); }
+  .fill-input.correct-input { border-color: var(--green); background: rgba(26,122,66,0.08); color: var(--green); }
+  .fill-input.incorrect-input { border-color: var(--red); background: rgba(176,58,46,0.08); color: var(--red); }
+
+  .translation-el { font-size: 0.87rem; color: var(--blue); font-style: italic; margin-top: 0.15rem; }
+  .translation-el::before { content: '🇬🇷 '; }
+
+  .feedback { font-size: 0.84rem; margin-top: 0.45rem; display: none; align-items: center; gap: 0.4rem; }
+  .feedback.show { display: flex; }
+  .feedback.ok { color: var(--green); }
+  .feedback.wrong { color: var(--red); }
+  .correct-answer { font-weight: 600; }
+
+  /* Buttons */
+  .btn-row { display: flex; gap: 1rem; margin: 1.8rem 0; flex-wrap: wrap; }
+  button {
+    font-family: 'Lora', serif;
+    font-size: 0.93rem;
+    border: none;
+    border-radius: 8px;
+    padding: 0.72rem 1.9rem;
+    cursor: pointer;
+    transition: all 0.18s;
+    letter-spacing: 0.03em;
+  }
+  .btn-primary { background: var(--accent); color: #fff; font-weight: 500; }
+  .btn-primary:hover { background: var(--accent2); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(26,92,58,0.25); }
+  .btn-secondary { background: transparent; color: var(--text-muted); border: 1px solid var(--border); }
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* Score */
+  .score-panel {
+    background: var(--surface);
+    border: 2px solid var(--accent);
+    border-radius: var(--radius);
+    padding: 2rem;
+    text-align: center;
+    display: none;
+    margin-top: 1.5rem;
+    box-shadow: 0 4px 20px rgba(26,92,58,0.1);
+  }
+  .score-panel.show { display: block; }
+  .score-big { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; color: var(--accent); line-height: 1; margin-bottom: 0.4rem; font-weight: 700; }
+  .score-msg { color: var(--text-muted); font-style: italic; font-size: 0.95rem; }
+
+  /* Answers */
+  .answers-toggle {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-top: 2.5rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  }
+  .answers-toggle summary {
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--accent);
+    font-size: 1.05rem;
+    font-weight: 600;
+    list-style: none;
+    display: flex; align-items: center; gap: 0.5rem;
+    user-select: none;
+  }
+  .answers-toggle summary::-webkit-details-marker { display: none; }
+  .answers-toggle summary::before { content: '▶'; font-size: 0.65rem; transition: transform 0.2s; }
+  .answers-toggle[open] summary::before { transform: rotate(90deg); }
+  .answers-toggle summary:hover { background: var(--surface2); }
+  .answers-body {
+    padding: 1.5rem;
+    border-top: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
+    gap: 0.55rem;
+  }
+  .answer-item {
+    background: var(--surface2);
+    border-radius: 6px;
+    padding: 0.48rem 0.85rem;
+    font-size: 0.87rem;
+  }
+  .answer-item .num { color: var(--text-muted); margin-right: 0.3rem; font-size: 0.78rem; }
+  .answer-item .ans { color: var(--accent2); font-weight: 600; }
+  .answer-item .tr { color: var(--text-muted); font-style: italic; font-size: 0.78rem; display: block; }
+
+  @media (max-width: 600px) {
+    .grammar-section { padding: 1.4rem; }
+    .card { padding: 1.1rem; }
+    .card-verb-hint { position: static; display: inline-block; margin-bottom: 0.4rem; }
+    .fill-input { width: 110px; }
+    header { padding: 2rem 1rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="flag-row">🇵🇹 🇬🇷</div>
+  <h1>Presente do Indicativo</h1>
+  <div class="subtitle">Πορτογαλικά για Αρχάριους · Γραμματική &amp; 30 Ασκήσεις Συμπλήρωσης</div>
+  <div class="level-badge">Επίπεδο Α1–Α2</div>
+</header>
+
+<div class="container">
+
+  <!-- Grammar Section -->
+  <div class="grammar-section">
+    <h2>📖 Γραμματική Επεξήγηση</h2>
+
+    <h3>Τι είναι το Presente do Indicativo;</h3>
+    <p>
+      Το <strong>presente do indicativo</strong> είναι ο <strong>ενεστώτας</strong> στα πορτογαλικά. Χρησιμοποιείται για:
+    </p>
+    <div class="note-box">
+      <strong>✦ Γεγονότα που συμβαίνουν τώρα:</strong> <em>Eu como. → Τρώω.</em><br>
+      <strong>✦ Συνήθειες και καθημερινές πράξεις:</strong> <em>Ela trabalha todos os dias. → Δουλεύει κάθε μέρα.</em><br>
+      <strong>✦ Γενικές αλήθειες:</strong> <em>O sol brilha. → Ο ήλιος λάμπει.</em>
+    </div>
+
+    <h3>Κανονικά Ρήματα</h3>
+    <p>
+      Τα πορτογαλικά ρήματα έχουν τρεις ομάδες — λήγουν στο απαρέμφατο σε <strong>-ar</strong>, <strong>-er</strong> ή <strong>-ir</strong>. Αφαιρούμε την κατάληξη και προσθέτουμε τις παρακάτω καταλήξεις:
+    </p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Πρόσωπο</th>
+            <th>-ar &nbsp;<em>falar</em> (μιλώ)</th>
+            <th>-er &nbsp;<em>comer</em> (τρώω)</th>
+            <th>-ir &nbsp;<em>partir</em> (φεύγω)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>eu (εγώ)</td><td><strong>fal<u>o</u></strong></td><td><strong>com<u>o</u></strong></td><td><strong>part<u>o</u></strong></td></tr>
+          <tr><td>tu (εσύ)</td><td><strong>fal<u>as</u></strong></td><td><strong>com<u>es</u></strong></td><td><strong>part<u>es</u></strong></td></tr>
+          <tr><td>ele/ela/você (αυτός/ή/εσείς)</td><td><strong>fal<u>a</u></strong></td><td><strong>com<u>e</u></strong></td><td><strong>part<u>e</u></strong></td></tr>
+          <tr><td>nós (εμείς)</td><td><strong>fal<u>amos</u></strong></td><td><strong>com<u>emos</u></strong></td><td><strong>part<u>imos</u></strong></td></tr>
+          <tr><td>eles/vocês (αυτοί/εσείς)</td><td><strong>fal<u>am</u></strong></td><td><strong>com<u>em</u></strong></td><td><strong>part<u>em</u></strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note-box">
+      <strong>💡 Σημείωση για το «você»:</strong> Στα πορτογαλικά, το <em>você</em> (εσείς/εσύ — ευγενικό) παίρνει τις ίδιες καταλήξεις με το <em>ele/ela</em> (3ο ενικό). Είναι πολύ συχνό στη Βραζιλία.
+    </div>
+
+    <p style="margin-top:0.8rem;"><em>Παραδείγματα κανονικών ρημάτων:</em></p>
+    <div class="example-block"><div class="pt">Eu falo português.</div><div class="el">Μιλώ πορτογαλικά.</div></div>
+    <div class="example-block"><div class="pt">Nós comemos juntos.</div><div class="el">Τρώμε μαζί.</div></div>
+    <div class="example-block"><div class="pt">Eles partem amanhã.</div><div class="el">Φεύγουν αύριο.</div></div>
+
+    <h3>Ανώμαλα Ρήματα</h3>
+    <p>Μερικά από τα πιο χρήσιμα ρήματα είναι <strong>ανώμαλα</strong> — η μορφή τους αλλάζει και πρέπει να τα αποστηθίσεις:</p>
+
+    <div class="table-wrap">
+      <table class="irreg-table">
+        <thead>
+          <tr>
+            <th>Απαρέμφατο</th>
+            <th>Σημασία</th>
+            <th>eu</th>
+            <th>tu</th>
+            <th>ele/ela</th>
+            <th>nós</th>
+            <th>eles</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>ser</td><td>είμαι (μόνιμα)</td><td>sou</td><td>és</td><td>é</td><td>somos</td><td>são</td></tr>
+          <tr><td>estar</td><td>είμαι (προσωρινά)</td><td>estou</td><td>estás</td><td>está</td><td>estamos</td><td>estão</td></tr>
+          <tr><td>ter</td><td>έχω</td><td>tenho</td><td>tens</td><td>tem</td><td>temos</td><td>têm</td></tr>
+          <tr><td>ir</td><td>πηγαίνω</td><td>vou</td><td>vais</td><td>vai</td><td>vamos</td><td>vão</td></tr>
+          <tr><td>fazer</td><td>κάνω / φτιάχνω</td><td>faço</td><td>fazes</td><td>faz</td><td>fazemos</td><td>fazem</td></tr>
+          <tr><td>poder</td><td>μπορώ</td><td>posso</td><td>podes</td><td>pode</td><td>podemos</td><td>podem</td></tr>
+          <tr><td>querer</td><td>θέλω</td><td>quero</td><td>queres</td><td>quer</td><td>queremos</td><td>querem</td></tr>
+          <tr><td>saber</td><td>ξέρω</td><td>sei</td><td>sabes</td><td>sabe</td><td>sabemos</td><td>sabem</td></tr>
+          <tr><td>vir</td><td>έρχομαι</td><td>venho</td><td>vens</td><td>vem</td><td>vimos</td><td>vêm</td></tr>
+          <tr><td>ver</td><td>βλέπω</td><td>vejo</td><td>vês</td><td>vê</td><td>vemos</td><td>veem</td></tr>
+          <tr><td>dar</td><td>δίνω</td><td>dou</td><td>dás</td><td>dá</td><td>damos</td><td>dão</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note-box" style="margin-top:1rem;">
+      <strong>💡 ser vs. estar:</strong> Και τα δύο σημαίνουν «είμαι» — αλλά <em>ser</em> χρησιμοποιείται για <strong>μόνιμα χαρακτηριστικά</strong> (καταγωγή, επάγγελμα, ταυτότητα), ενώ <em>estar</em> για <strong>προσωρινές καταστάσεις</strong> (αίσθημα, τοποθεσία, διάθεση).
+    </div>
+
+    <p style="margin-top:0.8rem;"><em>Παραδείγματα ανώμαλων ρημάτων:</em></p>
+    <div class="example-block"><div class="pt">Eu sou português.</div><div class="el">Είμαι Πορτογάλος.</div></div>
+    <div class="example-block"><div class="pt">Ela está cansada hoje.</div><div class="el">Είναι κουρασμένη σήμερα.</div></div>
+    <div class="example-block"><div class="pt">Nós vamos à praia.</div><div class="el">Πηγαίνουμε στην παραλία.</div></div>
+    <div class="example-block"><div class="pt">Eles têm um cão.</div><div class="el">Έχουν ένα σκύλο.</div></div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- Exercises -->
+  <div class="exercise-header">✎ Ασκήσεις</div>
+  <p class="exercise-intro">
+    Συμπλήρωσε το ρήμα στο σωστό πρόσωπο του ενεστώτα (presente do indicativo). Το ρήμα δίνεται σε παρένθεση. Κάτω από κάθε πρόταση υπάρχει η ελληνική μετάφραση.
+  </p>
+
+  <div class="progress-label" id="progressLabel">0 / 30 ολοκληρώθηκαν</div>
+  <div class="progress-bar-wrap"><div class="progress-bar" id="progressBar"></div></div>
+
+  <div id="exerciseList"></div>
+
+  <div class="btn-row">
+    <button class="btn-primary" onclick="checkAll()">✓ Έλεγχος Όλων</button>
+    <button class="btn-secondary" onclick="resetAll()">↺ Επαναφορά</button>
+  </div>
+
+  <div class="score-panel" id="scorePanel">
+    <div class="score-big" id="scoreBig"></div>
+    <div class="score-msg" id="scoreMsg"></div>
+  </div>
+
+  <details class="answers-toggle">
+    <summary>✅ Απαντήσεις (άνοιξε μόνο αφού τελειώσεις!)</summary>
+    <div class="answers-body" id="answersList"></div>
+  </details>
+
+</div>
+
+<script>
+const exercises = [
+  // -ar regulars
+  { before: "Eu português todos os dias.", after: "", verb: "falar", answer: "falo", el: "Μιλώ πορτογαλικά κάθε μέρα." },
+  { before: "Ela", after: "num café perto de casa.", verb: "trabalhar", answer: "trabalha", el: "Δουλεύει σε ένα καφέ κοντά στο σπίτι." },
+  { before: "Nós", after: "muito livros.", verb: "comprar", answer: "compramos", el: "Αγοράζουμε πολλά βιβλία." },
+  { before: "Eles", after: "cedo todos os dias.", verb: "chegar", answer: "chegam", el: "Φτάνουν νωρίς κάθε μέρα." },
+  { before: "Tu", after: "muito bem!", verb: "cantar", answer: "cantas", el: "Τραγουδάς πολύ ωραία!" },
+  { before: "O João", after: "português na universidade.", verb: "estudar", answer: "estuda", el: "Ο João σπουδάζει πορτογαλικά στο πανεπιστήμιο." },
+  // -er regulars
+  { before: "Eu não", after: "carne.", verb: "comer", answer: "como", el: "Δεν τρώω κρέας." },
+  { before: "Ela", after: "muito café de manhã.", verb: "beber", answer: "bebe", el: "Πίνει πολύ καφέ το πρωί." },
+  { before: "Nós", after: "cartas para a família.", verb: "escrever", answer: "escrevemos", el: "Γράφουμε γράμματα στην οικογένεια." },
+  { before: "Eles", after: "os livros na livraria.", verb: "vender", answer: "vendem", el: "Πουλάνε βιβλία στο βιβλιοπωλείο." },
+  { before: "Tu", after: "português facilmente.", verb: "aprender", answer: "aprendes", el: "Μαθαίνεις πορτογαλικά εύκολα." },
+  // -ir regulars
+  { before: "O avião", after: "às oito.", verb: "partir", answer: "parte", el: "Το αεροπλάνο αναχωρεί στις οχτώ." },
+  { before: "Eu", after: "a janela de manhã.", verb: "abrir", answer: "abro", el: "Ανοίγω το παράθυρο το πρωί." },
+  { before: "Nós", after: "em Lisboa.", verb: "viver", answer: "vivemos", el: "Ζούμε στη Λισαβόνα." },
+  { before: "Eles", after: "um café novo na cidade.", verb: "descobrir", answer: "descobrem", el: "Ανακαλύπτουν ένα νέο καφέ στην πόλη." },
+  // ser / estar
+  { before: "Eu", after: "estudante.", verb: "ser", answer: "sou", el: "Είμαι φοιτητής/τρια." },
+  { before: "Ela", after: "portuguesa.", verb: "ser", answer: "é", el: "Είναι Πορτογαλίδα." },
+  { before: "Nós", after: "muito cansados hoje.", verb: "estar", answer: "estamos", el: "Είμαστε πολύ κουρασμένοι σήμερα." },
+  { before: "Eles", after: "em casa agora.", verb: "estar", answer: "estão", el: "Είναι στο σπίτι τώρα." },
+  { before: "Tu", after: "bem?", verb: "estar", answer: "estás", el: "Είσαι καλά;" },
+  // ter / ir
+  { before: "Eu", after: "um irmão e uma irmã.", verb: "ter", answer: "tenho", el: "Έχω έναν αδερφό και μια αδερφή." },
+  { before: "Ela", after: "vinte anos.", verb: "ter", answer: "tem", el: "Είναι είκοσι χρονών." },
+  { before: "Nós", after: "ao supermercado.", verb: "ir", answer: "vamos", el: "Πηγαίνουμε στο σούπερ μάρκετ." },
+  { before: "Eles", after: "à escola de manhã.", verb: "ir", answer: "vão", el: "Πηγαίνουν στο σχολείο το πρωί." },
+  // fazer / poder / querer
+  { before: "Eu", after: "os trabalhos de casa.", verb: "fazer", answer: "faço", el: "Κάνω τις εργασίες μου για το σπίτι." },
+  { before: "Ela", after: "um bolo delicioso.", verb: "fazer", answer: "faz", el: "Φτιάχνει ένα νόστιμο κέικ." },
+  { before: "Eu não", after: "dormir.", verb: "poder", answer: "posso", el: "Δεν μπορώ να κοιμηθώ." },
+  { before: "Tu", after: "um café?", verb: "querer", answer: "queres", el: "Θέλεις έναν καφέ;" },
+  // saber / ver
+  { before: "Eu", after: "falar um pouco de grego.", verb: "saber", answer: "sei", el: "Ξέρω να μιλώ λίγο ελληνικά." },
+  { before: "Nós", after: "um filme hoje à noite.", verb: "ver", answer: "vemos", el: "Βλέπουμε μια ταινία απόψε." },
+];
+
+function buildExercises() {
+  const list = document.getElementById('exerciseList');
+  list.innerHTML = '';
+  exercises.forEach((ex, i) => {
+    const n = i + 1;
+    const hasBefore = ex.before.trim() !== '';
+    const hasAfter = ex.after.trim() !== '';
+    let sentenceHTML = '';
+    if (hasBefore) sentenceHTML += `<span class="pt-text">${ex.before}&nbsp;</span>`;
+    sentenceHTML += `<input class="fill-input" id="inp${i}" type="text" autocomplete="off" autocorrect="off" spellcheck="false" placeholder="…" oninput="onInput(${i})">`;
+    if (hasAfter) sentenceHTML += `<span class="pt-text">&nbsp;${ex.after}</span>`;
+
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.id = `card${i}`;
+    card.innerHTML = `
+      <div class="card-number">Πρόταση ${n} από ${exercises.length}</div>
+      <div class="card-verb-hint">${ex.verb}</div>
+      <div class="sentence-row">${sentenceHTML}</div>
+      <div class="translation-el">${ex.el}</div>
+      <div class="feedback" id="fb${i}"></div>
+    `;
+    list.appendChild(card);
+  });
+  buildAnswers();
+}
+
+function buildAnswers() {
+  const al = document.getElementById('answersList');
+  al.innerHTML = '';
+  exercises.forEach((ex, i) => {
+    const item = document.createElement('div');
+    item.className = 'answer-item';
+    item.innerHTML = `<span class="num">${i+1}.</span><span class="ans">${ex.answer}</span><span class="tr">${ex.el}</span>`;
+    al.appendChild(item);
+  });
+}
+
+function onInput(i) { updateProgress(); }
+
+function updateProgress() {
+  let filled = 0;
+  exercises.forEach((_, i) => { if (document.getElementById(`inp${i}`).value.trim() !== '') filled++; });
+  const pct = Math.round((filled / exercises.length) * 100);
+  document.getElementById('progressBar').style.width = pct + '%';
+  document.getElementById('progressLabel').textContent = `${filled} / ${exercises.length} ολοκληρώθηκαν`;
+}
+
+function normalize(s) { return s.trim().toLowerCase().normalize('NFC'); }
+
+function checkAll() {
+  let correct = 0, attempted = 0;
+  exercises.forEach((ex, i) => {
+    const inp = document.getElementById(`inp${i}`);
+    const fb = document.getElementById(`fb${i}`);
+    const card = document.getElementById(`card${i}`);
+    const val = inp.value.trim();
+    if (val === '') { card.className = 'card'; inp.className = 'fill-input'; fb.className = 'feedback'; fb.innerHTML = ''; return; }
+    attempted++;
+    if (normalize(val) === normalize(ex.answer)) {
+      correct++;
+      card.className = 'card correct';
+      inp.className = 'fill-input correct-input';
+      fb.className = 'feedback ok show';
+      fb.innerHTML = '✓ Σωστά!';
+    } else {
+      card.className = 'card incorrect';
+      inp.className = 'fill-input incorrect-input';
+      fb.className = 'feedback wrong show';
+      fb.innerHTML = `✗ Λάθος — η σωστή απάντηση είναι: <span class="correct-answer">${ex.answer}</span>`;
+    }
+  });
+  if (attempted > 0) {
+    document.getElementById('scorePanel').className = 'score-panel show';
+    document.getElementById('scoreBig').textContent = `${correct} / ${attempted}`;
+    const pct = Math.round((correct / attempted) * 100);
+    let msg = '';
+    if (pct === 100) msg = 'Άριστα! Εξαιρετική δουλειά! 🎉';
+    else if (pct >= 80) msg = 'Πολύ καλά! Συνέχισε έτσι! 👍';
+    else if (pct >= 60) msg = 'Καλή προσπάθεια — εξάσκησε τα ανώμαλα ρήματα!';
+    else msg = 'Μην τα παρατάς — ξαναδιάβασε τη γραμματική και προσπάθησε ξανά!';
+    document.getElementById('scoreMsg').textContent = msg;
+  }
+  updateProgress();
+}
+
+function resetAll() {
+  exercises.forEach((_, i) => {
+    document.getElementById(`inp${i}`).value = '';
+    document.getElementById(`inp${i}`).className = 'fill-input';
+    document.getElementById(`fb${i}`).className = 'feedback';
+    document.getElementById(`fb${i}`).innerHTML = '';
+    document.getElementById(`card${i}`).className = 'card';
+  });
+  document.getElementById('scorePanel').className = 'score-panel';
+  updateProgress();
+}
+
+buildExercises();
+updateProgress();
+</script>
+</body>
+</html>
