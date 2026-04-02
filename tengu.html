@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tengu — 天狗</title>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1a1208;--gold:#b8860b;--rust:#8b3a1a;--muted:#6b5d45;--parchment:#f5eed8;--parchment-deep:#ede0c0;--paper:#faf6ec;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--parchment);color:var(--ink);font-family:'Cormorant Garamond',serif;padding-bottom:4rem;}
+header{text-align:center;padding:2.5rem 1rem 1.5rem;border-bottom:1px solid rgba(184,134,11,0.3);}
+h1{font-family:'Cinzel',serif;font-size:clamp(1.5rem,4vw,2.4rem);letter-spacing:0.12em;font-weight:600;}
+.kanji{font-size:clamp(1rem,3vw,1.6rem);color:var(--muted);letter-spacing:0.3em;margin-top:0.3rem;font-family:'IM Fell English',serif;}
+.sub{font-family:'IM Fell English',serif;font-style:italic;color:var(--muted);margin-top:0.4rem;}
+.orn{color:var(--gold);letter-spacing:0.5em;margin-top:0.5rem;opacity:0.7;}
+.back{display:inline-block;margin-top:1rem;font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.18em;color:var(--muted);text-decoration:none;border:1px solid rgba(184,134,11,0.35);padding:0.3rem 0.9rem;border-radius:1px;transition:all 0.2s;}
+.back:hover{background:var(--parchment-deep);color:var(--ink);}
+.card{max-width:740px;margin:2rem auto;padding:0 1rem;}
+.ci{background:var(--paper);border:1px solid rgba(184,134,11,0.25);box-shadow:0 2px 8px rgba(26,18,8,0.06);padding:2rem 2.5rem;position:relative;}
+.ci::before{content:'';position:absolute;inset:5px;border:1px solid rgba(184,134,11,0.1);pointer-events:none;}
+.lang-block{margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid rgba(184,134,11,0.18);}
+.lang-block:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.lang-label{font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.22em;color:var(--gold);text-transform:uppercase;margin-bottom:0.9rem;display:flex;align-items:center;gap:0.6rem;}
+.lang-label::after{content:'';flex:1;height:1px;background:rgba(184,134,11,0.2);}
+.prose{font-family:'Cormorant Garamond',serif;font-size:1.08rem;line-height:1.85;color:var(--ink);}
+.prose em{font-style:italic;color:var(--rust);}
+.img-figure{margin:1.6rem 0 0;text-align:center;}
+.img-figure img{max-width:100%;border:1px solid rgba(184,134,11,0.25);box-shadow:0 2px 10px rgba(26,18,8,0.1);}
+.img-caption{font-family:'IM Fell English',serif;font-style:italic;font-size:0.82rem;color:var(--muted);margin-top:0.6rem;}
+.jp-line{margin-bottom:0.9rem;}
+.jp-text{font-family:'IM Fell English',serif;font-size:1.05rem;line-height:1.7;color:var(--ink);display:block;}
+.jp-roman{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.92rem;color:var(--muted);display:block;margin-top:0.2rem;line-height:1.6;}
+.divider{text-align:center;color:var(--gold);opacity:0.5;margin:1.6rem 0;letter-spacing:0.4em;}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Tengu</h1>
+  <div class="kanji">天狗</div>
+  <p class="sub">Yōkai of the Mountain — Japanese Folklore</p>
+  <p class="orn">✦ ✦ ✦</p>
+  <a class="back" href="index.html">← Gedichten</a>
+</header>
+
+<div class="card"><div class="ci">
+
+  <div class="lang-block">
+    <div class="lang-label">English</div>
+    <p class="prose">The <em>Tengu</em> (天狗) is a prominent <em>yōkai</em> from Japanese folklore, known as powerful spirits dwelling in the mountains. Originating from 8th-century Chinese legends about celestial dogs associated with meteors and disasters, they evolved in Japan into two main types: the <em>karasu-tengu</em> (crow tengu), of avian appearance with wings, beak and claws; and the iconic <em>daitengu</em> (great tengu), with a long red nose, fierce face, <em>tokin</em> hat and robes symbolising arrogance or wisdom. Masters of wind, magic and the sword arts, they fly using <em>hauchiwa</em> fans, protect the ascetics of <em>Shugendō</em> or mock the vain and arrogant. By the Edo period, they were widely depicted in <em>ukiyo-e</em> woodblock prints as both feared demons and protectors of temples and shrines.</p>
+    <figure class="img-figure">
+      <img src="tengu1.png" alt="Bronze Tengu statue at a Japanese shrine, wielding a sword with wings spread">
+      <figcaption class="img-caption">Bronze <em>daitengu</em> statue at a Japanese shrine — sword raised, wings unfurled</figcaption>
+    </figure>
+  </div>
+
+  <div class="divider">✦</div>
+
+  <div class="lang-block">
+    <div class="lang-label">Nederlands</div>
+    <p class="prose">De <em>Tengu</em> (天狗) is een prominente <em>yōkai</em> uit de Japanse folklore, bekend als krachtige berggeesten. Hun oorsprong ligt in 8e-eeuwse Chinese legenden over hemelse honden, gekoppeld aan meteoren en rampen, en ze ontwikkelden zich in Japan tot twee hoofdtypen: de <em>karasu-tengu</em> (kraaien-tengu), vogelachtig met vleugels, snavel en klauwen; en de iconische <em>daitengu</em> (grote tengu), met lange rode neus, woest gezicht, <em>tokin</em>-hoed en gewaden als symbool voor arrogantie of wijsheid. Meesters in wind, magie en zwaardkunst, ze vliegen met <em>hauchiwa</em>-waaier, beschermen <em>Shugendō</em>-asceten of plagen de ijdele en arroganten. Tegen de Edo-periode verschenen ze vaak in <em>ukiyo-e</em>-houtsneden als zowel gevreesde demonen als tempelbeschermers.</p>
+    <figure class="img-figure">
+      <img src="tengu2.png" alt="Ukiyo-e woodblock print showing a Tengu and a mythical beast at a feast">
+      <figcaption class="img-caption">Kawanabe Kyōsai, <em>Hyakuzu</em> series — <em>Tengu</em> and beast, Edo period woodblock print</figcaption>
+    </figure>
+  </div>
+
+  <div class="divider">✦</div>
+
+  <div class="lang-block">
+    <div class="lang-label">Español</div>
+    <p class="prose">El <em>Tengu</em> (天狗) es un <em>yōkai</em> prominente del folclore japonés, conocido como poderosos espíritus moradores de las montañas. Originarios de leyendas chinas del siglo VIII sobre perros celestiales asociados a meteoros y desastres, evolucionaron en Japón en dos tipos principales: el <em>karasu-tengu</em> (tengu cuervo), de aspecto aviar con alas, pico y garras; y el icónico <em>daitengu</em> (gran tengu), con larga nariz roja, rostro feroz, sombrero <em>tokin</em> y vestiduras que simbolizan arrogancia o sabiduría. Maestros del viento, la magia y las artes de la espada, vuelan usando abanicos <em>hauchiwa</em>, protegen a los ascetas de <em>Shugendō</em> o se burlan de los vanidosos y arrogantes. En el período Edo, fueron ampliamente representados en impresiones <em>ukiyo-e</em> como demonios temidos y protectores de templos.</p>
+  </div>
+
+  <div class="divider">✦</div>
+
+  <div class="lang-block">
+    <div class="lang-label">日本語 — with Romanization</div>
+    <div class="jp-line">
+      <span class="jp-text">天狗（てんぐ）は日本の民間伝承における著名な妖怪で、強力な山の精霊として知られています。</span>
+      <span class="jp-roman">Tengu (tengu) wa Nihon no minkan denshō ni okeru chomei na yōkai de, kyōryoku na yama no seirei to shite shirarete imasu.</span>
+    </div>
+    <div class="jp-line">
+      <span class="jp-text">起源は8世紀の中国の天狗伝説（隕石や災害に関連するもの）にあり、日本で鳥のような烏天狗と長い鼻の大天狗の2タイプに進化しました。</span>
+      <span class="jp-roman">Kigen wa hachi-seiki no Chūgoku no tengu densetsu (insekki ya saigai ni kanren suru mono) ni ari, Nihon de tori no yō na karasu-tengu to nagai hana no daitengu no 2 taipu ni shinka shimashita.</span>
+    </div>
+    <div class="jp-line">
+      <span class="jp-text">風・魔法・剣術の達人として羽団扇で飛び、修験道の行者を守ったり傲慢な者をからかったりします。</span>
+      <span class="jp-roman">Kaze, mahō, kenjutsu no tatsujin to shite hauchiwa de tobi, Shugendō no gyōja o mamorittari gōman na mono o karakattari shimasu.</span>
+    </div>
+    <div class="jp-line">
+      <span class="jp-text">江戸時代には浮世絵の木版画で広く描かれ、恐れられる悪鬼と寺社の守護者として知られました。</span>
+      <span class="jp-roman">Edo jidai ni wa ukiyo-e no mokuhanga de hiroku egakare, osorerareru akki to jisha no shugosha to shite shiraremashita.</span>
+    </div>
+    <figure class="img-figure">
+      <img src="tengu3.png" alt="Japanese painting of a Tengu in red robes descending upon a monk in a whirlwind">
+      <figcaption class="img-caption">A <em>daitengu</em> in crimson robes descends upon a monk — traditional Japanese painting</figcaption>
+    </figure>
+  </div>
+
+</div></div>
+</body>
+</html>
