@@ -585,6 +585,12 @@ function buildNav() {
   ib.textContent = 'Uitdrukkingen';
   ib.className = 'idioms-btn' + (showingIdioms ? ' on' : '');
   ib.onclick = function(){ showingIdioms = true; stopSpeech(); closePop(); buildNav(); buildIdiomsCard(); };
+  if (curLang === 'nl') {
+  var tb = document.createElement('button');
+  tb.textContent = 'Tengu';
+  tb.onclick = function(){ window.location.href = 'tengu.html'; };
+  nav.appendChild(tb);
+}
   nav.appendChild(ib);
 }
 
