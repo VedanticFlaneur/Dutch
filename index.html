@@ -5,6 +5,557 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gedichten</title>
 <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+<script>
+/* ============================================================
+   ✏️  YOUR CONTENT — EDIT THIS SECTION ONLY
+   ============================================================
+   HOW TO ADD A POEM
+   -----------------
+   Copy one block below (from the opening { to the closing },)
+   paste it at the end of the list, and fill in your text.
+
+   lang: "de" = German   "nl" = Dutch
+   lines / dutch / trans: each line is "in quotes", separated by commas.
+   Empty line between stanzas = ""
+   bio / intro: optional background notes (nl / de / en)
+   ============================================================ */
+
+var POEMS = [
+
+  // ——— GERMAN POEMS ———
+
+  { lang: "de",
+    title: "Der Erlkönig",
+    author: "Johann Wolfgang von Goethe",
+    bio: {
+      nl: "Johann Wolfgang von Goethe (1749–1832) wordt beschouwd als de grootste schrijver uit de Duitse literatuur. Zijn levenslange meesterwerk 'Faust' geldt als een van de hoogtepunten van de wereldliteratuur.",
+      de: "Johann Wolfgang von Goethe (1749–1832) gilt als der bedeutendste Dichter der deutschen Literatur.",
+      en: "Johann Wolfgang von Goethe (1749–1832) is regarded as the greatest writer in the German literary tradition."
+    },
+    intro: {
+      nl: "De Erlkönig is een figuur uit de Germaanse folklore. In Goethes gedicht (1782) fluistert hij het zieke kind zoete beloften toe, maar de vader ziet alleen mist en wind. Schubert zette het in 1815 op muziek.",
+      de: "Der Erlkönig ist eine Gestalt aus der germanischen Volksüberlieferung. Schubert vertonte das Gedicht 1815.",
+      en: "The Erlking is a figure from Germanic folklore who lures children to their death. Schubert set it to music in 1815."
+    },
+    lines: [
+      "Wer reitet so spät durch Nacht und Wind?",
+      "Es ist der Vater mit seinem Kind;",
+      "Er hat den Knaben wohl in dem Arm,",
+      "Er fasst ihn sicher, er hält ihn warm.",
+      "",
+      "Mein Sohn, was birgst du so bang dein Gesicht?",
+      "Siehst, Vater, du den Erlkönig nicht?",
+      "Den Erlenkönig mit Kron und Schweif?",
+      "Mein Sohn, es ist ein Nebelstreif.",
+      "",
+      "Du liebes Kind, komm, geh mit mir!",
+      "Gar schöne Spiele spiel ich mit dir;",
+      "Manch bunte Blumen sind an dem Strand,",
+      "Meine Mutter hat manch gülden Gewand."
+    ],
+    dutch: [
+      "Wie rijdt zo laat door nacht en wind?",
+      "Het is de vader met zijn kind;",
+      "Hij houdt de knaap vast in zijn arm,",
+      "Hij houdt hem veilig, hij houdt hem warm.",
+      "",
+      "Mijn zoon, waarom verberg je zo bang je gezicht?",
+      "Vader, zie jij de Erlkoning niet?",
+      "De Erlkoning met zijn kroon en sleep?",
+      "Mijn zoon, dat is maar een miststreep.",
+      "",
+      "Lief kind, kom ga met mij mee!",
+      "Heerlijke spelletjes speel ik met jou;",
+      "Mooie bloemen staan er aan het strand,",
+      "Mijn moeder heeft menig gouden gewaad."
+    ],
+    trans: [
+      "Who rides so late through night and wind?",
+      "It is the father with his child;",
+      "He holds the boy clasped in his arm,",
+      "He holds him safely, he keeps him warm.",
+      "",
+      "My son, why hide your face in fear?",
+      "Father, do you not see the Erl-King?",
+      "The Erl-King with his crown and train?",
+      "My son, it is a streak of mist.",
+      "",
+      "Dear child, come away with me!",
+      "Such lovely games I'll play with thee;",
+      "Many coloured flowers grow by the shore,",
+      "My mother has many golden robes in store."
+    ]
+  },
+
+  { lang: "de",
+    title: "Wandrers Nachtlied",
+    author: "Johann Wolfgang von Goethe",
+    bio: {
+      nl: "Johann Wolfgang von Goethe (1749–1832) wordt beschouwd als de grootste schrijver uit de Duitse literatuur.",
+      de: "Johann Wolfgang von Goethe (1749–1832) gilt als der bedeutendste Dichter der deutschen Literatur.",
+      en: "Johann Wolfgang von Goethe (1749–1832) is regarded as the greatest writer in the German literary tradition."
+    },
+    lines: [
+      "Über allen Gipfeln",
+      "Ist Ruh,",
+      "In allen Wipfeln",
+      "Spürest du",
+      "Kaum einen Hauch;",
+      "Die Vögelein schweigen im Walde.",
+      "Warte nur, balde",
+      "Ruhest du auch."
+    ],
+    dutch: [
+      "Boven alle bergtoppen",
+      "Is rust,",
+      "In alle boomkruinen",
+      "Voel je",
+      "Nauwelijks een zucht;",
+      "De vogeltjes zwijgen in het woud.",
+      "Wacht slechts, spoedig",
+      "Rust jij ook."
+    ],
+    trans: [
+      "Over all the hilltops",
+      "Is quiet now,",
+      "In all the treetops",
+      "You can feel",
+      "Hardly a breath;",
+      "The birds are asleep in the forest.",
+      "Wait — soon",
+      "You will rest, too."
+    ]
+  },
+
+  { lang: "de",
+    title: "Der Tod und das Mädchen",
+    author: "Matthias Claudius",
+    bio: {
+      nl: "Matthias Claudius (1740–1815) was een Duitse dichter en journalist. 'Der Tod und das Mädchen' werd in 1817 door Franz Schubert op muziek gezet.",
+      de: "Matthias Claudius (1740–1815) war ein deutscher Dichter und Journalist. Das Gedicht wurde 1817 von Franz Schubert vertont.",
+      en: "Matthias Claudius (1740–1815) was a German poet and journalist. 'Death and the Maiden' was set to music by Franz Schubert in 1817."
+    },
+    lines: [
+      "Das Mädchen:",
+      "Vorüber! Ach, vorüber!",
+      "Geh, wilder Knochenmann!",
+      "Ich bin noch jung, geh Lieber!",
+      "Und rühre mich nicht an.",
+      "",
+      "Der Tod:",
+      "Gib deine Hand, du schön und zart Gebild!",
+      "Bin Freund und komme nicht zu strafen.",
+      "Sei gutes Muts! Ich bin nicht wild,",
+      "Sollst sanft in meinen Armen schlafen!"
+    ],
+    dutch: [
+      "Het Meisje:",
+      "Ga voorbij! Ach, ga voorbij!",
+      "Ga, wilde beenderman!",
+      "Ik ben nog jong, lieve vriend!",
+      "En raak mij niet aan.",
+      "",
+      "De Dood:",
+      "Geef mij je hand, jij mooi en teer wezen!",
+      "Ik ben een vriend en kom niet om te straffen.",
+      "Wees gerust! Ik ben niet wild,",
+      "Je zult zacht in mijn armen slapen!"
+    ],
+    trans: [
+      "The Maiden:",
+      "Pass me by! Oh, pass me by!",
+      "Go, wild man of bones!",
+      "I am still young, dear one!",
+      "And do not touch me.",
+      "",
+      "Death:",
+      "Give me your hand, you lovely, tender form!",
+      "I am a friend, I come not to punish.",
+      "Be of good cheer! I am not fierce,",
+      "You shall sleep softly in my arms!"
+    ]
+  },
+
+  { lang: "de",
+    title: "Die Lorelei",
+    author: "Heinrich Heine",
+    bio: {
+      nl: "Heinrich Heine (1797–1856) was een van de grootste Duitse dichters van de negentiende eeuw. Vanwege zijn radicale opvattingen emigreerde hij in 1831 naar Parijs.",
+      de: "Heinrich Heine (1797–1856) war einer der bedeutendsten deutschen Dichter. Wegen seiner radikalen Ansichten emigrierte er 1831 nach Paris.",
+      en: "Heinrich Heine (1797–1856) was one of the greatest German poets of the nineteenth century. He emigrated to Paris in 1831."
+    },
+    lines: [
+      "Ich weiß nicht, was soll es bedeuten,",
+      "Dass ich so traurig bin;",
+      "Ein Märchen aus alten Zeiten,",
+      "Das kommt mir nicht aus dem Sinn.",
+      "",
+      "Die Luft ist kühl und es dunkelt,",
+      "Und ruhig fließt der Rhein;",
+      "Der Gipfel des Berges funkelt",
+      "Im Abendsonnenschein.",
+      "",
+      "Die schönste Jungfrau sitzet",
+      "Dort oben wunderbar,",
+      "Ihr gold'nes Geschmeide blitzet,",
+      "Sie kämmt ihr gold'nes Haar."
+    ],
+    dutch: [
+      "Ik weet niet wat het mag betekenen",
+      "Dat ik zo bedroefd ben;",
+      "Een sprookje uit oude tijden",
+      "Gaat mij niet uit het hoofd.",
+      "",
+      "De lucht is koel en het schemert,",
+      "En de Rijn stroomt kalm voorbij;",
+      "De bergtop schittert",
+      "In het avondzonlicht.",
+      "",
+      "De mooiste maagd zit",
+      "Daar boven wonderbaarlijk mooi,",
+      "Haar gouden sieraden glinsteren,",
+      "Ze kamt haar gouden haar."
+    ],
+    trans: [
+      "I do not know what it may mean",
+      "That I am so melancholy;",
+      "A tale from olden times",
+      "I cannot get out of my mind.",
+      "",
+      "The air is cool and twilight falls",
+      "And the Rhine flows quietly past;",
+      "The peak of the mountain glitters",
+      "In the evening sun's last rays.",
+      "",
+      "The most beautiful maiden sits",
+      "Up there, wondrously fair,",
+      "Her golden jewels are gleaming,",
+      "She combs her golden hair."
+    ]
+  },
+
+  // ——— DUTCH POEMS ———
+
+  { lang: "nl",
+    title: "Gebed om een goed einde",
+    author: "Guido Gezelle",
+    bio: {
+      nl: "Guido Gezelle (1830–1899) was een Vlaams priester en dichter, geboren in Brugge. Hij wordt beschouwd als een van de grootste Nederlandse dichters aller tijden.",
+      de: "Guido Gezelle (1830–1899) war ein flämischer Priester und Dichter aus Brügge.",
+      en: "Guido Gezelle (1830–1899) was a Flemish priest and poet, born in Bruges, considered one of the greatest poets ever to write in Dutch."
+    },
+    lines: [
+      "Geef mij, o Heer, een goed einde.",
+      "Geef mij een einde, stil als de nacht,",
+      "Wanneer het hart zijn last heeft afgelegd",
+      "En naar de vrede wacht.",
+      "",
+      "Geef mij het sterven van de zomerdag,",
+      "Die langzaam ondergaat,",
+      "En in zijn rosse gloedglans slapend zakt",
+      "En zo de morgen wacht."
+    ],
+    trans: [
+      "Grant me, O Lord, a good ending.",
+      "Grant me an end as still as the night,",
+      "When the heart has laid down its burden",
+      "And waits for peace.",
+      "",
+      "Grant me the dying of a summer day,",
+      "That slowly fades away,",
+      "And sinking into its rosy glow sleeps",
+      "And so awaits the morning."
+    ]
+  },
+
+  { lang: "nl",
+    title: "Het leven is een feest",
+    author: "Herman Gorter",
+    bio: {
+      nl: "Herman Gorter (1864–1927) was een Nederlands dichter en marxistisch activist. Zijn lange gedicht 'Mei' (1889) gold als een doorbraak in de Nederlandse literatuur.",
+      de: "Herman Gorter (1864–1927) war ein niederländischer Dichter und marxistischer Aktivist.",
+      en: "Herman Gorter (1864–1927) was a Dutch poet and Marxist activist. His long poem 'May' (1889) was a breakthrough in Dutch literature."
+    },
+    lines: [
+      "Een nieuwe lente en een nieuw geluid:",
+      "Ik ga mijn liefste zingen een lied,",
+      "Ik ga haar zingen, al zingt zij 't ook niet,",
+      "Een lied van de lente die wacht.",
+      "",
+      "De lente wacht. In de morgen vroeg",
+      "Gaat zij door veld en door bos en land,",
+      "Zij raakt de bloemen aan met haar hand,",
+      "De bloemen bloeien in de morgen vroeg."
+    ],
+    trans: [
+      "A new spring and a new sound:",
+      "I shall sing my beloved a song,",
+      "I shall sing to her, though she sings not,",
+      "A song of spring that waits.",
+      "",
+      "Spring waits. In the early morning",
+      "She goes through field and wood and land,",
+      "She touches the flowers with her hand,",
+      "The flowers bloom in the early morning."
+    ]
+  },
+
+  { lang: "nl",
+    title: "Aan de Schelde",
+    author: "Guido Gezelle",
+    bio: {
+      nl: "Guido Gezelle (1830–1899) was een Vlaams priester en dichter, geboren in Brugge.",
+      de: "Guido Gezelle (1830–1899) war ein flämischer Priester und Dichter aus Brügge.",
+      en: "Guido Gezelle (1830–1899) was a Flemish priest and poet, born in Bruges."
+    },
+    lines: [
+      "Schelde, o Schelde, hoe vleit gij zo zacht",
+      "Met uw zilver en met uw goud,",
+      "De oevers die gij beglinstert en houdt",
+      "In uw vlietende, vliedende macht!",
+      "",
+      "Gij stroomt en gij zingt en gij spreekt",
+      "Met een taal die geen tong u naspreke;",
+      "Gij weet wat het herte bebreekt,",
+      "Wat het zucht en wat het bewreke."
+    ],
+    trans: [
+      "Scheldt, o Scheldt, how gently you caress",
+      "With your silver and with your gold,",
+      "The banks you shimmer over and hold",
+      "In your flowing, fleeting power!",
+      "",
+      "You stream and you sing and you speak",
+      "With a tongue no other tongue can echo;",
+      "You know what breaks the heart,",
+      "What makes it sigh and what it must avenge."
+    ]
+  },
+
+  { lang: "nl",
+    title: "Winter op zee",
+    author: "J.J. Slauerhoff",
+    bio: {
+      nl: "Jan Jacob Slauerhoff (1898–1936) was een Nederlands dichter, romancier en scheepsarts. Hij stierf jong, op 37-jarige leeftijd.",
+      de: "Jan Jacob Slauerhoff (1898–1936) war ein niederländischer Dichter und Schiffsarzt. Er starb jung, im Alter von 37 Jahren.",
+      en: "Jan Jacob Slauerhoff (1898–1936) was a Dutch poet, novelist and ship's doctor who died young, at the age of 37."
+    },
+    lines: [
+      "De kim wordt wreed, de golven tuimlen wild,",
+      "Van mild en groen, spoorslags hardgrijs en grauw;",
+      "Eén nacht waarin de wind door 't luchtruim rilt,",
+      "Dan, als een plotselinge dood, de kou.",
+      "",
+      "Om rotseilanden zonder boom en gras,",
+      "Liggend verlaten in het oeroud ruim,",
+      "Bloeit slechts 't onstuimig en verward gewas",
+      "Van 't snel opschietend, snel verwelkend schuim.",
+      "",
+      "Op 't schip waarin geen vuren troostend branden,",
+      "Nestelt de kou zich voor een lange reis;",
+      "Tegen de 's nachts wakkergekraakte wanden",
+      "Kruit en verbrijzelt zich het drijvend ijs."
+    ],
+    trans: [
+      "The horizon turns cruel, the waves tumble wild,",
+      "From mild and green, suddenly leaden and grey;",
+      "One night in which the wind shivers through the sky,",
+      "Then, like a sudden death, the cold.",
+      "",
+      "Around rock islands without tree or grass,",
+      "Lying abandoned in time-worn space,",
+      "There blooms only the fierce and tangled growth",
+      "Of foam that rises fast and wilts as fast.",
+      "",
+      "On the ship where no fires burn with comfort,",
+      "The cold settles in for a long voyage;",
+      "Against the walls that crack awake at night,",
+      "The drifting ice grinds itself to nothing."
+    ]
+  },
+
+  { lang: "nl",
+    title: "O, als de zee",
+    author: "Hendrik Marsman",
+    bio: {
+      nl: "Hendrik Marsman (1899–1940) was een Nederlands dichter en criticus. Hij stierf op 40-jarige leeftijd toen zijn schip door een Duitse onderzeeër werd getorpedeerd.",
+      de: "Hendrik Marsman (1899–1940) war ein niederländischer Dichter. Er starb mit 40 Jahren, als sein Schiff torpediert wurde.",
+      en: "Hendrik Marsman (1899–1940) was a Dutch poet and critic who died at 40 when his ship was torpedoed by a German submarine."
+    },
+    lines: [
+      "O, als de zee, de grijze en de stille,",
+      "Het hart omspoelt met koud en zwaar geluid,",
+      "Dan weet ik dat de wens van iedere wille",
+      "Gaat naar wat is en nimmer wordt volbracht.",
+      "",
+      "En als de nacht de hemel heeft gesloten",
+      "En alle licht verdronken is in zee,",
+      "Dan voel ik dat mijn hart, de rust genoten,",
+      "Stil zinkt en treurt om wat voorbij moet gee."
+    ],
+    trans: [
+      "Oh, as the sea, the grey and silent one,",
+      "Washes the heart with cold and heavy sound,",
+      "Then I know that the wish of every will",
+      "Goes toward what is and is never fulfilled.",
+      "",
+      "And when the night has sealed the sky",
+      "And all the light is drowned within the sea,",
+      "Then I feel my heart, having tasted rest,",
+      "Sink quietly and mourn what must pass by."
+    ]
+  }
+
+  /* ============================================================
+     ✏️  TO ADD A NEW POEM — paste a new block here, like this:
+
+  ,{ lang: "de",
+    title: "Your Poem Title",
+    author: "Poet Name",
+    bio: { nl: "...", de: "...", en: "..." },
+    lines: ["Line one", "Line two", "", "New stanza line"],
+    dutch: ["Dutch line one", "Dutch line two", "", "New stanza"],
+    trans: ["English line one", "English line two", "", "New stanza"]
+  }
+
+     For Dutch poems, leave out the dutch: [...] block entirely.
+     ============================================================ */
+
+]; // ← END OF POEMS LIST
+
+
+/* ============================================================
+   ✏️  IDIOMS — add new ones at the bottom of this list
+   ============================================================
+   Each idiom has a Dutch phrase and equivalents in other languages.
+   Tags available: EN PT DE GR ES IT JA
+   ============================================================ */
+
+var IDIOMS = [
+
+  { nl: "Dat is de spuigaten uitlopen",
+    langs: [
+      { tag: "EN", text: "That's going overboard" },
+      { tag: "PT", text: "Isso está passando dos limites" },
+      { tag: "DE", text: "Das schießt den Vogel ab" },
+      { tag: "GR", text: "Αυτό ξεπερνάει κάθε όριο" },
+      { tag: "ES", text: "Esto se pasa de la raya" },
+      { tag: "IT", text: "Questo passa ogni limite" },
+      { tag: "JA", text: "度を越してる / やりすぎだ" }
+    ]
+  },
+
+  { nl: "Hij liegt dat hij barst",
+    langs: [
+      { tag: "EN", text: "He lies like crazy" },
+      { tag: "PT", text: "Ele mente descaradamente" },
+      { tag: "DE", text: "Er lügt wie gedruckt" },
+      { tag: "GR", text: "Λέει ψέματα με το κιλό" },
+      { tag: "ES", text: "Miente más que respira" },
+      { tag: "IT", text: "Mente come respira" },
+      { tag: "JA", text: "嘘が止まらない / 嘘八百つく" }
+    ]
+  },
+
+  { nl: "Ik sterf van de honger",
+    langs: [
+      { tag: "EN", text: "I'm starving to death" },
+      { tag: "PT", text: "Estou morrendo de fome" },
+      { tag: "DE", text: "Ich sterbe vor Hunger" },
+      { tag: "GR", text: "Πεθαίνω της πείνας" },
+      { tag: "ES", text: "Me muero de hambre" },
+      { tag: "IT", text: "Sto morendo di fame" },
+      { tag: "JA", text: "腹ペコで死にそう" }
+    ]
+  },
+
+  { nl: "Het regent pijpenstelen",
+    langs: [
+      { tag: "EN", text: "It's raining cats and dogs" },
+      { tag: "PT", text: "Está chovendo canivetes" },
+      { tag: "DE", text: "Es gießt wie aus Eimern" },
+      { tag: "GR", text: "Βρέχει καρεκλοπόδαρα" },
+      { tag: "ES", text: "Está lloviendo a cántaros" },
+      { tag: "IT", text: "Piove a catinelle" },
+      { tag: "JA", text: "土砂降り" }
+    ]
+  },
+
+  { nl: "Dat kost een rib uit m'n lijf",
+    langs: [
+      { tag: "EN", text: "That costs an arm and a leg" },
+      { tag: "PT", text: "Isso custa os olhos da cara" },
+      { tag: "DE", text: "Das kostet einen Arm und ein Bein" },
+      { tag: "GR", text: "Κοστίζει ένα μάτι" },
+      { tag: "ES", text: "Cuesta un ojo de la cara" },
+      { tag: "IT", text: "Costa un occhio della testa" },
+      { tag: "JA", text: "目玉が飛び出る値段" }
+    ]
+  },
+
+  { nl: "Ik heb het koud tot op m'n botten",
+    langs: [
+      { tag: "EN", text: "I'm frozen to the bone" },
+      { tag: "PT", text: "Estou gelado até os ossos" },
+      { tag: "DE", text: "Mir ist kalt bis auf die Knochen" },
+      { tag: "GR", text: "Έχω κρύο μέχρι το κόκαλο" },
+      { tag: "ES", text: "Tengo frío hasta los huesos" },
+      { tag: "IT", text: "Ho freddo fino alle ossa" },
+      { tag: "JA", text: "骨まで凍える" }
+    ]
+  }
+
+  /* ============================================================
+     ✏️  TO ADD A NEW IDIOM — paste here:
+
+  ,{ nl: "Your Dutch idiom here",
+     langs: [
+       { tag: "EN", text: "English equivalent" },
+       { tag: "DE", text: "German equivalent" },
+       { tag: "ES", text: "Spanish equivalent" }
+     ]
+  }
+     ============================================================ */
+
+]; // ← END OF IDIOMS LIST
+
+
+/* ============================================================
+   ✏️  GRAMMAR GUIDES
+   ============================================================
+   Each guide has a title, a subtitle, and HTML content.
+   You can ask Claude to generate the content HTML for you,
+   then paste it in as the body: "..." string below.
+   ============================================================ */
+
+var GRAMMAR_GUIDES = [
+
+  { id: "pt-subjunctive",
+    title: "O Subjuntivo",
+    subtitle: "Brazilian Portuguese · Subjunctive mood",
+    // ← The full guide HTML lives in the page below — do not edit here
+    builtin: true
+  }
+
+  /* ============================================================
+     ✏️  TO ADD A NEW GRAMMAR GUIDE — paste here:
+
+  ,{ id: "de-cases",
+     title: "German Cases",
+     subtitle: "Nominative, Accusative, Dative, Genitive",
+     body: "<p>Your content here...</p>"
+  }
+     ============================================================ */
+
+]; // ← END OF GRAMMAR GUIDES
+
+
+/* ============================================================
+   🔒  STOP HERE — do not edit below this line
+   ============================================================ */
+</script>
+
 <style>
 :root{--ink:#1a1208;--gold:#b8860b;--rust:#8b3a1a;--muted:#6b5d45;--parchment:#f5eed8;--parchment-deep:#ede0c0;--paper:#faf6ec;}
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -13,8 +564,8 @@ header{text-align:center;padding:2.5rem 1rem 1.5rem;border-bottom:1px solid rgba
 h1{font-family:'Cinzel',serif;font-size:clamp(1.5rem,4vw,2.4rem);letter-spacing:0.12em;font-weight:600;}
 .sub{font-family:'IM Fell English',serif;font-style:italic;color:var(--muted);margin-top:0.4rem;}
 .orn{color:var(--gold);letter-spacing:0.5em;margin-top:0.5rem;opacity:0.7;}
-.lang-tabs{display:flex;justify-content:center;margin:1.5rem auto 0;max-width:380px;border:1px solid rgba(184,134,11,0.4);border-radius:2px;overflow:hidden;}
-.lt{flex:1;padding:0.5rem 1rem;background:transparent;border:none;cursor:pointer;font-family:'Cinzel',serif;font-size:0.75rem;letter-spacing:0.12em;color:var(--muted);border-right:1px solid rgba(184,134,11,0.4);transition:all 0.2s;}
+.lang-tabs{display:flex;justify-content:center;margin:1.5rem auto 0;max-width:420px;border:1px solid rgba(184,134,11,0.4);border-radius:2px;overflow:hidden;flex-wrap:wrap;}
+.lt{flex:1;min-width:80px;padding:0.5rem 0.8rem;background:transparent;border:none;cursor:pointer;font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.1em;color:var(--muted);border-right:1px solid rgba(184,134,11,0.4);transition:all 0.2s;}
 .lt:last-child{border-right:none;}
 .lt.on{background:var(--gold);color:var(--parchment);}
 .lt.pt-tab{border-color:rgba(139,58,26,0.5);color:var(--rust);}
@@ -57,18 +608,6 @@ h1{font-family:'Cinzel',serif;font-size:clamp(1.5rem,4vw,2.4rem);letter-spacing:
 .hint{text-align:center;font-family:'IM Fell English',serif;font-style:italic;font-size:0.8rem;color:var(--muted);margin-top:1rem;}
 .spk-ind{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--parchment);animation:pulse 0.6s ease-in-out infinite alternate;}
 @keyframes pulse{to{transform:scale(1.5);opacity:0.6;}}
-.w{cursor:pointer;border-bottom:1.5px dotted var(--gold);transition:color 0.15s;}
-.w:hover,.w.on{color:var(--rust);border-bottom-color:var(--rust);}
-#pop{display:none;position:fixed;z-index:9999;background:var(--paper);border:1px solid rgba(184,134,11,0.5);box-shadow:0 4px 18px rgba(26,18,8,0.18);padding:1rem 1.1rem 0.9rem;max-width:280px;min-width:200px;border-radius:2px;}
-#pop.on{display:block;}
-#pop .pw{font-family:'Cinzel',serif;font-size:1rem;font-weight:600;}
-#pop .pl{font-family:'IM Fell English',serif;font-style:italic;font-size:0.82rem;color:var(--muted);margin-bottom:0.45rem;}
-#pop .row{font-family:'Cormorant Garamond',serif;font-size:0.9rem;margin-bottom:0.22rem;line-height:1.4;}
-#pop .lbl{font-family:'Cinzel',serif;font-size:0.54rem;letter-spacing:0.12em;color:var(--gold);text-transform:uppercase;display:block;margin-bottom:0.06rem;}
-#pop .reg{display:inline-block;margin-top:0.35rem;padding:0.1rem 0.4rem;border:1px solid var(--rust);color:var(--rust);font-family:'Cinzel',serif;font-size:0.54rem;letter-spacing:0.1em;}
-#pop .spkbtn{display:flex;align-items:center;gap:0.3rem;margin-top:0.6rem;width:100%;background:transparent;border:1px solid rgba(139,58,26,0.4);color:var(--rust);padding:0.28rem;font-family:'Cormorant Garamond',serif;font-size:0.85rem;cursor:pointer;justify-content:center;border-radius:1px;}
-#pop .spkbtn:hover{background:rgba(139,58,26,0.06);}
-#pcls{position:absolute;top:0.3rem;right:0.4rem;background:none;border:none;cursor:pointer;color:var(--muted);font-size:0.9rem;}
 .idiom-block{border-bottom:1px solid rgba(184,134,11,0.15);padding:1.2rem 0;}
 .idiom-block:last-child{border-bottom:none;}
 .idiom-nl{font-family:'IM Fell English',serif;font-size:1.12rem;color:var(--ink);margin-bottom:0.5rem;}
@@ -79,39 +618,40 @@ h1{font-family:'Cinzel',serif;font-size:clamp(1.5rem,4vw,2.4rem);letter-spacing:
 .iabtn{display:flex;align-items:center;gap:0.35rem;background:transparent;border:1px solid rgba(139,58,26,0.35);color:var(--rust);padding:0.28rem 0.75rem;font-family:'Cormorant Garamond',serif;font-size:0.85rem;cursor:pointer;border-radius:1px;transition:all 0.2s;}
 .iabtn:hover{background:rgba(139,58,26,0.06);}
 .iabtn.playing{background:var(--rust);color:var(--parchment);}
-
-/* ===== PORTUGUESE GRAMMAR PANEL ===== */
+#pop{display:none;position:fixed;z-index:9999;background:var(--paper);border:1px solid rgba(184,134,11,0.5);box-shadow:0 4px 18px rgba(26,18,8,0.18);padding:1rem 1.1rem 0.9rem;max-width:280px;min-width:200px;border-radius:2px;}
+#pop.on{display:block;}
+#pop .pw{font-family:'Cinzel',serif;font-size:1rem;font-weight:600;}
+#pop .pl{font-family:'IM Fell English',serif;font-style:italic;font-size:0.82rem;color:var(--muted);margin-bottom:0.45rem;}
+#pop .row{font-family:'Cormorant Garamond',serif;font-size:0.9rem;margin-bottom:0.22rem;line-height:1.4;}
+#pop .lbl{font-family:'Cinzel',serif;font-size:0.54rem;letter-spacing:0.12em;color:var(--gold);text-transform:uppercase;display:block;margin-bottom:0.06rem;}
+#pop .reg{display:inline-block;margin-top:0.35rem;padding:0.1rem 0.4rem;border:1px solid var(--rust);color:var(--rust);font-family:'Cinzel',serif;font-size:0.54rem;letter-spacing:0.1em;}
+#pop .spkbtn{display:flex;align-items:center;gap:0.3rem;margin-top:0.6rem;width:100%;background:transparent;border:1px solid rgba(139,58,26,0.4);color:var(--rust);padding:0.28rem;font-family:'Cormorant Garamond',serif;font-size:0.85rem;cursor:pointer;justify-content:center;border-radius:1px;}
+#pop .spkbtn:hover{background:rgba(139,58,26,0.06);}
+#pcls{position:absolute;top:0.3rem;right:0.4rem;background:none;border:none;cursor:pointer;color:var(--muted);font-size:0.9rem;}
+/* Grammar panel */
 #pt-grammar-panel{display:none;max-width:860px;margin:2rem auto;padding:0 1rem;}
 #pt-grammar-panel.visible{display:block;}
-
 .pt-panel-inner{background:var(--paper);border:1px solid rgba(184,134,11,0.25);box-shadow:0 2px 8px rgba(26,18,8,0.06);padding:2rem 2.5rem;position:relative;}
 .pt-panel-inner::before{content:'';position:absolute;inset:5px;border:1px solid rgba(184,134,11,0.1);pointer-events:none;}
-
 .pt-nav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1.8rem;}
 .pt-nav button{font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.12em;padding:0.35rem 0.9rem;border-radius:1px;border:1px solid rgba(139,58,26,0.35);background:transparent;color:var(--rust);cursor:pointer;transition:all 0.15s;}
 .pt-nav button:hover,.pt-nav button.pt-active{background:var(--parchment-deep);border-color:var(--rust);color:var(--ink);}
-
 .pt-section{display:none;}
 .pt-section.pt-visible{display:block;}
-
 .pt-h2{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:400;color:var(--ink);margin-bottom:0.9rem;margin-top:1.8rem;border-bottom:1px solid rgba(184,134,11,0.2);padding-bottom:0.4rem;}
 .pt-h2:first-child{margin-top:0;}
 .pt-h3{font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:0.14em;color:var(--rust);margin:1.4rem 0 0.5rem;text-transform:uppercase;}
 .pt-p{font-family:'Cormorant Garamond',serif;font-size:1rem;line-height:1.75;color:var(--ink);margin-bottom:0.7rem;}
-
 .pt-rule{background:var(--parchment-deep);border-left:2.5px solid var(--gold);padding:0.65rem 1rem;margin-bottom:0.7rem;font-family:'IM Fell English',serif;font-style:italic;font-size:0.97rem;line-height:1.6;border-radius:0 1px 1px 0;}
-
 .pt-table{width:100%;border-collapse:collapse;font-family:'Cormorant Garamond',serif;font-size:0.9rem;margin:0.8rem 0 1.4rem;}
 .pt-table th{text-align:left;padding:5px 9px;font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.15em;color:var(--gold);border-bottom:1px solid rgba(184,134,11,0.3);font-weight:400;}
 .pt-table td{padding:4px 9px;border-bottom:1px solid rgba(184,134,11,0.1);vertical-align:top;}
 .pt-table tr:last-child td{border-bottom:none;}
 .pt-table em{color:var(--rust);font-style:italic;}
-
 .pt-trig-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin:0.8rem 0;}
 .pt-trig{background:var(--parchment-deep);border-radius:1px;padding:0.55rem 0.85rem;font-family:'Cormorant Garamond',serif;font-size:0.9rem;}
 .pt-trig .tpt{font-style:italic;font-weight:600;color:var(--ink);}
 .pt-trig .ten{font-size:0.82rem;color:var(--muted);margin-top:1px;}
-
 .pt-example{border:1px solid rgba(184,134,11,0.2);border-radius:1px;overflow:hidden;margin-bottom:1rem;}
 .pt-ex-header{background:var(--parchment-deep);padding:0.4rem 0.9rem;font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.18em;color:var(--gold);}
 .pt-ex-body{padding:0.8rem 0.9rem;}
@@ -122,7 +662,6 @@ h1{font-family:'Cinzel',serif;font-size:clamp(1.5rem,4vw,2.4rem);letter-spacing:
 .tag-el{background:#B5D4F4;color:#042C53;}
 .tag-fr{background:#F5C4B3;color:#4A1B0C;}
 .tag-es{background:#C0DD97;color:#173404;}
-
 .pt-ex-num{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--parchment-deep);font-family:'Cinzel',serif;font-size:0.62rem;font-weight:600;color:var(--muted);flex-shrink:0;margin-right:8px;}
 .pt-exercise{display:flex;align-items:flex-start;padding:0.9rem 0;border-bottom:1px solid rgba(184,134,11,0.12);}
 .pt-exercise:last-child{border-bottom:none;}
@@ -131,10 +670,8 @@ h1{font-family:'Cinzel',serif;font-size:clamp(1.5rem,4vw,2.4rem);letter-spacing:
 .pt-blank{display:inline-block;border-bottom:1.5px solid var(--ink);min-width:70px;height:1.2em;vertical-align:bottom;}
 .pt-irr{display:inline-block;margin-left:5px;padding:1px 5px;border:1px solid rgba(139,58,26,0.5);color:var(--rust);font-family:'Cinzel',serif;font-size:0.5rem;letter-spacing:0.1em;border-radius:1px;font-style:normal;}
 .pt-translations{margin-top:6px;}
-
 .pt-answers-btn{display:block;width:100%;padding:0.8rem;margin-top:1.8rem;border:1px solid rgba(139,58,26,0.4);background:transparent;color:var(--rust);font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.15em;cursor:pointer;transition:background 0.15s;border-radius:1px;}
 .pt-answers-btn:hover{background:var(--parchment-deep);}
-
 .pt-answers-section{display:none;margin-top:1.5rem;background:var(--parchment-deep);border:1px solid rgba(184,134,11,0.2);padding:1.2rem 1.4rem;border-radius:1px;}
 .pt-answers-section.visible{display:block;}
 .pt-answer-row{display:grid;grid-template-columns:26px 1fr;gap:6px;padding:4px 0;border-bottom:1px solid rgba(184,134,11,0.12);font-family:'Cormorant Garamond',serif;font-size:0.88rem;align-items:baseline;}
@@ -142,22 +679,22 @@ h1{font-family:'Cinzel',serif;font-size:clamp(1.5rem,4vw,2.4rem);letter-spacing:
 .pt-ans-num{font-family:'Cinzel',serif;font-size:0.62rem;color:var(--muted);text-align:right;}
 .pt-ans-val{font-style:italic;}
 .pt-ans-inf{font-size:0.78rem;color:var(--muted);margin-left:5px;font-style:normal;}
-
 .pt-note{background:var(--parchment-deep);border-left:2px solid rgba(184,134,11,0.4);padding:0.6rem 0.9rem;font-family:'Cormorant Garamond',serif;font-size:0.9rem;line-height:1.6;margin:0.8rem 0;color:var(--muted);}
-@media(max-width:560px){.pt-panel-inner{padding:1.4rem 1.1rem;}.pt-trig-grid{grid-template-columns:1fr 1fr;}}
 </style>
 </head>
 <body>
+
 <header>
-<h1>Gedichten</h1>
-<p class="sub">German &amp; Dutch Poetry with Translations</p>
-<p class="orn">✦ ✦ ✦</p>
-<div class="lang-tabs">
-  <button class="lt on" onclick="setLang('de')">Deutsch</button>
-  <button class="lt" onclick="setLang('nl')">Nederlands</button>
-  <button class="lt pt-tab" onclick="showPtGrammar()">Português Grammar</button>
-</div>
+  <h1>Gedichten</h1>
+  <p class="sub">German &amp; Dutch Poetry with Translations</p>
+  <p class="orn">✦ ✦ ✦</p>
+  <div class="lang-tabs">
+    <button class="lt on" onclick="setLang('de')">Deutsch</button>
+    <button class="lt" onclick="setLang('nl')">Nederlands</button>
+    <button class="lt pt-tab" onclick="showPtGrammar()">Português</button>
+  </div>
 </header>
+
 <div id="pnav"></div>
 <div class="card" id="main-card"><div class="ci" id="card"></div></div>
 
@@ -168,7 +705,6 @@ h1{font-family:'Cinzel',serif;font-size:clamp(1.5rem,4vw,2.4rem);letter-spacing:
   <div class="pauthor">A complete reference · Dutch · Greek · French · Spanish</div>
   <div style="text-align:center;margin-top:0.5rem;"><span class="badge">GRAMÁTICA</span></div>
   <div class="divider">✦</div>
-
   <div class="pt-nav">
     <button class="pt-active" onclick="ptShow('pt-formation',this)">1 · Formation</button>
     <button onclick="ptShow('pt-usage',this)">2 · When to use</button>
@@ -176,600 +712,158 @@ h1{font-family:'Cinzel',serif;font-size:clamp(1.5rem,4vw,2.4rem);letter-spacing:
     <button onclick="ptShow('pt-examples',this)">4 · Examples</button>
     <button onclick="ptShow('pt-exercises',this)">5 · Exercises</button>
   </div>
-
-  <!-- SECTION 1 -->
   <div id="pt-formation" class="pt-section pt-visible">
-    <div class="pt-h2">Forming the subjunctive (presente do subjuntivo)</div>
-    <p class="pt-p">The present subjunctive in Brazilian Portuguese is built from the <strong>first-person singular</strong> (eu) of the present indicative. Drop the <em>-o</em> and add the subjunctive endings — this rule covers the vast majority of verbs, including many that are irregular in the indicative.</p>
-    <div class="pt-rule">The golden rule: take the <em>eu</em> form of the presente do indicativo → remove the final -o → add the subjunctive endings.</div>
-
-    <div class="pt-h3">Endings by conjugation class</div>
+    <div class="pt-h2">Forming the subjunctive</div>
+    <p class="pt-p">Take the <em>eu</em> form of the present indicative, drop the final <strong>-o</strong>, and add the subjunctive endings.</p>
+    <div class="pt-rule">Golden rule: eu form → remove -o → add subjunctive ending.</div>
+    <div class="pt-h3">Endings by verb class</div>
     <table class="pt-table">
-      <thead><tr><th>Person</th><th>-AR verbs (fale-)</th><th>-ER verbs (coma-)</th><th>-IR verbs (parta-)</th></tr></thead>
+      <thead><tr><th>Person</th><th>-AR (fale-)</th><th>-ER (coma-)</th><th>-IR (parta-)</th></tr></thead>
       <tbody>
-        <tr><td>eu</td><td><em>fale</em></td><td><em>coma</em></td><td><em>parta</em></td></tr>
-        <tr><td>você / ele / ela</td><td><em>fale</em></td><td><em>coma</em></td><td><em>parta</em></td></tr>
+        <tr><td>eu / você / ele</td><td><em>fale</em></td><td><em>coma</em></td><td><em>parta</em></td></tr>
         <tr><td>a gente</td><td><em>fale</em></td><td><em>coma</em></td><td><em>parta</em></td></tr>
         <tr><td>nós</td><td><em>falemos</em></td><td><em>comamos</em></td><td><em>partamos</em></td></tr>
-        <tr><td>vocês / eles / elas</td><td><em>falem</em></td><td><em>comam</em></td><td><em>partam</em></td></tr>
+        <tr><td>vocês / eles</td><td><em>falem</em></td><td><em>comam</em></td><td><em>partam</em></td></tr>
       </tbody>
     </table>
-    <div class="pt-note">In spoken Brazilian Portuguese, <em>a gente</em> (we) is used far more than <em>nós</em>, and always takes the 3rd-person singular subjunctive form.</div>
-
-    <div class="pt-h3">Step-by-step: falar</div>
+    <div class="pt-h3">Imperfect subjunctive</div>
+    <p class="pt-p">Take the <em>eles</em> preterite form, remove <em>-ram</em>, add: <em>-sse, -sse, -ssemos, -ssem</em>.</p>
     <table class="pt-table">
+      <thead><tr><th>Verb</th><th>Eles preterite</th><th>eu/você</th><th>nós</th><th>vocês</th></tr></thead>
       <tbody>
-        <tr><td>Indicative eu</td><td><em>eu falo</em></td></tr>
-        <tr><td>Remove -o → stem</td><td><em>fal-</em></td></tr>
-        <tr><td>Add endings</td><td><em>fale, falem…</em></td></tr>
-      </tbody>
-    </table>
-
-    <div class="pt-h3">Step-by-step: fazer (irregular eu form)</div>
-    <table class="pt-table">
-      <tbody>
-        <tr><td>Indicative eu (irregular!)</td><td><em>eu faço</em></td></tr>
-        <tr><td>Remove -o → stem</td><td><em>faç-</em></td></tr>
-        <tr><td>Subjunctive forms</td><td><em>faça, façam…</em></td></tr>
-      </tbody>
-    </table>
-
-    <div class="pt-h3">Imperfect subjunctive (imperfeito do subjuntivo)</div>
-    <p class="pt-p">Formed from the 3rd-person plural preterite (eles form). Remove <em>-ram</em>, add: <em>-sse, -sse, -sse, -ssemos, -ssem</em>.</p>
-    <table class="pt-table">
-      <thead><tr><th>Verb</th><th>Eles preterite</th><th>Stem</th><th>Imperfect subj. (eu / você / nós / vocês)</th></tr></thead>
-      <tbody>
-        <tr><td><em>falar</em></td><td>falaram</td><td>fala-</td><td><em>falasse / falasse / falássemos / falassem</em></td></tr>
-        <tr><td><em>comer</em></td><td>comeram</td><td>come-</td><td><em>comesse / comesse / comêssemos / comessem</em></td></tr>
-        <tr><td><em>ser/ir</em></td><td>foram</td><td>fo-</td><td><em>fosse / fosse / fôssemos / fossem</em></td></tr>
-        <tr><td><em>ter</em></td><td>tiveram</td><td>tive-</td><td><em>tivesse / tivesse / tivéssemos / tivessem</em></td></tr>
+        <tr><td><em>falar</em></td><td>falaram</td><td><em>falasse</em></td><td><em>falássemos</em></td><td><em>falassem</em></td></tr>
+        <tr><td><em>ser/ir</em></td><td>foram</td><td><em>fosse</em></td><td><em>fôssemos</em></td><td><em>fossem</em></td></tr>
+        <tr><td><em>ter</em></td><td>tiveram</td><td><em>tivesse</em></td><td><em>tivéssemos</em></td><td><em>tivessem</em></td></tr>
       </tbody>
     </table>
   </div>
-
-  <!-- SECTION 2 -->
   <div id="pt-usage" class="pt-section">
     <div class="pt-h2">When to use the subjunctive</div>
-    <div class="pt-h3">1. Wishes, desires, hopes</div>
-    <p class="pt-p">After verbs of wanting, wishing, hoping — when the subject changes between clauses.</p>
+    <div class="pt-h3">1. Wishes &amp; desires</div>
     <div class="pt-rule">Quero <em>que você venha</em> cedo. — I want you to come early.</div>
-    <div class="pt-h3">2. Emotions and feelings</div>
-    <p class="pt-p">After expressions of joy, sadness, fear, surprise.</p>
+    <div class="pt-h3">2. Emotions</div>
     <div class="pt-rule">Fico feliz <em>que você esteja</em> bem. — I'm glad you're doing well.</div>
-    <div class="pt-h3">3. Doubt and uncertainty</div>
+    <div class="pt-h3">3. Doubt &amp; uncertainty</div>
     <div class="pt-rule">Duvido <em>que ele saiba</em> a resposta. — I doubt he knows the answer.</div>
     <div class="pt-h3">4. Impersonal expressions</div>
     <div class="pt-rule">É importante <em>que a gente pratique</em> todo dia. — It's important that we practice every day.</div>
-    <div class="pt-h3">5. Conjunctions that always trigger the subjunctive</div>
+    <div class="pt-h3">5. Conjunctions that always trigger subjunctive</div>
     <div class="pt-trig-grid">
-      <div class="pt-trig"><div class="tpt">para que</div><div class="ten">so that / in order that</div></div>
+      <div class="pt-trig"><div class="tpt">para que</div><div class="ten">so that</div></div>
       <div class="pt-trig"><div class="tpt">embora / mesmo que</div><div class="ten">although / even though</div></div>
       <div class="pt-trig"><div class="tpt">antes que</div><div class="ten">before</div></div>
       <div class="pt-trig"><div class="tpt">a menos que</div><div class="ten">unless</div></div>
       <div class="pt-trig"><div class="tpt">caso</div><div class="ten">in case / if (hypothetical)</div></div>
-      <div class="pt-trig"><div class="tpt">desde que</div><div class="ten">as long as / provided that</div></div>
+      <div class="pt-trig"><div class="tpt">desde que</div><div class="ten">as long as</div></div>
       <div class="pt-trig"><div class="tpt">sem que</div><div class="ten">without (someone doing)</div></div>
       <div class="pt-trig"><div class="tpt">por mais que</div><div class="ten">no matter how much</div></div>
       <div class="pt-trig"><div class="tpt">até que</div><div class="ten">until</div></div>
       <div class="pt-trig"><div class="tpt">contanto que</div><div class="ten">provided that</div></div>
     </div>
-    <div class="pt-h3">6. Future time clauses with quando, se, assim que</div>
-    <div class="pt-rule">Quando <em>você chegar</em>, me liga. — When you arrive, call me.<br>Se <em>ele vier</em> amanhã, a gente conversa. — If he comes tomorrow, we'll talk.</div>
+    <div class="pt-h3">6. Future time clauses</div>
+    <div class="pt-rule">Quando <em>você chegar</em>, me liga. — When you arrive, call me.</div>
     <div class="pt-h3">7. Hypothetical conditions (imperfect subjunctive)</div>
     <div class="pt-rule">Se eu <em>tivesse</em> dinheiro, compraria uma casa. — If I had money, I'd buy a house.</div>
-    <div class="pt-h3">8. Indirect 3rd-person commands</div>
+    <div class="pt-h3">8. Indirect commands</div>
     <div class="pt-rule">Que <em>ele entre</em>! — Let him come in!</div>
-    <div class="pt-note">After <em>talvez</em> (perhaps/maybe), the subjunctive is standard, though in very informal speech some Brazilians use the indicative.</div>
   </div>
-
-  <!-- SECTION 3 -->
   <div id="pt-irregular" class="pt-section">
-    <div class="pt-h2">Key irregular verbs in the subjunctive</div>
-    <p class="pt-p">Verbs irregular in the <em>eu</em> present indicative carry that irregularity straight into the subjunctive stem.</p>
+    <div class="pt-h2">Key irregular verbs</div>
     <table class="pt-table">
-      <thead><tr><th>Infinitive</th><th>Ind. eu</th><th>eu / você</th><th>nós</th><th>vocês</th></tr></thead>
+      <thead><tr><th>Infinitive</th><th>Ind. eu</th><th>eu/você</th><th>nós</th><th>vocês</th></tr></thead>
       <tbody>
         <tr><td><em>ser</em></td><td>—</td><td><em>seja</em></td><td><em>sejamos</em></td><td><em>sejam</em></td></tr>
         <tr><td><em>estar</em></td><td>—</td><td><em>esteja</em></td><td><em>estejamos</em></td><td><em>estejam</em></td></tr>
-        <tr><td><em>ter</em></td><td>eu tenho</td><td><em>tenha</em></td><td><em>tenhamos</em></td><td><em>tenham</em></td></tr>
+        <tr><td><em>ter</em></td><td>tenho</td><td><em>tenha</em></td><td><em>tenhamos</em></td><td><em>tenham</em></td></tr>
         <tr><td><em>ir</em></td><td>—</td><td><em>vá</em></td><td><em>vamos</em></td><td><em>vão</em></td></tr>
-        <tr><td><em>fazer</em></td><td>eu faço</td><td><em>faça</em></td><td><em>façamos</em></td><td><em>façam</em></td></tr>
-        <tr><td><em>poder</em></td><td>eu posso</td><td><em>possa</em></td><td><em>possamos</em></td><td><em>possam</em></td></tr>
-        <tr><td><em>saber</em></td><td>eu sei</td><td><em>saiba</em></td><td><em>saibamos</em></td><td><em>saibam</em></td></tr>
-        <tr><td><em>querer</em></td><td>eu quero</td><td><em>queira</em></td><td><em>queiramos</em></td><td><em>queiram</em></td></tr>
-        <tr><td><em>vir</em></td><td>eu venho</td><td><em>venha</em></td><td><em>venhamos</em></td><td><em>venham</em></td></tr>
-        <tr><td><em>ver</em></td><td>eu vejo</td><td><em>veja</em></td><td><em>vejamos</em></td><td><em>vejam</em></td></tr>
-        <tr><td><em>pôr</em></td><td>eu ponho</td><td><em>ponha</em></td><td><em>ponhamos</em></td><td><em>ponham</em></td></tr>
+        <tr><td><em>fazer</em></td><td>faço</td><td><em>faça</em></td><td><em>façamos</em></td><td><em>façam</em></td></tr>
+        <tr><td><em>poder</em></td><td>posso</td><td><em>possa</em></td><td><em>possamos</em></td><td><em>possam</em></td></tr>
+        <tr><td><em>saber</em></td><td>sei</td><td><em>saiba</em></td><td><em>saibamos</em></td><td><em>saibam</em></td></tr>
+        <tr><td><em>vir</em></td><td>venho</td><td><em>venha</em></td><td><em>venhamos</em></td><td><em>venham</em></td></tr>
+        <tr><td><em>ver</em></td><td>vejo</td><td><em>veja</em></td><td><em>vejamos</em></td><td><em>vejam</em></td></tr>
         <tr><td><em>dar</em></td><td>—</td><td><em>dê</em></td><td><em>demos</em></td><td><em>dêem</em></td></tr>
-        <tr><td><em>dizer</em></td><td>eu digo</td><td><em>diga</em></td><td><em>digamos</em></td><td><em>digam</em></td></tr>
-        <tr><td><em>trazer</em></td><td>eu trago</td><td><em>traga</em></td><td><em>tragamos</em></td><td><em>tragam</em></td></tr>
-        <tr><td><em>ouvir</em></td><td>eu ouço</td><td><em>ouça</em></td><td><em>ouçamos</em></td><td><em>ouçam</em></td></tr>
-        <tr><td><em>pedir</em></td><td>eu peço</td><td><em>peça</em></td><td><em>peçamos</em></td><td><em>peçam</em></td></tr>
-        <tr><td><em>perder</em></td><td>eu perco</td><td><em>perca</em></td><td><em>percamos</em></td><td><em>percam</em></td></tr>
-      </tbody>
-    </table>
-    <div class="pt-h3">Stem-changing -ir verbs</div>
-    <table class="pt-table">
-      <thead><tr><th>Verb</th><th>eu / você</th><th>nós</th><th>vocês</th></tr></thead>
-      <tbody>
-        <tr><td><em>servir</em></td><td><em>sirva</em></td><td><em>sirvamos</em></td><td><em>sirvam</em></td></tr>
-        <tr><td><em>preferir</em></td><td><em>prefira</em></td><td><em>prefiramos</em></td><td><em>prefiram</em></td></tr>
-        <tr><td><em>sentir</em></td><td><em>sinta</em></td><td><em>sintamos</em></td><td><em>sintam</em></td></tr>
-        <tr><td><em>mentir</em></td><td><em>minta</em></td><td><em>mintamos</em></td><td><em>mintam</em></td></tr>
+        <tr><td><em>dizer</em></td><td>digo</td><td><em>diga</em></td><td><em>digamos</em></td><td><em>digam</em></td></tr>
+        <tr><td><em>trazer</em></td><td>trago</td><td><em>traga</em></td><td><em>tragamos</em></td><td><em>tragam</em></td></tr>
+        <tr><td><em>pedir</em></td><td>peço</td><td><em>peça</em></td><td><em>peçamos</em></td><td><em>peçam</em></td></tr>
+        <tr><td><em>querer</em></td><td>quero</td><td><em>queira</em></td><td><em>queiramos</em></td><td><em>queiram</em></td></tr>
       </tbody>
     </table>
   </div>
-
-  <!-- SECTION 4 -->
   <div id="pt-examples" class="pt-section">
-    <div class="pt-h2">Example sentences with full translations</div>
-    <p class="pt-p">Each sentence is in Brazilian Portuguese with the subjunctive verb in italics, followed by Dutch, Greek, French, and Spanish translations.</p>
-
-    <div class="pt-example">
-      <div class="pt-ex-header">WISHES &amp; DESIRE</div>
-      <div class="pt-ex-body">
-        <div class="pt-ex-pt">Quero que você <em>venha</em> me visitar logo.</div>
-        <div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Ik wil dat je me snel komt bezoeken.</span></div>
-        <div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Θέλω να έρθεις να με επισκεφτείς σύντομα.</span></div>
-        <div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>Je veux que tu viennes me rendre visite bientôt.</span></div>
-        <div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>Quiero que vengas a visitarme pronto.</span></div>
-      </div>
-    </div>
-
-    <div class="pt-example">
-      <div class="pt-ex-header">WISHES &amp; DESIRE</div>
-      <div class="pt-ex-body">
-        <div class="pt-ex-pt">Espero que ele <em>passe</em> na prova.</div>
-        <div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Ik hoop dat hij voor het examen slaagt.</span></div>
-        <div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Ελπίζω να περάσει στις εξετάσεις.</span></div>
-        <div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>J'espère qu'il réussisse à l'examen.</span></div>
-        <div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>Espero que él pase el examen.</span></div>
-      </div>
-    </div>
-
-    <div class="pt-example">
-      <div class="pt-ex-header">EMOTION</div>
-      <div class="pt-ex-body">
-        <div class="pt-ex-pt">Fico feliz que você <em>esteja</em> aqui.</div>
-        <div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Ik ben blij dat je hier bent.</span></div>
-        <div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Χαίρομαι που είσαι εδώ.</span></div>
-        <div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>Je suis content(e) que tu sois ici.</span></div>
-        <div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>Me alegra que estés aquí.</span></div>
-      </div>
-    </div>
-
-    <div class="pt-example">
-      <div class="pt-ex-header">DOUBT &amp; UNCERTAINTY</div>
-      <div class="pt-ex-body">
-        <div class="pt-ex-pt">Duvido que eles <em>saibam</em> a verdade.</div>
-        <div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Ik betwijfel of zij de waarheid weten.</span></div>
-        <div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Αμφιβάλλω αν ξέρουν την αλήθεια.</span></div>
-        <div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>Je doute qu'ils sachent la vérité.</span></div>
-        <div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>Dudo que ellos sepan la verdad.</span></div>
-      </div>
-    </div>
-
-    <div class="pt-example">
-      <div class="pt-ex-header">IMPERSONAL EXPRESSION</div>
-      <div class="pt-ex-body">
-        <div class="pt-ex-pt">É importante que a gente <em>faça</em> exercício todo dia.</div>
-        <div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Het is belangrijk dat we elke dag sporten.</span></div>
-        <div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Είναι σημαντικό να γυμναζόμαστε κάθε μέρα.</span></div>
-        <div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>Il est important que nous fassions de l'exercice chaque jour.</span></div>
-        <div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>Es importante que hagamos ejercicio todos los días.</span></div>
-      </div>
-    </div>
-
-    <div class="pt-example">
-      <div class="pt-ex-header">CONJUNCTION: PARA QUE</div>
-      <div class="pt-ex-body">
-        <div class="pt-ex-pt">Falo devagar para que você <em>entenda</em>.</div>
-        <div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Ik spreek langzaam zodat je het begrijpt.</span></div>
-        <div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Μιλώ αργά για να καταλαβαίνεις.</span></div>
-        <div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>Je parle lentement pour que tu comprennes.</span></div>
-        <div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>Hablo despacio para que entiendas.</span></div>
-      </div>
-    </div>
-
-    <div class="pt-example">
-      <div class="pt-ex-header">CONJUNCTION: EMBORA</div>
-      <div class="pt-ex-body">
-        <div class="pt-ex-pt">Embora <em>esteja</em> cansado, ele continua trabalhando.</div>
-        <div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Hoewel hij moe is, blijft hij werken.</span></div>
-        <div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Αν και είναι κουρασμένος, συνεχίζει να εργάζεται.</span></div>
-        <div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>Bien qu'il soit fatigué, il continue à travailler.</span></div>
-        <div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>Aunque esté cansado, sigue trabajando.</span></div>
-      </div>
-    </div>
-
-    <div class="pt-example">
-      <div class="pt-ex-header">CONJUNCTION: QUANDO (FUTURE)</div>
-      <div class="pt-ex-body">
-        <div class="pt-ex-pt">Quando você <em>chegar</em> em casa, me manda mensagem.</div>
-        <div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Stuur me een berichtje als je thuis aankomt.</span></div>
-        <div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Όταν φτάσεις σπίτι, στείλε μου μήνυμα.</span></div>
-        <div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>Quand tu arriveras chez toi, envoie-moi un message.</span></div>
-        <div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>Cuando llegues a casa, mándame un mensaje.</span></div>
-      </div>
-    </div>
-
-    <div class="pt-example">
-      <div class="pt-ex-header">HYPOTHETICAL (IMPERFECT SUBJUNCTIVE)</div>
-      <div class="pt-ex-body">
-        <div class="pt-ex-pt">Se eu <em>soubesse</em> a resposta, te falava.</div>
-        <div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Als ik het antwoord wist, zou ik het je vertellen.</span></div>
-        <div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Αν ήξερα την απάντηση, θα σου έλεγα.</span></div>
-        <div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>Si je savais la réponse, je te le dirais.</span></div>
-        <div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>Si supiera la respuesta, te lo diría.</span></div>
-      </div>
-    </div>
-
-    <div class="pt-example">
-      <div class="pt-ex-header">TALVEZ (PERHAPS)</div>
-      <div class="pt-ex-body">
-        <div class="pt-ex-pt">Talvez ela <em>venha</em> amanhã.</div>
-        <div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Misschien komt ze morgen.</span></div>
-        <div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Ίσως έρθει αύριο.</span></div>
-        <div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>Peut-être qu'elle viendra demain.</span></div>
-        <div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>Quizás ella venga mañana.</span></div>
-      </div>
-    </div>
+    <div class="pt-h2">Examples with translations</div>
+    <div class="pt-example"><div class="pt-ex-header">WISHES</div><div class="pt-ex-body">
+      <div class="pt-ex-pt">Quero que você <em>venha</em> me visitar logo.</div>
+      <div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Ik wil dat je me snel komt bezoeken.</span></div>
+      <div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Θέλω να έρθεις να με επισκεφτείς σύντομα.</span></div>
+      <div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>Je veux que tu viennes me rendre visite bientôt.</span></div>
+      <div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>Quiero que vengas a visitarme pronto.</span></div>
+    </div></div>
+    <div class="pt-example"><div class="pt-ex-header">EMOTION</div><div class="pt-ex-body">
+      <div class="pt-ex-pt">Fico feliz que você <em>esteja</em> aqui.</div>
+      <div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Ik ben blij dat je hier bent.</span></div>
+      <div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Χαίρομαι που είσαι εδώ.</span></div>
+      <div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>Je suis content(e) que tu sois ici.</span></div>
+      <div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>Me alegra que estés aquí.</span></div>
+    </div></div>
+    <div class="pt-example"><div class="pt-ex-header">CONJUNCTION: EMBORA</div><div class="pt-ex-body">
+      <div class="pt-ex-pt">Embora <em>esteja</em> cansado, ele continua trabalhando.</div>
+      <div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Hoewel hij moe is, blijft hij werken.</span></div>
+      <div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Αν και είναι κουρασμένος, συνεχίζει να εργάζεται.</span></div>
+      <div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>Bien qu'il soit fatigué, il continue à travailler.</span></div>
+      <div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>Aunque esté cansado, sigue trabajando.</span></div>
+    </div></div>
+    <div class="pt-example"><div class="pt-ex-header">FUTURE: QUANDO</div><div class="pt-ex-body">
+      <div class="pt-ex-pt">Quando você <em>chegar</em> em casa, me manda mensagem.</div>
+      <div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Stuur me een berichtje als je thuis aankomt.</span></div>
+      <div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Όταν φτάσεις σπίτι, στείλε μου μήνυμα.</span></div>
+      <div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>Quand tu arriveras chez toi, envoie-moi un message.</span></div>
+      <div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>Cuando llegues a casa, mándame un mensaje.</span></div>
+    </div></div>
+    <div class="pt-example"><div class="pt-ex-header">HYPOTHETICAL (IMPERFECT)</div><div class="pt-ex-body">
+      <div class="pt-ex-pt">Se eu <em>soubesse</em> a resposta, te falava.</div>
+      <div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Als ik het antwoord wist, zou ik het je vertellen.</span></div>
+      <div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Αν ήξερα την απάντηση, θα σου έλεγα.</span></div>
+      <div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>Si je savais la réponse, je te le dirais.</span></div>
+      <div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>Si supiera la respuesta, te lo diría.</span></div>
+    </div></div>
   </div>
-
-  <!-- SECTION 5 -->
   <div id="pt-exercises" class="pt-section">
-    <div class="pt-h2">Exercises — fill in the blank (presente do subjuntivo)</div>
-    <p class="pt-p">Complete each sentence using the present subjunctive of the verb shown. Irregular verbs are marked. Each sentence is fully translated below it.</p>
-
+    <div class="pt-h2">Exercises — fill in the blank</div>
     <div id="pt-exercise-list">
-
-      <div class="pt-exercise"><span class="pt-ex-num">1</span><div class="pt-ex-content">
-        <div class="pt-sentence">Quero que você <span class="pt-blank"></span> mais água. <em>(beber)</em></div>
-        <div class="pt-translations">
-          <div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Ik wil dat je meer water drinkt.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Θέλω να πίνεις περισσότερο νερό.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>Je veux que tu boives plus d'eau.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>Quiero que bebas más agua.</span></div>
-        </div>
-      </div></div>
-
-      <div class="pt-exercise"><span class="pt-ex-num">2</span><div class="pt-ex-content">
-        <div class="pt-sentence">É importante que a gente <span class="pt-blank"></span> no horário. <em>(chegar)</em></div>
-        <div class="pt-translations">
-          <div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Het is belangrijk dat we op tijd aankomen.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Είναι σημαντικό να φτάνουμε στην ώρα μας.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>Il est important que nous arrivions à l'heure.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>Es importante que lleguemos a tiempo.</span></div>
-        </div>
-      </div></div>
-
-      <div class="pt-exercise"><span class="pt-ex-num">3</span><div class="pt-ex-content">
-        <div class="pt-sentence">Espero que ele <span class="pt-blank"></span> a verdade. <em>(dizer)</em> <span class="pt-irr">irreg</span></div>
-        <div class="pt-translations">
-          <div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Ik hoop dat hij de waarheid zegt.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Ελπίζω να πει την αλήθεια.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>J'espère qu'il dise la vérité.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>Espero que él diga la verdad.</span></div>
-        </div>
-      </div></div>
-
-      <div class="pt-exercise"><span class="pt-ex-num">4</span><div class="pt-ex-content">
-        <div class="pt-sentence">Falo baixo para que o bebê não <span class="pt-blank"></span>. <em>(acordar)</em></div>
-        <div class="pt-translations">
-          <div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Ik spreek zacht zodat de baby niet wakker wordt.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Μιλώ χαμηλά για να μην ξυπνήσει το μωρό.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>Je parle doucement pour que le bébé ne se réveille pas.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>Hablo bajo para que el bebé no se despierte.</span></div>
-        </div>
-      </div></div>
-
-      <div class="pt-exercise"><span class="pt-ex-num">5</span><div class="pt-ex-content">
-        <div class="pt-sentence">Embora ela <span class="pt-blank"></span> cansada, foi à festa. <em>(estar)</em> <span class="pt-irr">irreg</span></div>
-        <div class="pt-translations">
-          <div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Hoewel ze moe was, ging ze naar het feest.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Αν και ήταν κουρασμένη, πήγε στο πάρτι.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>Bien qu'elle soit fatiguée, elle est allée à la fête.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>Aunque estuviera cansada, fue a la fiesta.</span></div>
-        </div>
-      </div></div>
-
-      <div class="pt-exercise"><span class="pt-ex-num">6</span><div class="pt-ex-content">
-        <div class="pt-sentence">Quando você <span class="pt-blank"></span> pronto, me avisa. <em>(estar)</em> <span class="pt-irr">irreg</span></div>
-        <div class="pt-translations">
-          <div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Als je klaar bent, laat het me weten.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Όταν είσαι έτοιμος, ειδοποίησέ με.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>Quand tu seras prêt, préviens-moi.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>Cuando estés listo, avísame.</span></div>
-        </div>
-      </div></div>
-
-      <div class="pt-exercise"><span class="pt-ex-num">7</span><div class="pt-ex-content">
-        <div class="pt-sentence">Duvido que eles <span class="pt-blank"></span> a tempo. <em>(vir)</em> <span class="pt-irr">irreg</span></div>
-        <div class="pt-translations">
-          <div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Ik betwijfel of ze op tijd komen.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Αμφιβάλλω αν έρθουν εγκαίρως.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>Je doute qu'ils viennent à temps.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>Dudo que ellos vengan a tiempo.</span></div>
-        </div>
-      </div></div>
-
-      <div class="pt-exercise"><span class="pt-ex-num">8</span><div class="pt-ex-content">
-        <div class="pt-sentence">Caso você <span class="pt-blank"></span> com ele, diga oi da minha parte. <em>(falar)</em></div>
-        <div class="pt-translations">
-          <div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Mocht je met hem praten, zeg hem dan hoi van mij.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Αν μιλήσεις μαζί του, πες του γεια από μένα.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>Au cas où tu lui parlerais, dis-lui bonjour de ma part.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>En caso de que hables con él, dile hola de mi parte.</span></div>
-        </div>
-      </div></div>
-
-      <div class="pt-exercise"><span class="pt-ex-num">9</span><div class="pt-ex-content">
-        <div class="pt-sentence">É necessário que ela <span class="pt-blank"></span> o formulário hoje. <em>(trazer)</em> <span class="pt-irr">irreg</span></div>
-        <div class="pt-translations">
-          <div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Het is noodzakelijk dat ze het formulier vandaag meebrengt.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Είναι απαραίτητο να φέρει τη φόρμα σήμερα.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>Il est nécessaire qu'elle apporte le formulaire aujourd'hui.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>Es necesario que ella traiga el formulario hoy.</span></div>
-        </div>
-      </div></div>
-
-      <div class="pt-exercise"><span class="pt-ex-num">10</span><div class="pt-ex-content">
-        <div class="pt-sentence">Vou esperar até que você <span class="pt-blank"></span>. <em>(voltar)</em></div>
-        <div class="pt-translations">
-          <div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Ik wacht totdat je terug bent.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Θα περιμένω μέχρι να επιστρέψεις.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>J'attendrai jusqu'à ce que tu reviennes.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>Esperaré hasta que vuelvas.</span></div>
-        </div>
-      </div></div>
-
-      <div class="pt-exercise"><span class="pt-ex-num">11</span><div class="pt-ex-content">
-        <div class="pt-sentence">Talvez eles <span class="pt-blank"></span> de acordo. <em>(ser)</em> <span class="pt-irr">irreg</span></div>
-        <div class="pt-translations">
-          <div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Misschien zijn ze het eens.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Ίσως να συμφωνούν.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>Peut-être qu'ils soient d'accord.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>Quizás estén de acuerdo.</span></div>
-        </div>
-      </div></div>
-
-      <div class="pt-exercise"><span class="pt-ex-num">12</span><div class="pt-ex-content">
-        <div class="pt-sentence">A professora quer que os alunos <span class="pt-blank"></span> o livro. <em>(ler)</em></div>
-        <div class="pt-translations">
-          <div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>De lerares wil dat de leerlingen het boek lezen.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Η δασκάλα θέλει οι μαθητές να διαβάσουν το βιβλίο.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>La professeure veut que les élèves lisent le livre.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>La profesora quiere que los alumnos lean el libro.</span></div>
-        </div>
-      </div></div>
-
-      <div class="pt-exercise"><span class="pt-ex-num">13</span><div class="pt-ex-content">
-        <div class="pt-sentence">Não acredito que ele <span class="pt-blank"></span> fazer isso sozinho. <em>(poder)</em> <span class="pt-irr">irreg</span></div>
-        <div class="pt-translations">
-          <div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Ik geloof niet dat hij dit alleen kan doen.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Δεν πιστεύω να μπορεί να το κάνει μόνος του.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>Je ne crois pas qu'il puisse faire ça seul.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>No creo que él pueda hacer eso solo.</span></div>
-        </div>
-      </div></div>
-
-      <div class="pt-exercise"><span class="pt-ex-num">14</span><div class="pt-ex-content">
-        <div class="pt-sentence">Desde que você <span class="pt-blank"></span> honesto, tudo bem. <em>(ser)</em> <span class="pt-irr">irreg</span></div>
-        <div class="pt-translations">
-          <div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Zolang je eerlijk bent, is alles goed.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Αρκεί να είσαι ειλικρινής, όλα καλά.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>Tant que tu sois honnête, tout va bien.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>Con tal de que seas honesto, todo bien.</span></div>
-        </div>
-      </div></div>
-
-      <div class="pt-exercise"><span class="pt-ex-num">15</span><div class="pt-ex-content">
-        <div class="pt-sentence">É bom que vocês <span class="pt-blank"></span> os documentos com antecedência. <em>(preparar)</em></div>
-        <div class="pt-translations">
-          <div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Het is goed dat jullie de documenten van tevoren voorbereiden.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Είναι καλό να ετοιμάσετε τα έγγραφα εκ των προτέρων.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>C'est bien que vous prépariez les documents à l'avance.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>Es bueno que preparen los documentos con anticipación.</span></div>
-        </div>
-      </div></div>
-
-      <div class="pt-exercise"><span class="pt-ex-num">16</span><div class="pt-ex-content">
-        <div class="pt-sentence">Fico triste que você não <span class="pt-blank"></span> ficar mais. <em>(poder)</em> <span class="pt-irr">irreg</span></div>
-        <div class="pt-translations">
-          <div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Ik vind het jammer dat je niet langer kunt blijven.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Λυπάμαι που δεν μπορείς να μείνεις περισσότερο.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>Je suis triste que tu ne puisses pas rester plus longtemps.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>Me pone triste que no puedas quedarte más.</span></div>
-        </div>
-      </div></div>
-
-      <div class="pt-exercise"><span class="pt-ex-num">17</span><div class="pt-ex-content">
-        <div class="pt-sentence">Vou sair sem que ninguém me <span class="pt-blank"></span>. <em>(ver)</em> <span class="pt-irr">irreg</span></div>
-        <div class="pt-translations">
-          <div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Ik ga weg zonder dat iemand me ziet.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Θα φύγω χωρίς να με δει κανείς.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>Je partirai sans que personne ne me voie.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>Saldré sin que nadie me vea.</span></div>
-        </div>
-      </div></div>
-
-      <div class="pt-exercise"><span class="pt-ex-num">18</span><div class="pt-ex-content">
-        <div class="pt-sentence">Por mais que ele <span class="pt-blank"></span>, não consegue aprender. <em>(estudar)</em></div>
-        <div class="pt-translations">
-          <div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Hoe hard hij ook studeert, hij slaagt er niet in te leren.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Όσο κι αν σπουδάζει, δεν καταφέρνει να μάθει.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>Même s'il étudie beaucoup, il n'arrive pas à apprendre.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>Por mucho que estudie, no consigue aprender.</span></div>
-        </div>
-      </div></div>
-
-      <div class="pt-exercise"><span class="pt-ex-num">19</span><div class="pt-ex-content">
-        <div class="pt-sentence">Tomara que ela <span class="pt-blank"></span> o emprego! <em>(conseguir)</em></div>
-        <div class="pt-translations">
-          <div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Hopelijk krijgt ze de baan!</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Μακάρι να πάρει τη δουλειά!</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>Pourvu qu'elle obtienne le poste !</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>¡Ojalá que ella consiga el trabajo!</span></div>
-        </div>
-      </div></div>
-
-      <div class="pt-exercise"><span class="pt-ex-num">20</span><div class="pt-ex-content">
-        <div class="pt-sentence">Contanto que você <span class="pt-blank"></span> as regras, pode participar. <em>(seguir)</em></div>
-        <div class="pt-translations">
-          <div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Zolang je je aan de regels houdt, mag je meedoen.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Αρκεί να ακολουθείς τους κανόνες, μπορείς να συμμετέχεις.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>Pourvu que tu suives les règles, tu peux participer.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>Con tal de que sigas las reglas, puedes participar.</span></div>
-        </div>
-      </div></div>
-
-      <div class="pt-exercise"><span class="pt-ex-num">21</span><div class="pt-ex-content">
-        <div class="pt-sentence">Minha mãe quer que eu <span class="pt-blank"></span> medicina. <em>(fazer)</em> <span class="pt-irr">irreg</span></div>
-        <div class="pt-translations">
-          <div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Mijn moeder wil dat ik geneeskunde studeer.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Η μητέρα μου θέλει να σπουδάσω ιατρική.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>Ma mère veut que je fasse médecine.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>Mi madre quiere que yo estudie medicina.</span></div>
-        </div>
-      </div></div>
-
-      <div class="pt-exercise"><span class="pt-ex-num">22</span><div class="pt-ex-content">
-        <div class="pt-sentence">Assim que você <span class="pt-blank"></span> de trabalhar, me liga. <em>(sair)</em></div>
-        <div class="pt-translations">
-          <div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Zodra je klaar bent met werken, bel me.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Μόλις βγεις από τη δουλειά, τηλεφώνησέ μου.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>Dès que tu sortiras du travail, appelle-moi.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>En cuanto salgas del trabajo, llámame.</span></div>
-        </div>
-      </div></div>
-
-      <div class="pt-exercise"><span class="pt-ex-num">23</span><div class="pt-ex-content">
-        <div class="pt-sentence">É possível que ela <span class="pt-blank"></span> de cidade. <em>(mudar)</em></div>
-        <div class="pt-translations">
-          <div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Het is mogelijk dat ze van stad verandert.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Είναι πιθανό να αλλάξει πόλη.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>Il est possible qu'elle change de ville.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>Es posible que ella cambie de ciudad.</span></div>
-        </div>
-      </div></div>
-
-      <div class="pt-exercise"><span class="pt-ex-num">24</span><div class="pt-ex-content">
-        <div class="pt-sentence">Que eles <span class="pt-blank"></span>! <em>(ir — vocês command)</em> <span class="pt-irr">irreg</span></div>
-        <div class="pt-translations">
-          <div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Laten ze gaan!</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Ας πάνε!</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>Qu'ils y aillent !</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>¡Que vayan!</span></div>
-        </div>
-      </div></div>
-
-      <div class="pt-exercise"><span class="pt-ex-num">25</span><div class="pt-ex-content">
-        <div class="pt-sentence">O médico pediu que ela <span class="pt-blank"></span> repouso. <em>(fazer — imperfect subj.)</em> <span class="pt-irr">irreg</span></div>
-        <div class="pt-translations">
-          <div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>De dokter vroeg haar om rust te houden.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Ο γιατρός της ζήτησε να κάνει ανάπαυση.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>Le médecin lui a demandé qu'elle se repose.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>El médico le pidió que hiciera reposo.</span></div>
-        </div>
-      </div></div>
-
-      <div class="pt-exercise"><span class="pt-ex-num">26</span><div class="pt-ex-content">
-        <div class="pt-sentence">Não importa o que você <span class="pt-blank"></span>, vou te apoiar. <em>(decidir)</em></div>
-        <div class="pt-translations">
-          <div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Wat je ook beslist, ik zal je steunen.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Ό,τι κι αν αποφασίσεις, θα σε υποστηρίξω.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>Quoi que tu décides, je te soutiendrai.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>No importa lo que decidas, te voy a apoyar.</span></div>
-        </div>
-      </div></div>
-
-      <div class="pt-exercise"><span class="pt-ex-num">27</span><div class="pt-ex-content">
-        <div class="pt-sentence">Preciso que você me <span class="pt-blank"></span> uma informação. <em>(dar)</em> <span class="pt-irr">irreg</span></div>
-        <div class="pt-translations">
-          <div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Ik heb nodig dat je me een informatie geeft.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Χρειάζομαι να μου δώσεις μια πληροφορία.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>J'ai besoin que tu me donnes une information.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>Necesito que me des una información.</span></div>
-        </div>
-      </div></div>
-
-      <div class="pt-exercise"><span class="pt-ex-num">28</span><div class="pt-ex-content">
-        <div class="pt-sentence">Mesmo que ele <span class="pt-blank"></span> com tudo, não vou mudar de ideia. <em>(concordar)</em></div>
-        <div class="pt-translations">
-          <div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Zelfs als hij het met alles eens is, zal ik niet van gedachten veranderen.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Ακόμα κι αν συμφωνεί με τα πάντα, δεν θα αλλάξω γνώμη.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>Même s'il est d'accord avec tout, je ne changerai pas d'avis.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>Aunque esté de acuerdo con todo, no voy a cambiar de idea.</span></div>
-        </div>
-      </div></div>
-
-      <div class="pt-exercise"><span class="pt-ex-num">29</span><div class="pt-ex-content">
-        <div class="pt-sentence">Quero que você <span class="pt-blank"></span> feliz. <em>(ser)</em> <span class="pt-irr">irreg</span></div>
-        <div class="pt-translations">
-          <div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Ik wil dat je gelukkig bent.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Θέλω να είσαι ευτυχισμένος/η.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>Je veux que tu sois heureux/heureuse.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>Quiero que seas feliz.</span></div>
-        </div>
-      </div></div>
-
-      <div class="pt-exercise"><span class="pt-ex-num">30</span><div class="pt-ex-content">
-        <div class="pt-sentence">A menos que ele <span class="pt-blank"></span> agora, vamos perder o prazo. <em>(saber)</em> <span class="pt-irr">irreg</span></div>
-        <div class="pt-translations">
-          <div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Tenzij hij het nu weet, gaan we de deadline missen.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Εκτός αν το ξέρει τώρα, θα χάσουμε την προθεσμία.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>À moins qu'il ne le sache maintenant, nous allons rater le délai.</span></div>
-          <div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>A menos que lo sepa ahora, vamos a perder el plazo.</span></div>
-        </div>
-      </div></div>
-
-    </div><!-- end exercise list -->
-
-    <button class="pt-answers-btn" onclick="ptToggleAnswers()">REVEAL ALL ANSWERS ↓</button>
-
+      <div class="pt-exercise"><span class="pt-ex-num">1</span><div class="pt-ex-content"><div class="pt-sentence">Quero que você <span class="pt-blank"></span> mais água. <em>(beber)</em></div><div class="pt-translations"><div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Ik wil dat je meer water drinkt.</span></div><div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Θέλω να πίνεις περισσότερο νερό.</span></div><div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>Je veux que tu boives plus d'eau.</span></div><div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>Quiero que bebas más agua.</span></div></div></div></div>
+      <div class="pt-exercise"><span class="pt-ex-num">2</span><div class="pt-ex-content"><div class="pt-sentence">É importante que a gente <span class="pt-blank"></span> no horário. <em>(chegar)</em></div><div class="pt-translations"><div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Het is belangrijk dat we op tijd aankomen.</span></div><div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Είναι σημαντικό να φτάνουμε στην ώρα μας.</span></div><div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>Il est important que nous arrivions à l'heure.</span></div><div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>Es importante que lleguemos a tiempo.</span></div></div></div></div>
+      <div class="pt-exercise"><span class="pt-ex-num">3</span><div class="pt-ex-content"><div class="pt-sentence">Espero que ele <span class="pt-blank"></span> a verdade. <em>(dizer)</em> <span class="pt-irr">irreg</span></div><div class="pt-translations"><div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Ik hoop dat hij de waarheid zegt.</span></div><div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Ελπίζω να πει την αλήθεια.</span></div><div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>J'espère qu'il dise la vérité.</span></div><div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>Espero que él diga la verdad.</span></div></div></div></div>
+      <div class="pt-exercise"><span class="pt-ex-num">4</span><div class="pt-ex-content"><div class="pt-sentence">Embora ela <span class="pt-blank"></span> cansada, foi à festa. <em>(estar)</em> <span class="pt-irr">irreg</span></div><div class="pt-translations"><div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Hoewel ze moe was, ging ze naar het feest.</span></div><div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Αν και ήταν κουρασμένη, πήγε στο πάρτι.</span></div><div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>Bien qu'elle soit fatiguée, elle est allée à la fête.</span></div><div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>Aunque estuviera cansada, fue a la fiesta.</span></div></div></div></div>
+      <div class="pt-exercise"><span class="pt-ex-num">5</span><div class="pt-ex-content"><div class="pt-sentence">Quando você <span class="pt-blank"></span> pronto, me avisa. <em>(estar)</em> <span class="pt-irr">irreg</span></div><div class="pt-translations"><div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Als je klaar bent, laat het me weten.</span></div><div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Όταν είσαι έτοιμος, ειδοποίησέ με.</span></div><div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>Quand tu seras prêt, préviens-moi.</span></div><div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>Cuando estés listo, avísame.</span></div></div></div></div>
+      <div class="pt-exercise"><span class="pt-ex-num">6</span><div class="pt-ex-content"><div class="pt-sentence">Duvido que eles <span class="pt-blank"></span> a tempo. <em>(vir)</em> <span class="pt-irr">irreg</span></div><div class="pt-translations"><div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Ik betwijfel of ze op tijd komen.</span></div><div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Αμφιβάλλω αν έρθουν εγκαίρως.</span></div><div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>Je doute qu'ils viennent à temps.</span></div><div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>Dudo que ellos vengan a tiempo.</span></div></div></div></div>
+      <div class="pt-exercise"><span class="pt-ex-num">7</span><div class="pt-ex-content"><div class="pt-sentence">Tomara que ela <span class="pt-blank"></span> o emprego! <em>(conseguir)</em></div><div class="pt-translations"><div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Hopelijk krijgt ze de baan!</span></div><div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Μακάρι να πάρει τη δουλειά!</span></div><div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>Pourvu qu'elle obtienne le poste !</span></div><div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>¡Ojalá que ella consiga el trabajo!</span></div></div></div></div>
+      <div class="pt-exercise"><span class="pt-ex-num">8</span><div class="pt-ex-content"><div class="pt-sentence">Minha mãe quer que eu <span class="pt-blank"></span> medicina. <em>(fazer)</em> <span class="pt-irr">irreg</span></div><div class="pt-translations"><div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Mijn moeder wil dat ik geneeskunde studeer.</span></div><div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Η μητέρα μου θέλει να σπουδάσω ιατρική.</span></div><div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>Ma mère veut que je fasse médecine.</span></div><div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>Mi madre quiere que yo estudie medicina.</span></div></div></div></div>
+      <div class="pt-exercise"><span class="pt-ex-num">9</span><div class="pt-ex-content"><div class="pt-sentence">Quero que você <span class="pt-blank"></span> feliz. <em>(ser)</em> <span class="pt-irr">irreg</span></div><div class="pt-translations"><div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Ik wil dat je gelukkig bent.</span></div><div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Θέλω να είσαι ευτυχισμένος/η.</span></div><div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>Je veux que tu sois heureux/heureuse.</span></div><div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>Quiero que seas feliz.</span></div></div></div></div>
+      <div class="pt-exercise"><span class="pt-ex-num">10</span><div class="pt-ex-content"><div class="pt-sentence">Vou esperar até que você <span class="pt-blank"></span>. <em>(voltar)</em></div><div class="pt-translations"><div class="pt-lang-row"><span class="pt-tag tag-nl">NL</span><span>Ik wacht totdat je terug bent.</span></div><div class="pt-lang-row"><span class="pt-tag tag-el">EL</span><span>Θα περιμένω μέχρι να επιστρέψεις.</span></div><div class="pt-lang-row"><span class="pt-tag tag-fr">FR</span><span>J'attendrai jusqu'à ce que tu reviennes.</span></div><div class="pt-lang-row"><span class="pt-tag tag-es">ES</span><span>Esperaré hasta que vuelvas.</span></div></div></div></div>
+    </div>
+    <button class="pt-answers-btn" onclick="ptToggleAnswers()">REVEAL ANSWERS ↓</button>
     <div class="pt-answers-section" id="pt-answers">
       <div class="plabel" style="text-align:left;margin-bottom:0.8rem;">Answers</div>
       <div class="pt-answer-row"><span class="pt-ans-num">1</span><span class="pt-ans-val">beba <span class="pt-ans-inf">(beber → bebo → beb- → beba)</span></span></div>
       <div class="pt-answer-row"><span class="pt-ans-num">2</span><span class="pt-ans-val">chegue <span class="pt-ans-inf">(chegar → chego → cheg- → chegue)</span></span></div>
       <div class="pt-answer-row"><span class="pt-ans-num">3</span><span class="pt-ans-val">diga <span class="pt-ans-inf">(dizer → digo → dig- → diga) ★ irreg</span></span></div>
-      <div class="pt-answer-row"><span class="pt-ans-num">4</span><span class="pt-ans-val">acorde <span class="pt-ans-inf">(acordar → acordo → acord- → acorde)</span></span></div>
+      <div class="pt-answer-row"><span class="pt-ans-num">4</span><span class="pt-ans-val">esteja <span class="pt-ans-inf">(estar — totally irregular) ★ irreg</span></span></div>
       <div class="pt-answer-row"><span class="pt-ans-num">5</span><span class="pt-ans-val">esteja <span class="pt-ans-inf">(estar — totally irregular) ★ irreg</span></span></div>
-      <div class="pt-answer-row"><span class="pt-ans-num">6</span><span class="pt-ans-val">esteja <span class="pt-ans-inf">(estar — totally irregular) ★ irreg</span></span></div>
-      <div class="pt-answer-row"><span class="pt-ans-num">7</span><span class="pt-ans-val">venham <span class="pt-ans-inf">(vir → venho → venh- → venham) ★ irreg</span></span></div>
-      <div class="pt-answer-row"><span class="pt-ans-num">8</span><span class="pt-ans-val">fale <span class="pt-ans-inf">(falar → falo → fal- → fale)</span></span></div>
-      <div class="pt-answer-row"><span class="pt-ans-num">9</span><span class="pt-ans-val">traga <span class="pt-ans-inf">(trazer → trago → trag- → traga) ★ irreg</span></span></div>
+      <div class="pt-answer-row"><span class="pt-ans-num">6</span><span class="pt-ans-val">venham <span class="pt-ans-inf">(vir → venho → venh- → venham) ★ irreg</span></span></div>
+      <div class="pt-answer-row"><span class="pt-ans-num">7</span><span class="pt-ans-val">consiga <span class="pt-ans-inf">(conseguir → consigo → consig- → consiga)</span></span></div>
+      <div class="pt-answer-row"><span class="pt-ans-num">8</span><span class="pt-ans-val">faça <span class="pt-ans-inf">(fazer → faço → faç- → faça) ★ irreg</span></span></div>
+      <div class="pt-answer-row"><span class="pt-ans-num">9</span><span class="pt-ans-val">seja <span class="pt-ans-inf">(ser — totally irregular) ★ irreg</span></span></div>
       <div class="pt-answer-row"><span class="pt-ans-num">10</span><span class="pt-ans-val">volte <span class="pt-ans-inf">(voltar → volto → volt- → volte)</span></span></div>
-      <div class="pt-answer-row"><span class="pt-ans-num">11</span><span class="pt-ans-val">sejam <span class="pt-ans-inf">(ser — totally irregular) ★ irreg</span></span></div>
-      <div class="pt-answer-row"><span class="pt-ans-num">12</span><span class="pt-ans-val">leiam <span class="pt-ans-inf">(ler → leio → lei- → leiam)</span></span></div>
-      <div class="pt-answer-row"><span class="pt-ans-num">13</span><span class="pt-ans-val">possa <span class="pt-ans-inf">(poder → posso → poss- → possa) ★ irreg</span></span></div>
-      <div class="pt-answer-row"><span class="pt-ans-num">14</span><span class="pt-ans-val">seja <span class="pt-ans-inf">(ser — totally irregular) ★ irreg</span></span></div>
-      <div class="pt-answer-row"><span class="pt-ans-num">15</span><span class="pt-ans-val">preparem <span class="pt-ans-inf">(preparar → preparo → prepar- → preparem)</span></span></div>
-      <div class="pt-answer-row"><span class="pt-ans-num">16</span><span class="pt-ans-val">possa <span class="pt-ans-inf">(poder → posso → poss- → possa) ★ irreg</span></span></div>
-      <div class="pt-answer-row"><span class="pt-ans-num">17</span><span class="pt-ans-val">veja <span class="pt-ans-inf">(ver → vejo → vej- → veja) ★ irreg</span></span></div>
-      <div class="pt-answer-row"><span class="pt-ans-num">18</span><span class="pt-ans-val">estude <span class="pt-ans-inf">(estudar → estudo → estud- → estude)</span></span></div>
-      <div class="pt-answer-row"><span class="pt-ans-num">19</span><span class="pt-ans-val">consiga <span class="pt-ans-inf">(conseguir → consigo → consig- → consiga)</span></span></div>
-      <div class="pt-answer-row"><span class="pt-ans-num">20</span><span class="pt-ans-val">siga <span class="pt-ans-inf">(seguir → sigo → sig- → siga)</span></span></div>
-      <div class="pt-answer-row"><span class="pt-ans-num">21</span><span class="pt-ans-val">faça <span class="pt-ans-inf">(fazer → faço → faç- → faça) ★ irreg</span></span></div>
-      <div class="pt-answer-row"><span class="pt-ans-num">22</span><span class="pt-ans-val">saia <span class="pt-ans-inf">(sair → saio → sai- → saia)</span></span></div>
-      <div class="pt-answer-row"><span class="pt-ans-num">23</span><span class="pt-ans-val">mude <span class="pt-ans-inf">(mudar → mudo → mud- → mude)</span></span></div>
-      <div class="pt-answer-row"><span class="pt-ans-num">24</span><span class="pt-ans-val">vão <span class="pt-ans-inf">(ir — totally irregular; 3rd pl.) ★ irreg</span></span></div>
-      <div class="pt-answer-row"><span class="pt-ans-num">25</span><span class="pt-ans-val">fizesse <span class="pt-ans-inf">(imperfect subj.: fazer → fizeram → fize- → fizesse) ★ irreg</span></span></div>
-      <div class="pt-answer-row"><span class="pt-ans-num">26</span><span class="pt-ans-val">decida <span class="pt-ans-inf">(decidir → decido → decid- → decida)</span></span></div>
-      <div class="pt-answer-row"><span class="pt-ans-num">27</span><span class="pt-ans-val">dê <span class="pt-ans-inf">(dar — totally irregular) ★ irreg</span></span></div>
-      <div class="pt-answer-row"><span class="pt-ans-num">28</span><span class="pt-ans-val">concorde <span class="pt-ans-inf">(concordar → concordo → concord- → concorde)</span></span></div>
-      <div class="pt-answer-row"><span class="pt-ans-num">29</span><span class="pt-ans-val">seja <span class="pt-ans-inf">(ser — totally irregular) ★ irreg</span></span></div>
-      <div class="pt-answer-row"><span class="pt-ans-num">30</span><span class="pt-ans-val">saiba <span class="pt-ans-inf">(saber → sei → saib- → saiba) ★ irreg</span></span></div>
     </div>
-  </div><!-- end exercises section -->
-
-</div><!-- end pt-panel-inner -->
-</div><!-- end pt-grammar-panel -->
+  </div>
+</div>
+</div>
 
 <div id="pop">
 <button id="pcls" onclick="closePop()">✕</button>
 <div class="pw" id="pw"></div>
 <div class="pl" id="pl"></div>
-<div class="row"><span class="lbl">Type</span><span id="pt"></span></div>
+<div class="row"><span class="lbl">Type</span><span id="pt-word-type"></span></div>
 <div class="row"><span class="lbl">English</span><span id="pe"></span></div>
 <div class="row"><span class="lbl">Grammar</span><span id="pg"></span></div>
 <div id="preg"></div>
@@ -780,338 +874,62 @@ Hear it spoken
 </div>
 
 <script>
-// ===== PORTUGUESE GRAMMAR PANEL LOGIC =====
-function showPtGrammar() {
-  document.getElementById('main-card').style.display = 'none';
-  document.getElementById('pnav').style.display = 'none';
-  document.getElementById('pt-grammar-panel').classList.add('visible');
-  document.querySelectorAll('.lt').forEach(function(b){ b.classList.remove('on'); });
-  document.querySelectorAll('.lt')[2].classList.add('on');
-  stopSpeech(); closePop();
-}
+// Grammar panel controls
+function showPtGrammar(){document.getElementById('main-card').style.display='none';document.getElementById('pnav').style.display='none';document.getElementById('pt-grammar-panel').classList.add('visible');document.querySelectorAll('.lt').forEach(function(b){b.classList.remove('on');});document.querySelectorAll('.lt')[2].classList.add('on');stopSpeech();closePop();}
+function hidePtGrammar(){document.getElementById('main-card').style.display='';document.getElementById('pnav').style.display='';document.getElementById('pt-grammar-panel').classList.remove('visible');}
+function ptShow(id,btn){document.querySelectorAll('.pt-section').forEach(function(s){s.classList.remove('pt-visible');});document.querySelectorAll('.pt-nav button').forEach(function(b){b.classList.remove('pt-active');});document.getElementById(id).classList.add('pt-visible');btn.classList.add('pt-active');}
+function ptToggleAnswers(){var a=document.getElementById('pt-answers');var btn=document.querySelector('.pt-answers-btn');var vis=a.classList.toggle('visible');btn.textContent=vis?'HIDE ANSWERS ↑':'REVEAL ANSWERS ↓';}
 
-function hidePtGrammar() {
-  document.getElementById('main-card').style.display = '';
-  document.getElementById('pnav').style.display = '';
-  document.getElementById('pt-grammar-panel').classList.remove('visible');
-}
-
-function ptShow(id, btn) {
-  document.querySelectorAll('.pt-section').forEach(function(s){ s.classList.remove('pt-visible'); });
-  document.querySelectorAll('.pt-nav button').forEach(function(b){ b.classList.remove('pt-active'); });
-  document.getElementById(id).classList.add('pt-visible');
-  btn.classList.add('pt-active');
-}
-
-function ptToggleAnswers() {
-  var a = document.getElementById('pt-answers');
-  var btn = document.querySelector('.pt-answers-btn');
-  var vis = a.classList.toggle('visible');
-  btn.textContent = vis ? 'HIDE ANSWERS ↑' : 'REVEAL ALL ANSWERS ↓';
-}
-
-// ===== ORIGINAL SITE LOGIC =====
-var annotations = {
-"Winter op zee": {
-"kim":{ lemma:"de kim", type:"Noun (de-word)", en:"the horizon as seen from a ship", grammar:"Singular. Nautical term. Plural: kimmen.", register:"Literary / Nautical" },
-"wreed":{ lemma:"wreed", type:"Adjective", en:"cruel, savage, merciless", grammar:"Predicative (after wordt). Attributive: wrede.", register:"Literary" },
-"golven":{ lemma:"de golf", type:"Noun / Verb", en:"the waves; to undulate", grammar:"Plural noun here. Also 3rd pl. present of golven.", register:"Standard" },
-"tuimlen":{ lemma:"tuimelen", type:"Verb (intransitive)", en:"to tumble, to toss, to roll chaotically", grammar:"3rd pl. present. Contracted poetic form of tuimelen.", register:"Literary / Archaic" },
-"wild":{ lemma:"wild", type:"Adjective", en:"wild, fierce, violent", grammar:"Predicative (after tuimlen). Attributive: wilde.", register:"Standard" },
-"mild":{ lemma:"mild", type:"Adjective", en:"mild, gentle, soft", grammar:"Predicative. Contrasts with wreed.", register:"Standard" },
-"groen":{ lemma:"groen", type:"Adjective", en:"green", grammar:"Predicative. Describes the colour of a calm sea.", register:"Standard" },
-"spoorslags":{ lemma:"spoorslags", type:"Adverb", en:"immediately, all at once, at full gallop", grammar:"From horsemanship: at the touch of the spurs. Suggests sudden violent change.", register:"Literary / Archaic" },
-"hardgrijs":{ lemma:"hardgrijs", type:"Adjective", en:"hard grey, steely grey", grammar:"Slauerhoff's own compound coinage. Not standard Dutch.", register:"Poetic Coinage" },
-"grauw":{ lemma:"grauw", type:"Adjective", en:"ashen, dull and leaden grey", grammar:"Stronger and bleaker than grijs — implies grimness.", register:"Literary" },
-"nacht":{ lemma:"de nacht", type:"Noun (de-word)", en:"the night", grammar:"Singular. Plural: nachten.", register:"Standard" },
-"wind":{ lemma:"de wind", type:"Noun (de-word)", en:"the wind", grammar:"Singular. Plural: winden.", register:"Standard" },
-"luchtruim":{ lemma:"het luchtruim", type:"Noun (het-word)", en:"the sky, the airspace, the vault of the heavens", grammar:"Compound: lucht (air) + ruim (space).", register:"Literary / Formal" },
-"rilt":{ lemma:"rillen", type:"Verb (intransitive)", en:"to shiver, to tremble, to quiver", grammar:"3rd sg. present. Applied to the wind — a striking personification.", register:"Literary" },
-"plotselinge":{ lemma:"plotseling", type:"Adjective", en:"sudden, abrupt", grammar:"Attributive form with -e inflection before de-word dood.", register:"Standard" },
-"dood":{ lemma:"de dood", type:"Noun (de-word)", en:"death", grammar:"Singular. No plural in this sense.", register:"Standard" },
-"kou":{ lemma:"de kou", type:"Noun (de-word)", en:"the cold, the chill", grammar:"Uncountable. More poetic than koude. Final word of stanza one.", register:"Standard / Literary" },
-"rotseilanden":{ lemma:"het rotseiland", type:"Noun (het-word)", en:"rocky islands, rocky islets", grammar:"Plural. Compound: rots (rock) + eiland (island).", register:"Standard" },
-"boom":{ lemma:"de boom", type:"Noun (de-word)", en:"tree", grammar:"Singular. Plural: bomen.", register:"Standard" },
-"gras":{ lemma:"het gras", type:"Noun (het-word)", en:"grass", grammar:"Uncountable in this usage.", register:"Standard" },
-"verlaten":{ lemma:"verlaten", type:"Adjective / Verb", en:"abandoned, forsaken; to abandon", grammar:"Predicative adjective here (liggend verlaten = lying abandoned).", register:"Standard" },
-"oeroud":{ lemma:"oeroud", type:"Adjective", en:"primordially old, ancient beyond memory", grammar:"Compound: oer- (primal) + oud (old). Intensifies to a mythic degree.", register:"Literary" },
-"ruim":{ lemma:"het ruim", type:"Noun (het-word)", en:"space, expanse; also the hold of a ship", grammar:"Double meaning: the vast ocean AND the ship's hold.", register:"Literary / Nautical" },
-"bloeit":{ lemma:"bloeien", type:"Verb", en:"to bloom, to flower", grammar:"3rd sg. present. Bitterly ironic — the only thing that blooms here is foam.", register:"Standard" },
-"onstuimig":{ lemma:"onstuimig", type:"Adjective", en:"stormy, turbulent, impetuous", grammar:"Attributive with -e inflection. From on- + stuimig (from stuiven, to gust).", register:"Literary / Formal" },
-"verward":{ lemma:"verward", type:"Adjective", en:"tangled, confused, disordered", grammar:"Attributive. Past participle of verwarren used as adjective.", register:"Standard" },
-"gewas":{ lemma:"het gewas", type:"Noun (het-word)", en:"growth, vegetation, crop", grammar:"Ironic: foam described as a crop — the only harvest this barren sea yields.", register:"Literary / Archaic" },
-"snel":{ lemma:"snel", type:"Adjective / Adverb", en:"fast, quick, rapid", grammar:"Adverb here. Repetition (snel… snel) mimics the brief life of the foam.", register:"Standard" },
-"opschietend":{ lemma:"opschieten", type:"Verb", en:"to shoot up, to spring up rapidly", grammar:"Present participle as adjective. Vivid image of foam surging upward.", register:"Standard" },
-"verwelkend":{ lemma:"verwelken", type:"Verb", en:"to wilt, to wither, to fade", grammar:"Present participle as adjective. Normally of flowers — applying to foam deepens the irony.", register:"Literary" },
-"schuim":{ lemma:"het schuim", type:"Noun (het-word)", en:"foam, froth, spray", grammar:"Uncountable. Central image of stanza two.", register:"Standard" },
-"schip":{ lemma:"het schip", type:"Noun (het-word)", en:"the ship", grammar:"Singular. Plural: schepen.", register:"Standard" },
-"vuren":{ lemma:"het vuur", type:"Noun (het-word)", en:"fires (plural of vuur)", grammar:"Absence of fire = absence of warmth and comfort.", register:"Standard" },
-"troostend":{ lemma:"troosten", type:"Adjective", en:"comforting, consoling", grammar:"Present participle of troosten. No fires burn with comfort.", register:"Literary" },
-"branden":{ lemma:"branden", type:"Verb", en:"to burn, to blaze", grammar:"Negated here: geen vuren troostend branden.", register:"Standard" },
-"nestelt":{ lemma:"nestelen", type:"Verb (reflexive)", en:"to nestle, to settle in", grammar:"3rd sg. Reflexive: nestelt zich. The cold nesting is a chilling personification.", register:"Standard / Literary" },
-"reis":{ lemma:"de reis", type:"Noun (de-word)", en:"the journey, the voyage", grammar:"Possible double meaning: the voyage of life toward death.", register:"Standard" },
-"wanden":{ lemma:"de wand", type:"Noun (de-word)", en:"the walls of the ship's hull", grammar:"Plural of wand. Inner hull walls that crack and groan.", register:"Standard" },
-"wakkergekraakte":{ lemma:"wakkerkraken", type:"Compound verb (past participle)", en:"cracked awake, creaking into wakefulness", grammar:"Slauerhoff's own coinage. A bold expressionist formation.", register:"Poetic Coinage" },
-"kruit":{ lemma:"kruien", type:"Verb", en:"to grind forward with crushing pressure", grammar:"3rd sg. of kruien. Used of ice floes grinding against the hull.", register:"Literary / Nautical" },
-"verbrijzelt":{ lemma:"verbrijzelen", type:"Verb (reflexive)", en:"to shatter, to smash to pieces", grammar:"Reflexive: verbrijzelt zich = shatters itself against the ship.", register:"Literary / Formal" },
-"drijvend":{ lemma:"drijven", type:"Adjective", en:"drifting, floating", grammar:"Present participle as adjective. Het drijvend ijs = the drifting ice.", register:"Standard" },
-"ijs":{ lemma:"het ijs", type:"Noun (het-word)", en:"ice", grammar:"Uncountable. The final image — cold, drifting, shattering.", register:"Standard" }
-},
-"Der Erlkönig": {
-"reitet":{ lemma:"reiten", type:"Verb (intransitive)", en:"to ride (on horseback)", grammar:"3rd sg. present. Strong verb. Imperfect: ritt.", register:"Standard / Literary" },
-"Nacht":{ lemma:"die Nacht", type:"Noun (die-word)", en:"the night", grammar:"Singular. Plural: Nächte.", register:"Standard" },
-"Wind":{ lemma:"der Wind", type:"Noun (der-word)", en:"the wind", grammar:"Singular. Plural: Winde.", register:"Standard" },
-"Vater":{ lemma:"der Vater", type:"Noun (der-word)", en:"the father", grammar:"Singular. Plural: Väter.", register:"Standard" },
-"Kind":{ lemma:"das Kind", type:"Noun (das-word)", en:"the child", grammar:"Singular. Plural: Kinder.", register:"Standard" },
-"Knaben":{ lemma:"der Knabe", type:"Noun (der-word)", en:"the boy, the lad", grammar:"Genitive/dative singular. Slightly archaic; Junge is more common today.", register:"Literary / Archaic" },
-"Arm":{ lemma:"der Arm", type:"Noun (der-word)", en:"the arm", grammar:"Singular. Plural: Arme.", register:"Standard" },
-"warm":{ lemma:"warm", type:"Adjective", en:"warm", grammar:"Predicative here (hält ihn warm). Comparative: wärmer.", register:"Standard" },
-"bang":{ lemma:"bang", type:"Adjective", en:"afraid, anxious, frightened", grammar:"Predicative. Also used as adverb.", register:"Standard / Literary" },
-"Gesicht":{ lemma:"das Gesicht", type:"Noun (das-word)", en:"the face", grammar:"Singular. Plural: Gesichter.", register:"Standard" },
-"Erlkönig":{ lemma:"der Erlkönig", type:"Noun (proper)", en:"the Erl-King, the Alder-King", grammar:"From Danish ellerkonge. A supernatural figure from Germanic folklore.", register:"Mythological" },
-"Kron":{ lemma:"die Krone", type:"Noun (die-word)", en:"the crown", grammar:"Archaic contracted form of Krone, used for metre.", register:"Archaic / Poetic" },
-"Schweif":{ lemma:"der Schweif", type:"Noun (der-word)", en:"the train, the tail, the flowing robe", grammar:"Singular. Usually means an animal's tail; here a flowing robe.", register:"Literary / Archaic" },
-"Nebelstreif":{ lemma:"der Nebelstreif", type:"Noun (der-word)", en:"a streak of mist, a wisp of fog", grammar:"Compound: Nebel (fog) + Streif (streak, strip).", register:"Literary" },
-"Spiele":{ lemma:"das Spiel", type:"Noun (das-word)", en:"games, plays", grammar:"Plural of Spiel.", register:"Standard" },
-"Strand":{ lemma:"der Strand", type:"Noun (der-word)", en:"the shore, the beach", grammar:"Singular. Plural: Strände.", register:"Standard" },
-"Mutter":{ lemma:"die Mutter", type:"Noun (die-word)", en:"the mother", grammar:"Singular. Plural: Mütter.", register:"Standard" },
-"gülden":{ lemma:"golden", type:"Adjective", en:"golden, made of gold", grammar:"Archaic form of golden, used in poetry.", register:"Archaic / Poetic" },
-"Gewand":{ lemma:"das Gewand", type:"Noun (das-word)", en:"the robe, the garment", grammar:"Singular. Plural: Gewänder. Elevated register.", register:"Literary / Archaic" }
-},
-"Wandrers Nachtlied": {
-"Gipfeln":{ lemma:"der Gipfel", type:"Noun (der-word)", en:"the summit, the peak", grammar:"Dative plural (über allen Gipfeln).", register:"Standard" },
-"Ruh":{ lemma:"die Ruhe", type:"Noun (die-word)", en:"rest, stillness, peace", grammar:"Contracted poetic form of Ruhe, used for metre.", register:"Poetic / Archaic" },
-"Wipfeln":{ lemma:"der Wipfel", type:"Noun (der-word)", en:"the treetop, the crown of a tree", grammar:"Dative plural (in allen Wipfeln).", register:"Literary" },
-"Spürest":{ lemma:"spüren", type:"Verb (transitive)", en:"to feel, to sense, to perceive", grammar:"2nd sg. present, archaic form. Modern: du spürst.", register:"Archaic / Poetic" },
-"Hauch":{ lemma:"der Hauch", type:"Noun (der-word)", en:"a breath, a whisper of wind", grammar:"Singular. Implies barely perceptible movement.", register:"Literary" },
-"Vögelein":{ lemma:"das Vögelein", type:"Noun (das-word)", en:"the little birds", grammar:"Diminutive plural of Vogel. The -lein suffix is more archaic than -chen.", register:"Archaic / Poetic" },
-"schweigen":{ lemma:"schweigen", type:"Verb (intransitive)", en:"to be silent, to fall quiet", grammar:"3rd pl. present. Strong verb.", register:"Standard / Literary" },
-"Walde":{ lemma:"der Wald", type:"Noun (der-word)", en:"the forest, the wood", grammar:"Dative singular (im Walde). The -e ending is archaic dative.", register:"Archaic / Poetic" },
-"balde":{ lemma:"bald", type:"Adverb", en:"soon, shortly", grammar:"Archaic form of bald with extra -e, used in poetry for metre.", register:"Archaic / Poetic" },
-"Ruhest":{ lemma:"ruhen", type:"Verb (intransitive)", en:"to rest, to lie at rest", grammar:"2nd sg. present, archaic. Modern: du ruhst.", register:"Archaic / Poetic" }
-},
-"Der Tod und das Mädchen": {
-"Mädchen":{ lemma:"das Mädchen", type:"Noun (das-word)", en:"the girl, the maiden", grammar:"Singular. Plural: Mädchen (unchanged).", register:"Standard" },
-"Vorüber":{ lemma:"vorüber", type:"Adverb / Prefix", en:"past, by, over", grammar:"Used as exclamation: pass by!", register:"Standard / Literary" },
-"wilder":{ lemma:"wild", type:"Adjective", en:"wild, savage", grammar:"Attributive form with strong inflection.", register:"Standard" },
-"Knochenmann":{ lemma:"der Knochenmann", type:"Noun (der-word)", en:"the bone-man, the skeleton — Death personified", grammar:"Compound: Knochen (bone) + Mann (man).", register:"Literary / Folk" },
-"jung":{ lemma:"jung", type:"Adjective", en:"young", grammar:"Predicative here (ich bin noch jung).", register:"Standard" },
-"rühre":{ lemma:"rühren", type:"Verb (transitive)", en:"to touch, to stir, to move", grammar:"Imperative negated: rühre mich nicht an = do not touch me.", register:"Standard / Literary" },
-"zart":{ lemma:"zart", type:"Adjective", en:"tender, delicate, gentle", grammar:"Attributive here (zart Gebild = tender form).", register:"Literary" },
-"Gebild":{ lemma:"das Gebild", type:"Noun (das-word)", en:"the form, the figure, the image", grammar:"Archaic/poetic form of Gebilde.", register:"Archaic / Poetic" },
-"strafen":{ lemma:"strafen", type:"Verb (transitive)", en:"to punish, to chastise", grammar:"Infinitive. Nicht zu strafen = not to punish.", register:"Standard / Formal" },
-"Muts":{ lemma:"der Mut", type:"Noun (der-word)", en:"courage, spirit, cheer", grammar:"Genitive singular (gutes Muts).", register:"Literary / Archaic" },
-"sanft":{ lemma:"sanft", type:"Adjective / Adverb", en:"gently, softly, peacefully", grammar:"Adverb here (sanft schlafen = to sleep softly).", register:"Standard / Literary" },
-"Armen":{ lemma:"der Arm", type:"Noun (der-word)", en:"arms (plural)", grammar:"Dative plural (in meinen Armen = in my arms).", register:"Standard" },
-"schlafen":{ lemma:"schlafen", type:"Verb (intransitive)", en:"to sleep", grammar:"Infinitive. Strong verb. Here euphemism for death.", register:"Standard" }
-},
-"Die Lorelei": {
-"weiß":{ lemma:"wissen", type:"Verb (irregular)", en:"to know", grammar:"1st sg. present of wissen. Ich weiß = I know.", register:"Standard" },
-"traurig":{ lemma:"traurig", type:"Adjective", en:"sad, melancholy, sorrowful", grammar:"Predicative (ich bin so traurig).", register:"Standard" },
-"Märchen":{ lemma:"das Märchen", type:"Noun (das-word)", en:"a fairy tale, a legend", grammar:"Singular and plural identical.", register:"Standard / Literary" },
-"Zeiten":{ lemma:"die Zeit", type:"Noun (die-word)", en:"times, ages", grammar:"Plural of Zeit.", register:"Standard" },
-"Sinn":{ lemma:"der Sinn", type:"Noun (der-word)", en:"the mind, the sense, the head", grammar:"Nicht aus dem Sinn = not out of my mind.", register:"Standard / Literary" },
-"dunkelt":{ lemma:"dunkeln", type:"Verb (intransitive)", en:"it grows dark, twilight falls", grammar:"3rd sg. present. Impersonal verb.", register:"Literary" },
-"ruhig":{ lemma:"ruhig", type:"Adjective / Adverb", en:"quietly, calmly, peacefully", grammar:"Adverb here (ruhig fließt = flows quietly).", register:"Standard" },
-"fließt":{ lemma:"fließen", type:"Verb (intransitive)", en:"to flow, to stream", grammar:"3rd sg. present. Strong verb.", register:"Standard" },
-"Rhein":{ lemma:"der Rhein", type:"Proper noun", en:"the Rhine (river)", grammar:"The great river of western Germany.", register:"Proper / Geographic" },
-"funkelt":{ lemma:"funkeln", type:"Verb (intransitive)", en:"to sparkle, to glitter, to gleam", grammar:"3rd sg. present.", register:"Standard / Literary" },
-"Abendsonnenschein":{ lemma:"der Abendsonnenschein", type:"Noun (der-word)", en:"the evening sunshine", grammar:"Compound: Abend + Sonne + Schein.", register:"Literary / Poetic" },
-"Jungfrau":{ lemma:"die Jungfrau", type:"Noun (die-word)", en:"the maiden, the virgin", grammar:"Compound: jung (young) + Frau (woman).", register:"Literary / Archaic" },
-"sitzet":{ lemma:"sitzen", type:"Verb (intransitive)", en:"to sit", grammar:"3rd sg. present, archaic form. Modern: sie sitzt.", register:"Archaic / Poetic" },
-"Geschmeide":{ lemma:"das Geschmeide", type:"Noun (das-word)", en:"jewellery, ornaments", grammar:"Collective noun. Uncountable.", register:"Archaic / Poetic" },
-"blitzet":{ lemma:"blitzen", type:"Verb (intransitive)", en:"to flash, to gleam, to glitter", grammar:"3rd sg. present, archaic form. Modern: es blitzt.", register:"Archaic / Poetic" },
-"kämmt":{ lemma:"kämmen", type:"Verb (transitive)", en:"to comb", grammar:"3rd sg. present. Reflexive here.", register:"Standard" },
-"Haar":{ lemma:"das Haar", type:"Noun (das-word)", en:"hair", grammar:"Singular (collective). Plural: Haare.", register:"Standard" }
-},
-"Gebed om een goed einde": {
-"Geef":{ lemma:"geven", type:"Verb (transitive)", en:"give, grant", grammar:"2nd sg. imperative of geven.", register:"Standard / Devotional" },
-"Heer":{ lemma:"de Heer", type:"Noun (de-word)", en:"the Lord (God)", grammar:"Capitalised as title for God.", register:"Devotional / Formal" },
-"einde":{ lemma:"het einde", type:"Noun (het-word)", en:"the end, the ending", grammar:"Een goed einde = a good death / a good ending.", register:"Standard" },
-"stil":{ lemma:"stil", type:"Adjective / Adverb", en:"still, quiet, peaceful", grammar:"Predicative (stil als de nacht).", register:"Standard" },
-"nacht":{ lemma:"de nacht", type:"Noun (de-word)", en:"the night", grammar:"Singular. Plural: nachten.", register:"Standard" },
-"hart":{ lemma:"het hart", type:"Noun (het-word)", en:"the heart", grammar:"Singular. Plural: harten.", register:"Standard / Literary" },
-"last":{ lemma:"de last", type:"Noun (de-word)", en:"the burden, the load, the weight", grammar:"Zijn last afleggen = to lay down one's burden.", register:"Standard / Literary" },
-"vrede":{ lemma:"de vrede", type:"Noun (de-word)", en:"peace", grammar:"Uncountable.", register:"Standard / Devotional" },
-"sterven":{ lemma:"sterven", type:"Verb (intransitive)", en:"to die, to pass away", grammar:"Infinitive here used as noun.", register:"Standard / Literary" },
-"zomerdag":{ lemma:"de zomerdag", type:"Noun (de-word)", en:"the summer day", grammar:"Compound: zomer + dag.", register:"Standard" },
-"langzaam":{ lemma:"langzaam", type:"Adjective / Adverb", en:"slowly, gradually", grammar:"Adverb here.", register:"Standard" },
-"ondergaat":{ lemma:"ondergaan", type:"Verb (intransitive)", en:"to set (of the sun), to fade", grammar:"3rd sg. present. Separable: gaat onder.", register:"Standard / Literary" },
-"rosse":{ lemma:"ros", type:"Adjective", en:"reddish, russet, auburn", grammar:"Attributive form (with -e inflection).", register:"Literary / Archaic" },
-"gloedglans":{ lemma:"de gloedglans", type:"Noun (de-word)", en:"the glowing radiance, the fiery shimmer", grammar:"Compound: gloed + glans.", register:"Poetic" },
-"morgen":{ lemma:"de morgen", type:"Noun (de-word)", en:"the morning; tomorrow", grammar:"Double meaning: next morning AND promise of resurrection.", register:"Standard / Literary" }
-},
-"Het leven is een feest": {
-"lente":{ lemma:"de lente", type:"Noun (de-word)", en:"spring (the season)", grammar:"Singular. Uncountable in this usage.", register:"Standard" },
-"geluid":{ lemma:"het geluid", type:"Noun (het-word)", en:"a sound, a tone", grammar:"Een nieuw geluid = a new sound / a new voice.", register:"Standard" },
-"liefste":{ lemma:"lief", type:"Adjective (superlative)", en:"dearest, beloved", grammar:"Superlative of lief. Used as noun: mijn liefste = my beloved.", register:"Literary / Intimate" },
-"zingen":{ lemma:"zingen", type:"Verb (transitive/intransitive)", en:"to sing", grammar:"Infinitive. Strong verb.", register:"Standard" },
-"lied":{ lemma:"het lied", type:"Noun (het-word)", en:"a song", grammar:"Singular. Plural: liederen or liedjes.", register:"Standard" },
-"zingt":{ lemma:"zingen", type:"Verb", en:"sings", grammar:"3rd sg. present.", register:"Standard" },
-"wacht":{ lemma:"wachten", type:"Verb (intransitive)", en:"to wait", grammar:"3rd sg. present.", register:"Standard" },
-"morgen":{ lemma:"de morgen", type:"Noun (de-word)", en:"the morning", grammar:"Singular.", register:"Standard" },
-"vroeg":{ lemma:"vroeg", type:"Adjective / Adverb", en:"early", grammar:"Adverb here.", register:"Standard" },
-"veld":{ lemma:"het veld", type:"Noun (het-word)", en:"the field, the open land", grammar:"Singular. Plural: velden.", register:"Standard" },
-"bos":{ lemma:"het bos", type:"Noun (het-word)", en:"the forest, the wood", grammar:"Singular. Plural: bossen.", register:"Standard" },
-"land":{ lemma:"het land", type:"Noun (het-word)", en:"the land, the countryside", grammar:"Singular. Plural: landen.", register:"Standard" },
-"bloemen":{ lemma:"de bloem", type:"Noun (de-word)", en:"the flowers", grammar:"Plural of bloem.", register:"Standard" },
-"hand":{ lemma:"de hand", type:"Noun (de-word)", en:"the hand", grammar:"Singular. Plural: handen.", register:"Standard" },
-"bloeien":{ lemma:"bloeien", type:"Verb (intransitive)", en:"to bloom, to flower, to blossom", grammar:"3rd pl. present here.", register:"Standard" }
-},
-"Aan de Schelde": {
-"Schelde":{ lemma:"de Schelde", type:"Proper noun", en:"the Scheldt (river in Belgium and the Netherlands)", grammar:"Flows through Ghent and Antwerp.", register:"Proper / Geographic" },
-"vleit":{ lemma:"vleien", type:"Verb (transitive)", en:"to flatter, to caress, to stroke gently", grammar:"3rd sg. present.", register:"Literary / Archaic" },
-"zacht":{ lemma:"zacht", type:"Adjective / Adverb", en:"soft, gentle, quietly", grammar:"Adverb here (zo zacht = so gently).", register:"Standard" },
-"zilver":{ lemma:"het zilver", type:"Noun (het-word)", en:"silver", grammar:"Uncountable.", register:"Standard / Poetic" },
-"goud":{ lemma:"het goud", type:"Noun (het-word)", en:"gold", grammar:"Uncountable.", register:"Standard / Poetic" },
-"oevers":{ lemma:"de oever", type:"Noun (de-word)", en:"the banks (of a river)", grammar:"Plural of oever.", register:"Standard" },
-"beglinstert":{ lemma:"beglinsteren", type:"Verb (transitive)", en:"to shimmer over, to cast a gleam upon", grammar:"3rd sg. present. Archaic / poetic verb.", register:"Literary / Archaic" },
-"vlietende":{ lemma:"vlieten", type:"Verb", en:"flowing, streaming", grammar:"Present participle as adjective. West Flemish dialect.", register:"Archaic / Dialectal" },
-"vliedende":{ lemma:"vlieden", type:"Verb", en:"fleeting, fleeing, slipping away", grammar:"Present participle as adjective.", register:"Archaic / Poetic" },
-"macht":{ lemma:"de macht", type:"Noun (de-word)", en:"the power, the force", grammar:"Singular. In uw macht = in your power.", register:"Standard / Literary" },
-"stroomt":{ lemma:"stromen", type:"Verb (intransitive)", en:"to stream, to flow", grammar:"3rd sg. present.", register:"Standard" },
-"zingt":{ lemma:"zingen", type:"Verb (intransitive)", en:"to sing", grammar:"3rd sg. present. The river sings — a personification.", register:"Standard" },
-"spreekt":{ lemma:"spreken", type:"Verb (intransitive)", en:"to speak", grammar:"3rd sg. present.", register:"Standard" },
-"taal":{ lemma:"de taal", type:"Noun (de-word)", en:"the language, the tongue", grammar:"Singular.", register:"Standard" },
-"tong":{ lemma:"de tong", type:"Noun (de-word)", en:"the tongue", grammar:"Singular. Plural: tongen.", register:"Standard / Literary" },
-"herte":{ lemma:"het hert / het harte", type:"Noun (het-word)", en:"the heart", grammar:"Archaic West Flemish form of hart.", register:"Archaic / Dialectal" },
-"bebreekt":{ lemma:"bebreken", type:"Verb (transitive)", en:"to break, to afflict, to pain", grammar:"3rd sg. present. Archaic West Flemish verb.", register:"Archaic / Dialectal" },
-"zucht":{ lemma:"zuchten", type:"Verb (intransitive)", en:"to sigh", grammar:"3rd sg. present.", register:"Literary" },
-"bewreke":{ lemma:"bewreken", type:"Verb (transitive)", en:"to avenge, to redress", grammar:"3rd sg. present subjunctive (archaic). West Flemish dialect.", register:"Archaic / Dialectal" }
-},
-"O, als de zee": {
-"zee":{ lemma:"de zee", type:"Noun (de-word)", en:"the sea", grammar:"Singular. Uncountable in this sense.", register:"Standard" },
-"grijze":{ lemma:"grijs", type:"Adjective", en:"grey", grammar:"Attributive form with -e inflection.", register:"Standard" },
-"stille":{ lemma:"stil", type:"Adjective", en:"still, silent, quiet", grammar:"Attributive form with -e inflection.", register:"Standard / Literary" },
-"omspoelt":{ lemma:"omspoelen", type:"Verb (transitive)", en:"to wash over, to lap around, to bathe", grammar:"3rd sg. present.", register:"Literary" },
-"koud":{ lemma:"koud", type:"Adjective", en:"cold", grammar:"Attributive here.", register:"Standard" },
-"zwaar":{ lemma:"zwaar", type:"Adjective", en:"heavy, weighty, deep", grammar:"Attributive. The sound of the sea is heavy.", register:"Standard" },
-"geluid":{ lemma:"het geluid", type:"Noun (het-word)", en:"the sound", grammar:"Singular. Plural: geluiden.", register:"Standard" },
-"wens":{ lemma:"de wens", type:"Noun (de-word)", en:"the wish, the desire, the longing", grammar:"Singular. Plural: wensen.", register:"Standard / Literary" },
-"wille":{ lemma:"de wil", type:"Noun (de-word)", en:"the will, the volition", grammar:"Archaic/poetic form of wil with extra -le.", register:"Literary / Archaic" },
-"nimmer":{ lemma:"nimmer", type:"Adverb", en:"never, not ever", grammar:"Archaic/poetic equivalent of nooit.", register:"Literary / Archaic" },
-"volbracht":{ lemma:"volbrengen", type:"Verb (transitive)", en:"to accomplish, to fulfil, to carry out", grammar:"Past participle of volbrengen.", register:"Formal / Literary" },
-"hemel":{ lemma:"de hemel", type:"Noun (de-word)", en:"the sky; heaven", grammar:"Both meanings active here.", register:"Standard / Literary" },
-"gesloten":{ lemma:"sluiten", type:"Verb (transitive)", en:"to close, to seal, to shut", grammar:"Past participle.", register:"Standard" },
-"verdronken":{ lemma:"verdrinken", type:"Verb (intransitive)", en:"drowned, submerged", grammar:"Past participle as adjective.", register:"Standard / Literary" },
-"genoten":{ lemma:"genieten", type:"Verb (transitive)", en:"having tasted, having enjoyed", grammar:"Past participle.", register:"Standard / Literary" },
-"zinkt":{ lemma:"zinken", type:"Verb (intransitive)", en:"to sink, to go down", grammar:"3rd sg. present.", register:"Standard / Literary" },
-"treurt":{ lemma:"treuren", type:"Verb (intransitive)", en:"to mourn, to grieve, to sorrow", grammar:"3rd sg. present.", register:"Literary" },
-"voorbij":{ lemma:"voorbij", type:"Adverb / Preposition", en:"past, gone, over", grammar:"What must pass by = what must end.", register:"Standard" }
-}
-};
-
-var idioms = [
-{ nl:"Dat is de spuigaten uitlopen", langs:[{tag:"EN",text:"That's going overboard"},{tag:"PT",text:"Isso está passando dos limites"},{tag:"DE",text:"Das schießt den Vogel ab"},{tag:"GR",text:"Αυτό ξεπερνάει κάθε όριο"},{tag:"ES",text:"Esto se pasa de la raya"},{tag:"IT",text:"Questo passa ogni limite"},{tag:"JA",text:"度を越してる / やりすぎだ"}]},
-{ nl:"Hij liegt dat hij barst", langs:[{tag:"EN",text:"He lies like crazy"},{tag:"PT",text:"Ele mente descaradamente"},{tag:"DE",text:"Er lügt wie gedruckt"},{tag:"GR",text:"Λέει ψέματα με το κιλό"},{tag:"ES",text:"Miente más que respira"},{tag:"IT",text:"Mente come respira"},{tag:"JA",text:"嘘が止まらない / 嘘八百つく"}]},
-{ nl:"Ik sterf van de honger", langs:[{tag:"EN",text:"I'm starving to death"},{tag:"PT",text:"Estou morrendo de fome"},{tag:"DE",text:"Ich sterbe vor Hunger"},{tag:"GR",text:"Πεθαίνω της πείνας"},{tag:"ES",text:"Me muero de hambre"},{tag:"IT",text:"Sto morendo di fame"},{tag:"JA",text:"腹ペコで死にそう / お腹が空いて死ぬ"}]},
-{ nl:"Het regent pijpenstelen", langs:[{tag:"EN",text:"It's raining cats and dogs"},{tag:"PT",text:"Está chovendo canivetes"},{tag:"DE",text:"Es gießt wie aus Eimern"},{tag:"GR",text:"Βρέχει καρεκλοπόδαρα"},{tag:"ES",text:"Está lloviendo a cántaros"},{tag:"IT",text:"Piove a catinelle"},{tag:"JA",text:"土砂降り / バケツをひっくり返したよう"}]},
-{ nl:"Dat kost een rib uit m'n lijf", langs:[{tag:"EN",text:"That costs an arm and a leg"},{tag:"PT",text:"Isso custa os olhos da cara"},{tag:"DE",text:"Das kostet einen Arm und ein Bein"},{tag:"GR",text:"Κοστίζει ένα μάτι"},{tag:"ES",text:"Cuesta un ojo de la cara"},{tag:"IT",text:"Costa un occhio della testa"},{tag:"JA",text:"目玉が飛び出る値段 / 法外に高い"}]},
-{ nl:"Hij heeft een bek als een kanon", langs:[{tag:"EN",text:"He has a mouth like a cannon"},{tag:"PT",text:"Tem uma boca enorme / Fala como uma metralhadora"},{tag:"DE",text:"Er hat ein Maul wie ein Maschinengewehr"},{tag:"GR",text:"Έχει στόμα σαν κανόνι / Μιλάει σαν πολυβόλο"},{tag:"ES",text:"Tiene una boca como un cañón / Habla como una ametralladora"},{tag:"IT",text:"Ha una bocca come un cannone / Parla come una mitragliatrice"},{tag:"JA",text:"口が悪い / 機関銃みたいに喋る"}]},
-{ nl:"Ik heb het koud tot op m'n botten", langs:[{tag:"EN",text:"I'm frozen to the bone"},{tag:"PT",text:"Estou gelado até os ossos"},{tag:"DE",text:"Mir ist kalt bis auf die Knochen"},{tag:"GR",text:"Έχω κρύο μέχρι το κόκαλο"},{tag:"ES",text:"Tengo frío hasta los huesos"},{tag:"IT",text:"Ho freddo fino alle ossa"},{tag:"JA",text:"骨まで凍える / 凍え死にそう"}]},
-{ nl:"Dat is het einde van de wereld", langs:[{tag:"EN",text:"That's the end of the world"},{tag:"PT",text:"Isso é o fim do mundo"},{tag:"DE",text:"Das ist das Ende der Welt"},{tag:"GR",text:"Αυτό είναι το τέλος του κόσμου"},{tag:"ES",text:"Esto es el fin del mundo"},{tag:"IT",text:"È la fine del mondo"},{tag:"JA",text:"世界の終わりだ"}]}
-];
-
-var poems = [
-{ title:"Der Erlkönig", lang:"de", author:"Johann Wolfgang von Goethe",
-bio:{ nl:"Johann Wolfgang von Goethe (1749–1832) wordt beschouwd als de grootste schrijver uit de Duitse literatuur. Als dichter, toneelschrijver en denker belichaamde hij zowel de Sturm-und-Drang-beweging als het Weimar Classicisme. Zijn levenslange meesterwerk 'Faust' geldt als een van de hoogtepunten van de wereldliteratuur.", de:"Johann Wolfgang von Goethe (1749–1832) gilt als der bedeutendste Dichter der deutschen Literatur. Als Dichter, Dramatiker und Denker verkörperte er sowohl den Sturm und Drang als auch den Weimarer Klassizismus.", en:"Johann Wolfgang von Goethe (1749–1832) is regarded as the greatest writer in the German literary tradition. As poet, playwright and thinker he embodied both the Sturm und Drang movement and Weimar Classicism." },
-intro:{ nl:"De Erlkönig is een figuur uit de Germaanse folklore — letterlijk 'elzenkoning'. In Goethes gedicht (1782) fluistert hij het zieke kind zoete beloften toe, maar de vader ziet alleen mist en wind. Schubert zette het in 1815 op muziek.", de:"Der Erlkönig ist eine Gestalt aus der germanischen Volksüberlieferung. In Goethes Gedicht (1782) flüstert er dem kranken Kind süße Versprechungen zu, doch der Vater sieht nur Nebel und Wind. Schubert vertonte das Gedicht 1815.", en:"The Erlking is a figure from Germanic folklore who lures children to their death. In Goethe's poem (1782) he whispers sweet promises to a sick child, yet the father sees only mist and wind. Schubert set it to music in 1815." },
-lines:["Wer reitet so spät durch Nacht und Wind?","Es ist der Vater mit seinem Kind;","Er hat den Knaben wohl in dem Arm,","Er fasst ihn sicher, er hält ihn warm.","","Mein Sohn, was birgst du so bang dein Gesicht?","Siehst, Vater, du den Erlkönig nicht?","Den Erlenkönig mit Kron und Schweif?","Mein Sohn, es ist ein Nebelstreif.","","Du liebes Kind, komm, geh mit mir!","Gar schöne Spiele spiel ich mit dir;","Manch bunte Blumen sind an dem Strand,","Meine Mutter hat manch gülden Gewand."],
-dutch:["Wie rijdt zo laat door nacht en wind?","Het is de vader met zijn kind;","Hij houdt de knaap vast in zijn arm,","Hij houdt hem veilig, hij houdt hem warm.","","Mijn zoon, waarom verberg je zo bang je gezicht?","Vader, zie jij de Erlkoning niet?","De Erlkoning met zijn kroon en sleep?","Mijn zoon, dat is maar een miststreep.","","Lief kind, kom ga met mij mee!","Heerlijke spelletjes speel ik met jou;","Mooie bloemen staan er aan het strand,","Mijn moeder heeft menig gouden gewaad."],
-trans:["Who rides so late through night and wind?","It is the father with his child;","He holds the boy clasped in his arm,","He holds him safely, he keeps him warm.","","My son, why hide your face in fear?","Father, do you not see the Erl-King?","The Erl-King with his crown and train?","My son, it is a streak of mist.","","Dear child, come away with me!","Such lovely games I'll play with thee;","Many coloured flowers grow by the shore,","My mother has many golden robes in store."]
-},
-{ title:"Wandrers Nachtlied", lang:"de", author:"Johann Wolfgang von Goethe",
-bio:{ nl:"Johann Wolfgang von Goethe (1749–1832) wordt beschouwd als de grootste schrijver uit de Duitse literatuur.", de:"Johann Wolfgang von Goethe (1749–1832) gilt als der bedeutendste Dichter der deutschen Literatur.", en:"Johann Wolfgang von Goethe (1749–1832) is regarded as the greatest writer in the German literary tradition." },
-lines:["Über allen Gipfeln","Ist Ruh,","In allen Wipfeln","Spürest du","Kaum einen Hauch;","Die Vögelein schweigen im Walde.","Warte nur, balde","Ruhest du auch."],
-dutch:["Boven alle bergtoppen","Is rust,","In alle boomkruinen","Voel je","Nauwelijks een zucht;","De vogeltjes zwijgen in het woud.","Wacht slechts, spoedig","Rust jij ook."],
-trans:["Over all the hilltops","Is quiet now,","In all the treetops","You can feel","Hardly a breath;","The birds are asleep in the forest.","Wait — soon","You will rest, too."]
-},
-{ title:"Der Tod und das Mädchen", lang:"de", author:"Matthias Claudius",
-bio:{ nl:"Matthias Claudius (1740–1815) was een Duitse dichter en journalist, bekend om zijn eenvoudige, innige toon. 'Der Tod und das Mädchen' werd in 1817 door Franz Schubert op muziek gezet.", de:"Matthias Claudius (1740–1815) war ein deutscher Dichter und Journalist. 'Der Tod und das Mädchen' wurde 1817 von Franz Schubert vertont.", en:"Matthias Claudius (1740–1815) was a German poet and journalist. 'Death and the Maiden' was set to music by Franz Schubert in 1817." },
-lines:["Das Mädchen:","Vorüber! Ach, vorüber!","Geh, wilder Knochenmann!","Ich bin noch jung, geh Lieber!","Und rühre mich nicht an.","","Der Tod:","Gib deine Hand, du schön und zart Gebild!","Bin Freund und komme nicht zu strafen.","Sei gutes Muts! Ich bin nicht wild,","Sollst sanft in meinen Armen schlafen!"],
-dutch:["Het Meisje:","Ga voorbij! Ach, ga voorbij!","Ga, wilde beenderman!","Ik ben nog jong, lieve vriend!","En raak mij niet aan.","","De Dood:","Geef mij je hand, jij mooi en teer wezen!","Ik ben een vriend en kom niet om te straffen.","Wees gerust! Ik ben niet wild,","Je zult zacht in mijn armen slapen!"],
-trans:["The Maiden:","Pass me by! Oh, pass me by!","Go, wild man of bones!","I am still young, dear one!","And do not touch me.","","Death:","Give me your hand, you lovely, tender form!","I am a friend, I come not to punish.","Be of good cheer! I am not fierce,","You shall sleep softly in my arms!"]
-},
-{ title:"Die Lorelei", lang:"de", author:"Heinrich Heine",
-bio:{ nl:"Heinrich Heine (1797–1856) was een van de grootste Duitse dichters van de negentiende eeuw. Vanwege zijn radicale opvattingen emigreerde hij in 1831 naar Parijs.", de:"Heinrich Heine (1797–1856) war einer der bedeutendsten deutschen Dichter. Wegen seiner radikalen Ansichten emigrierte er 1831 nach Paris.", en:"Heinrich Heine (1797–1856) was one of the greatest German poets of the nineteenth century. Because of his radical views he emigrated to Paris in 1831." },
-lines:["Ich weiß nicht, was soll es bedeuten,","Dass ich so traurig bin;","Ein Märchen aus alten Zeiten,","Das kommt mir nicht aus dem Sinn.","","Die Luft ist kühl und es dunkelt,","Und ruhig fließt der Rhein;","Der Gipfel des Berges funkelt","Im Abendsonnenschein.","","Die schönste Jungfrau sitzet","Dort oben wunderbar,","Ihr gold'nes Geschmeide blitzet,","Sie kämmt ihr gold'nes Haar."],
-dutch:["Ik weet niet wat het mag betekenen","Dat ik zo bedroefd ben;","Een sprookje uit oude tijden","Gaat mij niet uit het hoofd.","","De lucht is koel en het schemert,","En de Rijn stroomt kalm voorbij;","De bergtop schittert","In het avondzonlicht.","","De mooiste maagd zit","Daar boven wonderbaarlijk mooi,","Haar gouden sieraden glinsteren,","Ze kamt haar gouden haar."],
-trans:["I do not know what it may mean","That I am so melancholy;","A tale from olden times","I cannot get out of my mind.","","The air is cool and twilight falls","And the Rhine flows quietly past;","The peak of the mountain glitters","In the evening sun's last rays.","","The most beautiful maiden sits","Up there, wondrously fair,","Her golden jewels are gleaming,","She combs her golden hair."]
-},
-{ title:"Gebed om een goed einde", lang:"nl", author:"Guido Gezelle",
-bio:{ nl:"Guido Gezelle (1830–1899) was een Vlaams priester en dichter, geboren in Brugge. Hij wordt beschouwd als een van de grootste Nederlandse dichters aller tijden.", de:"Guido Gezelle (1830–1899) war ein flämischer Priester und Dichter aus Brügge.", en:"Guido Gezelle (1830–1899) was a Flemish priest and poet, born in Bruges, considered one of the greatest poets ever to write in Dutch." },
-lines:["Geef mij, o Heer, een goed einde.","Geef mij een einde, stil als de nacht,","Wanneer het hart zijn last heeft afgelegd","En naar de vrede wacht.","","Geef mij het sterven van de zomerdag,","Die langzaam ondergaat,","En in zijn rosse gloedglans slapend zakt","En zo de morgen wacht."],
-trans:["Grant me, O Lord, a good ending.","Grant me an end as still as the night,","When the heart has laid down its burden","And waits for peace.","","Grant me the dying of a summer day,","That slowly fades away,","And sinking into its rosy glow sleeps","And so awaits the morning."]
-},
-{ title:"Het leven is een feest", lang:"nl", author:"Herman Gorter",
-bio:{ nl:"Herman Gorter (1864–1927) was een Nederlands dichter en marxistisch activist. Zijn lange gedicht 'Mei' (1889) gold als een doorbraak in de Nederlandse literatuur.", de:"Herman Gorter (1864–1927) war ein niederländischer Dichter und marxistischer Aktivist.", en:"Herman Gorter (1864–1927) was a Dutch poet and Marxist activist. His long poem 'May' (1889) was a breakthrough in Dutch literature." },
-lines:["Een nieuwe lente en een nieuw geluid:","Ik ga mijn liefste zingen een lied,","Ik ga haar zingen, al zingt zij 't ook niet,","Een lied van de lente die wacht.","","De lente wacht. In de morgen vroeg","Gaat zij door veld en door bos en land,","Zij raakt de bloemen aan met haar hand,","De bloemen bloeien in de morgen vroeg."],
-trans:["A new spring and a new sound:","I shall sing my beloved a song,","I shall sing to her, though she sings not,","A song of spring that waits.","","Spring waits. In the early morning","She goes through field and wood and land,","She touches the flowers with her hand,","The flowers bloom in the early morning."]
-},
-{ title:"Aan de Schelde", lang:"nl", author:"Guido Gezelle",
-bio:{ nl:"Guido Gezelle (1830–1899) was een Vlaams priester en dichter, geboren in Brugge.", de:"Guido Gezelle (1830–1899) war ein flämischer Priester und Dichter aus Brügge.", en:"Guido Gezelle (1830–1899) was a Flemish priest and poet, born in Bruges." },
-lines:["Schelde, o Schelde, hoe vleit gij zo zacht","Met uw zilver en met uw goud,","De oevers die gij beglinstert en houdt","In uw vlietende, vliedende macht!","","Gij stroomt en gij zingt en gij spreekt","Met een taal die geen tong u naspreke;","Gij weet wat het herte bebreekt,","Wat het zucht en wat het bewreke."],
-trans:["Scheldt, o Scheldt, how gently you caress","With your silver and with your gold,","The banks you shimmer over and hold","In your flowing, fleeting power!","","You stream and you sing and you speak","With a tongue no other tongue can echo;","You know what breaks the heart,","What makes it sigh and what it must avenge."]
-},
-{ title:"Winter op zee", lang:"nl", author:"J.J. Slauerhoff",
-bio:{ nl:"Jan Jacob Slauerhoff (1898–1936) was een Nederlands dichter, romancier en scheepsarts. Hij stierf jong, op 37-jarige leeftijd.", de:"Jan Jacob Slauerhoff (1898–1936) war ein niederländischer Dichter und Schiffsarzt. Er starb jung, im Alter von 37 Jahren.", en:"Jan Jacob Slauerhoff (1898–1936) was a Dutch poet, novelist and ship's doctor who died young, at the age of 37." },
-lines:["De kim wordt wreed, de golven tuimlen wild,","Van mild en groen, spoorslags hardgrijs en grauw;","Eén nacht waarin de wind door 't luchtruim rilt,","Dan, als een plotselinge dood, de kou.","","Om rotseilanden zonder boom en gras,","Liggend verlaten in het oeroud ruim,","Bloeit slechts 't onstuimig en verward gewas","Van 't snel opschietend, snel verwelkend schuim.","","Op 't schip waarin geen vuren troostend branden,","Nestelt de kou zich voor een lange reis;","Tegen de 's nachts wakkergekraakte wanden","Kruit en verbrijzelt zich het drijvend ijs."],
-trans:["The horizon turns cruel, the waves tumble wild,","From mild and green, suddenly leaden and grey;","One night in which the wind shivers through the sky,","Then, like a sudden death, the cold.","","Around rock islands without tree or grass,","Lying abandoned in time-worn space,","There blooms only the fierce and tangled growth","Of foam that rises fast and wilts as fast.","","On the ship where no fires burn with comfort,","The cold settles in for a long voyage;","Against the walls that crack awake at night,","The drifting ice grinds itself to nothing."]
-},
-{ title:"O, als de zee", lang:"nl", author:"Hendrik Marsman",
-bio:{ nl:"Hendrik Marsman (1899–1940) was een Nederlands dichter en criticus. Hij stierf op 40-jarige leeftijd toen zijn schip door een Duitse onderzeeër werd getorpedeerd.", de:"Hendrik Marsman (1899–1940) war ein niederländischer Dichter. Er starb mit 40 Jahren, als sein Schiff torpediert wurde.", en:"Hendrik Marsman (1899–1940) was a Dutch poet and critic who died at 40 when his ship was torpedoed by a German submarine." },
-lines:["O, als de zee, de grijze en de stille,","Het hart omspoelt met koud en zwaar geluid,","Dan weet ik dat de wens van iedere wille","Gaat naar wat is en nimmer wordt volbracht.","","En als de nacht de hemel heeft gesloten","En alle licht verdronken is in zee,","Dan voel ik dat mijn hart, de rust genoten,","Stil zinkt en treurt om wat voorbij moet gee."],
-trans:["Oh, as the sea, the grey and silent one,","Washes the heart with cold and heavy sound,","Then I know that the wish of every will","Goes toward what is and is never fulfilled.","","And when the night has sealed the sky","And all the light is drowned within the sea,","Then I feel my heart, having tasted rest,","Sink quietly and mourn what must pass by."]
-}
-];
-
-var curLang='de',curIdx=0,showingIdioms=false;
-var W=[];
-var curWord='',curLangCode='de-DE';
-var speaking=false,utt=null,rate=0.72,voiceNames={};
+// Audio
 var ICON='<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>';
+var curLang='de',curIdx=0,showingIdioms=false,speaking=false,utt=null,rate=0.72,voiceNames={},curWord='',curLangCode='de-DE',currentIdiomBtn=null;
+var langToCode={EN:'en-US',PT:'pt-BR',DE:'de-DE',GR:'el-GR',ES:'es-ES',IT:'it-IT',JA:'ja-JP',NL:'nl-NL'};
 
-function setLang(lang){
-  hidePtGrammar();
-  curLang=lang;showingIdioms=false;
-  for(var i=0;i<poems.length;i++){if(poems[i].lang===lang){curIdx=i;break;}}
-  document.querySelectorAll('.lt').forEach(function(b,i){b.classList.toggle('on',(i===0&&lang==='de')||(i===1&&lang==='nl'));});
-  stopSpeech();closePop();buildNav();buildPoem();
-}
+function setLang(lang){hidePtGrammar();curLang=lang;showingIdioms=false;for(var i=0;i<POEMS.length;i++){if(POEMS[i].lang===lang){curIdx=i;break;}}document.querySelectorAll('.lt').forEach(function(b,i){b.classList.toggle('on',(i===0&&lang==='de')||(i===1&&lang==='nl'));});stopSpeech();closePop();buildNav();buildPoem();}
+
 function buildNav(){
   var nav=document.getElementById('pnav');nav.innerHTML='';
-  poems.forEach(function(p,i){if(p.lang!==curLang)return;var b=document.createElement('button');b.textContent=p.title;if(!showingIdioms&&i===curIdx)b.className='on';b.onclick=function(){curIdx=i;showingIdioms=false;stopSpeech();closePop();buildNav();buildPoem();};nav.appendChild(b);});
+  POEMS.forEach(function(p,i){if(p.lang!==curLang)return;var b=document.createElement('button');b.textContent=p.title;if(!showingIdioms&&i===curIdx)b.className='on';b.onclick=function(){curIdx=i;showingIdioms=false;stopSpeech();closePop();buildNav();buildPoem();};nav.appendChild(b);});
   var ib=document.createElement('button');ib.textContent='Uitdrukkingen';ib.className='idioms-btn'+(showingIdioms?' on':'');ib.onclick=function(){showingIdioms=true;stopSpeech();closePop();buildNav();buildIdiomsCard();};nav.appendChild(ib);
 }
-function tok(word,poemTitle){
-  var clean=word.replace(/[.,;:!?''''"()]/g,'').trim();if(!clean)return word;
-  var anns=annotations[poemTitle];if(!anns)return word;
-  var ann=anns[clean]||anns[clean.toLowerCase()];if(!ann)return word;
-  var i=W.length;W.push({word:clean,ann:ann});
-  return '<span class="w" onclick="wclick(this,'+i+')">'+word+'</span>';
+
+function linesHTML(arr){var html='',inS=false;arr.forEach(function(l){if(!l){if(inS){html+='</div>';inS=false;}}else{if(!inS){html+='<div class="st">';inS=true;}html+=l+'<br>';}});if(inS)html+='</div>';return html;}
+
+function buildPoem(){
+  var p=POEMS[curIdx];var isG=curLang==='de';curLangCode=isG?'de-DE':'nl-NL';
+  var label=isG?'DEUTSCH':'NEDERLANDS';
+  var transHTML=linesHTML(p.trans);
+  var origHTML=linesHTML(p.lines);
+  var dutchCol='',colClass='two';
+  if(isG&&p.dutch){dutchCol='<div><div class="clabel">Nederlands</div><div class="ptext transl">'+linesHTML(p.dutch)+'</div></div>';colClass='three';}
+  var nlBtn=(isG&&p.dutch)?('<div class="arow" style="margin-top:.35rem"><button class="abtn" id="abtnNl" onclick="toggleSpeech(\'nl\')">'+ICON+' Listen in Dutch</button><select class="vsel" id="vselNl" onchange="onVoiceChange(\'nl\')"></select></div>'):'';
+  var bioHTML='',introHTML='';
+  if(p.bio){bioHTML='<div class="panel"><div class="plabel">Over de dichter</div><div class="ptabs"><button class="ptab on" onclick="switchPanel(\'bioTxt\',\'nl\',this)">NL</button><button class="ptab" onclick="switchPanel(\'bioTxt\',\'de\',this)">DE</button><button class="ptab" onclick="switchPanel(\'bioTxt\',\'en\',this)">EN</button></div><p class="ptext-panel" id="bioTxt">'+p.bio.nl+'</p></div><div class="divider">✦</div>';}
+  if(p.intro){introHTML='<div class="panel"><div class="plabel">Over het gedicht</div><div class="ptabs"><button class="ptab on" onclick="switchPanel(\'introTxt\',\'nl\',this)">NL</button><button class="ptab" onclick="switchPanel(\'introTxt\',\'de\',this)">DE</button><button class="ptab" onclick="switchPanel(\'introTxt\',\'en\',this)">EN</button></div><p class="ptext-panel" id="introTxt">'+p.intro.nl+'</p></div><div class="divider">✦</div>';}
+  document.getElementById('card').innerHTML=
+    '<div class="ptitle">'+p.title+'</div><div class="pauthor">'+p.author+'</div><div style="text-align:center"><span class="badge">'+label+'</span></div>'+
+    '<div class="arow"><button class="abtn" id="abtn" onclick="toggleSpeech(\'orig\')">'+ICON+' Listen in '+(isG?'German':'Dutch')+'</button><select class="vsel" id="vsel" onchange="onVoiceChange(\'orig\')"></select></div>'+
+    nlBtn+'<div class="arow" style="margin-top:.35rem"><div class="rctl"><span>pace</span><input type="range" id="rateSlider" min="0.4" max="1.2" step="0.05" value="'+rate+'" oninput="onRateChange(this.value)"><span id="rateLabel">'+rate.toFixed(2)+'</span></div></div>'+
+    '<div class="divider">✦</div>'+bioHTML+introHTML+
+    '<div class="cols '+colClass+'"><div><div class="clabel">'+label+'</div><div class="ptext">'+origHTML+'</div></div>'+dutchCol+'<div><div class="clabel">English</div><div class="ptext transl">'+transHTML+'</div></div></div>';
+  if(window.speechSynthesis&&window.speechSynthesis.getVoices().length)populateVoices();
 }
-function renderLine(line,poemTitle){return line.split(' ').map(function(w){return tok(w,poemTitle);}).join(' ');}
-function linesHTML(arr,poemTitle){
-  var html='',inStanza=false;
-  arr.forEach(function(line){if(!line){if(inStanza){html+='</div>';inStanza=false;}}else{if(!inStanza){html+='<div class="st">';inStanza=true;}html+=(poemTitle?renderLine(line,poemTitle):line)+'<br>';}});
-  if(inStanza)html+='</div>';return html;
+
+function buildIdiomsCard(){
+  var html='<div class="ptitle">Uitdrukkingen</div><div class="pauthor" style="font-style:normal;font-size:0.85rem;">Dutch idioms &amp; their equivalents</div><div style="text-align:center"><span class="badge">NEDERLANDS</span></div><div class="divider">✦</div>';
+  IDIOMS.forEach(function(id){
+    html+='<div class="idiom-block"><div class="idiom-nl">'+id.nl+'</div><div class="idiom-grid">';
+    id.langs.forEach(function(l){html+='<div class="idiom-row"><span class="lang-tag">'+l.tag+'</span>'+l.text+'</div>';});
+    html+='</div><div class="idiom-audio"><button class="iabtn" data-tag="NL" onclick="speakIdiom(this,\''+id.nl.replace(/'/g,"\\'")+'\',' + "'NL')" + '>'+ICON+' NL</button>';
+    id.langs.forEach(function(l){var safe=l.text.replace(/\\/g,'\\\\').replace(/'/g,"\\'");html+='<button class="iabtn" data-tag="'+l.tag+'" onclick="speakIdiom(this,\''+safe+'\',\''+l.tag+'\')">'+ICON+' '+l.tag+'</button>';});
+    html+='</div></div>';
+  });
+  document.getElementById('card').innerHTML=html;
 }
-function wclick(el,i){
-  var e=W[i];if(!e)return;curWord=e.word;
-  document.querySelectorAll('.w.on').forEach(function(s){s.classList.remove('on');});el.classList.add('on');
-  document.getElementById('pw').textContent=e.word;document.getElementById('pl').textContent=e.ann.lemma;
-  document.getElementById('pt').textContent=e.ann.type;document.getElementById('pe').textContent=e.ann.en;
-  document.getElementById('pg').textContent=e.ann.grammar;document.getElementById('preg').innerHTML=e.ann.register?'<span class="reg">'+e.ann.register+'</span>':'';
-  var pop=document.getElementById('pop');pop.classList.add('on');
-  var r=el.getBoundingClientRect();var left=r.left,top=r.bottom+8,pw=290,ph=220;
-  if(left+pw>window.innerWidth-8)left=window.innerWidth-pw-8;if(left<8)left=8;
-  if(top+ph>window.innerHeight-8)top=r.top-ph-8;if(top<8)top=8;
-  pop.style.left=left+'px';pop.style.top=top+'px';
-}
+
+function switchPanel(id,lang,btn){var p=POEMS[curIdx];var src=id==='bioTxt'?'bio':'intro';if(!p[src])return;document.getElementById(id).textContent=p[src][lang];btn.closest('.ptabs').querySelectorAll('.ptab').forEach(function(t){t.classList.remove('on');});btn.classList.add('on');}
 function closePop(){document.getElementById('pop').classList.remove('on');document.querySelectorAll('.w.on').forEach(function(s){s.classList.remove('on');});}
 document.addEventListener('click',function(e){if(!e.target.classList.contains('w')&&!document.getElementById('pop').contains(e.target))closePop();});
-function switchPanel(id,lang,btn){var p=poems[curIdx];var src=id==='bioTxt'?'bio':'intro';if(!p[src])return;document.getElementById(id).textContent=p[src][lang];btn.closest('.ptabs').querySelectorAll('.ptab').forEach(function(t){t.classList.remove('on');});btn.classList.add('on');}
-function panelHTML(label,id,src){var p=poems[curIdx];if(!p[src])return '';return '<div class="panel"><div class="plabel">'+label+'</div><div class="ptabs"><button class="ptab on" onclick="switchPanel(&quot;'+id+'&quot;,&quot;nl&quot;,this)">NL</button><button class="ptab" onclick="switchPanel(&quot;'+id+'&quot;,&quot;de&quot;,this)">DE</button><button class="ptab" onclick="switchPanel(&quot;'+id+'&quot;,&quot;en&quot;,this)">EN</button></div><p class="ptext-panel" id="'+id+'">'+p[src].nl+'</p></div><div class="divider">&#10022;</div>';}
 function fillPicker(id,pfx,key){var sel=document.getElementById(id);if(!sel)return;var vs=window.speechSynthesis.getVoices().filter(function(v){return v.lang.toLowerCase().startsWith(pfx);});sel.innerHTML='';if(!vs.length){sel.innerHTML='<option>'+pfx+' — no voices</option>';return;}vs.forEach(function(v){var o=document.createElement('option');o.value=v.name;o.textContent=v.name.replace(/^(Microsoft|Google|Apple)\s+/i,'')+(v.localService?'':' ☁');sel.appendChild(o);});if(voiceNames[key]){var m=vs.find(function(v){return v.name===voiceNames[key];});if(m)sel.value=voiceNames[key];}}
 function populateVoices(){var g=curLang==='de';fillPicker('vsel',g?'de':'nl',g?'de':'nl');if(g)fillPicker('vselNl','nl','nl');}
 function onVoiceChange(which){var id=which==='nl'?'vselNl':'vsel',key=which==='nl'?'nl':(curLang==='de'?'de':'nl');var sel=document.getElementById(id);if(sel)voiceNames[key]=sel.value;}
@@ -1120,7 +938,7 @@ function stopSpeech(){if(window.speechSynthesis)window.speechSynthesis.cancel();
 function toggleSpeech(which){
   if(!window.speechSynthesis)return;
   if(speaking){stopSpeech();updateBtn('abtn',false,'orig');updateBtn('abtnNl',false,'nl');return;}
-  var p=poems[curIdx],isG=curLang==='de',text,lc;
+  var p=POEMS[curIdx],isG=curLang==='de',text,lc;
   if(which==='nl'&&isG&&p.dutch){text=p.dutch.filter(function(l){return l;}).join('... ');lc='nl-NL';}
   else{text=p.lines.filter(function(l){return l;}).join('... ');lc=isG?'de-DE':'nl-NL';}
   utt=new SpeechSynthesisUtterance(text);utt.lang=lc;utt.rate=rate;utt.pitch=0.95;
@@ -1135,9 +953,6 @@ function toggleSpeech(which){
 }
 function updateBtn(id,playing,which){var btn=document.getElementById(id);if(!btn)return;btn.classList.toggle('playing',playing);var lbl=which==='nl'?'Dutch':(curLang==='de'?'German':'Dutch');btn.innerHTML=playing?'<span class="spk-ind"></span> Stop':ICON+' Listen in '+lbl;}
 function spkWord(){if(!window.speechSynthesis||!curWord)return;window.speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(curWord);u.lang=curLangCode;u.rate=0.7;var m=window.speechSynthesis.getVoices().find(function(v){return v.lang.toLowerCase().startsWith(curLangCode.substring(0,2));});if(m)u.voice=m;window.speechSynthesis.speak(u);}
-if(window.speechSynthesis)window.speechSynthesis.addEventListener('voiceschanged',populateVoices);
-var langToCode={EN:'en-US',PT:'pt-BR',DE:'de-DE',GR:'el-GR',ES:'es-ES',IT:'it-IT',JA:'ja-JP',NL:'nl-NL'};
-var currentIdiomBtn=null;
 function speakIdiom(btnEl,text,langTag){
   if(!window.speechSynthesis)return;
   if(currentIdiomBtn&&currentIdiomBtn===btnEl&&speaking){stopSpeech();btnEl.classList.remove('playing');btnEl.innerHTML=ICON+' '+langTag;currentIdiomBtn=null;return;}
@@ -1150,33 +965,7 @@ function speakIdiom(btnEl,text,langTag){
   u.onerror=function(){speaking=false;btnEl.classList.remove('playing');btnEl.innerHTML=ICON+' '+langTag;currentIdiomBtn=null;};
   window.speechSynthesis.speak(u);
 }
-function buildIdiomsCard(){
-  var html='<div class="ptitle">Uitdrukkingen</div><div class="pauthor" style="font-style:normal;font-size:0.85rem;">Dutch idioms &amp; their equivalents</div><div style="text-align:center"><span class="badge">NEDERLANDS</span></div><div class="divider">✦</div>';
-  idioms.forEach(function(id){
-    html+='<div class="idiom-block"><div class="idiom-nl">'+id.nl+'</div><div class="idiom-grid">';
-    id.langs.forEach(function(l){html+='<div class="idiom-row"><span class="lang-tag">'+l.tag+'</span>'+l.text+'</div>';});
-    html+='</div><div class="idiom-audio"><button class="iabtn" data-tag="NL" onclick="speakIdiom(this,\''+id.nl.replace(/'/g,"\\'")+'\',' + "'NL')" + '>'+ICON+' NL</button>';
-    id.langs.forEach(function(l){var safe=l.text.replace(/\\/g,'\\\\').replace(/'/g,"\\'");html+='<button class="iabtn" data-tag="'+l.tag+'" onclick="speakIdiom(this,\''+safe+'\',\''+l.tag+'\')">'+ICON+' '+l.tag+'</button>';});
-    html+='</div></div>';
-  });
-  document.getElementById('card').innerHTML=html;
-}
-function buildPoem(){
-  W=[];var p=poems[curIdx];var isG=curLang==='de';curLangCode=isG?'de-DE':'nl-NL';
-  var hasAnn=!!annotations[p.title];var label=isG?'DEUTSCH':'NEDERLANDS';
-  var origHTML=linesHTML(p.lines,hasAnn?p.title:null);var transHTML=linesHTML(p.trans,null);
-  var dutchCol='',colClass='two';
-  if(isG&&p.dutch){dutchCol='<div><div class="clabel">Nederlands</div><div class="ptext transl">'+linesHTML(p.dutch,null)+'</div></div>';colClass='three';}
-  var nlBtn=(isG&&p.dutch)?('<div class="arow" style="margin-top:.35rem"><button class="abtn" id="abtnNl" onclick="toggleSpeech(&quot;nl&quot;)">'+ICON+' Listen in Dutch</button><select class="vsel" id="vselNl" onchange="onVoiceChange(&quot;nl&quot;)"></select></div>'):'';
-  document.getElementById('card').innerHTML=
-    '<div class="ptitle">'+p.title+'</div><div class="pauthor">'+p.author+'</div><div style="text-align:center"><span class="badge">'+label+'</span></div>'+
-    '<div class="arow"><button class="abtn" id="abtn" onclick="toggleSpeech(&quot;orig&quot;)">'+ICON+' Listen in '+(isG?'German':'Dutch')+'</button><select class="vsel" id="vsel" onchange="onVoiceChange(&quot;orig&quot;)"></select></div>'+
-    nlBtn+'<div class="arow" style="margin-top:.35rem"><div class="rctl"><span>pace</span><input type="range" id="rateSlider" min="0.4" max="1.2" step="0.05" value="'+rate+'" oninput="onRateChange(this.value)"><span id="rateLabel">'+rate.toFixed(2)+'</span></div></div>'+
-    '<div class="divider">✦</div>'+panelHTML('Over de dichter','bioTxt','bio')+panelHTML('Over het gedicht','introTxt','intro')+
-    '<div class="cols '+colClass+'"><div><div class="clabel">'+label+'</div><div class="ptext">'+origHTML+'</div></div>'+dutchCol+'<div><div class="clabel">English</div><div class="ptext transl">'+transHTML+'</div></div></div>'+
-    (hasAnn?'<p class="hint">Click any underlined word to see its meaning.</p>':'');
-  if(window.speechSynthesis&&window.speechSynthesis.getVoices().length)populateVoices();
-}
+if(window.speechSynthesis)window.speechSynthesis.addEventListener('voiceschanged',populateVoices);
 buildNav();
 buildPoem();
 </script>
