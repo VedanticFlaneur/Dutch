@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Imperfeito e Pretérito — Português do Brasil para Gregos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f7f4ee;
+      --surface: #ffffff;
+      --surface2: #f0ece3;
+      --border: #d9d3c7;
+      --border2: #c8c0b0;
+      --text: #1e1a14;
+      --text2: #5a5248;
+      --text3: #8c8278;
+      --blue-bg: #e8f0fb;
+      --blue-text: #1a4a8a;
+      --amber-bg: #fef3db;
+      --amber-text: #7a4f00;
+      --teal-bg: #e0f5ee;
+      --teal-text: #0d6648;
+      --coral-bg: #faeae5;
+      --coral-text: #8a3318;
+      --green-text: #1a6632;
+      --warn-bg: #fef8e7;
+      --warn-border: #d4a017;
+      --accent: #8b5e3c;
+      --accent2: #c4894a;
+    }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.7;
+    }
+
+    header {
+      background: var(--text);
+      color: #f7f4ee;
+      padding: 2.5rem 2rem 2rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-family: 'Lora', serif;
+      font-size: clamp(1.4rem, 4vw, 2.2rem);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.4rem;
+    }
+
+    header p {
+      font-size: 0.95rem;
+      color: #c8c0b0;
+      font-style: italic;
+    }
+
+    .tabs-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      padding: 0 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      scrollbar-width: none;
+    }
+    .tabs-bar::-webkit-scrollbar { display: none; }
+
+    .tab {
+      font-size: 0.85rem;
+      padding: 1rem 1.1rem;
+      border: none;
+      background: transparent;
+      color: var(--text2);
+      cursor: pointer;
+      border-bottom: 2.5px solid transparent;
+      white-space: nowrap;
+      font-family: 'Source Sans 3', sans-serif;
+      font-weight: 500;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .tab:hover { color: var(--text); }
+    .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+    .wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+    }
+
+    .section { display: none; }
+    .section.active { display: block; }
+
+    h2 {
+      font-family: 'Lora', serif;
+      font-size: 1.45rem;
+      font-weight: 500;
+      margin: 2rem 0 0.7rem;
+      color: var(--text);
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text2);
+      margin: 1.4rem 0 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    p {
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+
+    ul {
+      margin-left: 1.3rem;
+      margin-bottom: 0.75rem;
+    }
+
+    li {
+      font-size: 1rem;
+      line-height: 1.9;
+      color: var(--text);
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.1rem 1.3rem;
+      margin-bottom: 1rem;
+    }
+
+    .grid2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    @media (max-width: 580px) { .grid2 { grid-template-columns: 1fr; } }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .badge-blue { background: var(--blue-bg); color: var(--blue-text); }
+    .badge-amber { background: var(--amber-bg); color: var(--amber-text); }
+    .badge-teal { background: var(--teal-bg); color: var(--teal-text); }
+    .badge-coral { background: var(--coral-bg); color: var(--coral-text); }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      margin: 0.4rem 0;
+    }
+
+    th {
+      text-align: left;
+      font-weight: 600;
+      padding: 7px 8px;
+      border-bottom: 1px solid var(--border2);
+      color: var(--text2);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    td {
+      padding: 7px 8px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      line-height: 1.5;
+      font-size: 0.92rem;
+    }
+
+    tr:last-child td { border-bottom: none; }
+
+    .greek {
+      font-style: italic;
+      color: var(--text3);
+      font-size: 0.85rem;
+    }
+
+    .note {
+      background: var(--warn-bg);
+      border-left: 3px solid var(--warn-border);
+      padding: 12px 16px;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.92rem;
+      margin: 0.9rem 0;
+      line-height: 1.65;
+      color: var(--text);
+    }
+
+    /* Exercises */
+    .ex-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.2rem;
+      margin-bottom: 0.75rem;
+      transition: border-color 0.15s;
+    }
+
+    .ex-item:hover { border-color: var(--border2); }
+
+    .ex-num {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--accent2);
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .ex-sent {
+      font-size: 1rem;
+      line-height: 1.75;
+      margin-bottom: 5px;
+    }
+
+    .ex-gr {
+      font-size: 0.88rem;
+      color: var(--text3);
+      font-style: italic;
+    }
+
+    .blank {
+      display: inline-block;
+      min-width: 90px;
+      border-bottom: 2px solid var(--accent2);
+      text-align: center;
+      color: var(--text3);
+      font-size: 0.9rem;
+      vertical-align: bottom;
+    }
+
+    /* Answer toggle */
+    .ans-toggle { margin-top: 1.2rem; }
+
+    .ans-toggle button {
+      font-size: 0.88rem;
+      padding: 8px 18px;
+      border-radius: 6px;
+      border: 1px solid var(--border2);
+      background: var(--surface);
+      color: var(--text);
+      cursor: pointer;
+      font-family: 'Source Sans 3', sans-serif;
+      font-weight: 500;
+      transition: background 0.15s;
+    }
+
+    .ans-toggle button:hover { background: var(--surface2); }
+
+    .answers { display: none; margin-top: 1rem; }
+    .answers.visible { display: block; }
+
+    .ans-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 8px;
+    }
+
+    .ans-card {
+      background: var(--surface2);
+      border-radius: 8px;
+      padding: 9px 13px;
+      font-size: 0.88rem;
+      line-height: 1.55;
+      border: 1px solid var(--border);
+    }
+
+    .ans-card strong {
+      font-weight: 600;
+      color: var(--green-text);
+    }
+
+    /* Full answers table */
+    .full-ans-table td:nth-child(4) {
+      font-size: 0.8rem;
+      color: var(--text3);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.8rem;
+      color: var(--text3);
+      border-top: 1px solid var(--border);
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Imperfeito &amp; Pretérito Perfeito no Português do Brasil</h1>
+  <p>Εκτενής γραμματική ανάλυση στα νέα ελληνικά — 30 ασκήσεις με απαντήσεις</p>
+</header>
+
+<nav class="tabs-bar">
+  <button class="tab active" onclick="showTab('teoria', this)">Θεωρία</button>
+  <button class="tab" onclick="showTab('comparacao', this)">Σύγκριση με Ελληνικά</button>
+  <button class="tab" onclick="showTab('exercicios1', this)">Ασκήσεις 1–15</button>
+  <button class="tab" onclick="showTab('exercicios2', this)">Ασκήσεις 16–30</button>
+  <button class="tab" onclick="showTab('respostas', this)">Απαντήσεις</button>
+</nav>
+
+<div class="wrap">
+
+  <!-- TAB: TEORIA -->
+  <div class="section active" id="tab-teoria">
+
+    <h2>1. Pretérito Imperfeito — Ο Παρατατικός</h2>
+    <div class="card">
+      <p>Το <strong>Pretérito Imperfeito</strong> στα Βραζιλιάνικα Πορτογαλικά αντιστοιχεί περίπου στον <strong>Παρατατικό</strong> των Νέων Ελληνικών. Εκφράζει:</p>
+      <ul>
+        <li>Μια <strong>συνεχόμενη ή επαναλαμβανόμενη</strong> δράση στο παρελθόν</li>
+        <li>Μια <strong>συνήθεια</strong> του παρελθόντος («έκανα πάντα...»)</li>
+        <li>Μια <strong>κατάσταση ή περιγραφή</strong> που υπήρχε για ένα διάστημα</li>
+        <li><strong>Πλαίσιο/φόντο</strong> μιας αφήγησης («ενώ έκανα X, συνέβη Y»)</li>
+        <li>Αναφορά στο <strong>μεγαλύτερο παρελθόν</strong> (παιδική ηλικία, παλιές συνήθειες)</li>
+      </ul>
+    </div>
+
+    <div class="note">
+      <strong>Ελληνική σύγκριση:</strong> Ο Παρατατικός των Νέων Ελληνικών («έτρωγα», «έγραφα») αντιστοιχεί σχεδόν ακριβώς στο Imperfeito. Και οι δύο χρόνοι δείχνουν <em>ημιτελή</em> ή <em>επαναλαμβανόμενη</em> δράση στο παρελθόν.
+    </div>
+
+    <h3>Πώς σχηματίζεται το Imperfeito</h3>
+    <div class="grid2">
+      <div class="card">
+        <span class="badge badge-blue">Verbs -AR (1ª conjugação)</span>
+        <p style="font-size:0.88rem; margin-bottom:6px;">Ex: <strong>falar</strong> (μιλώ)</p>
+        <table>
+          <tr><th>Πρόσωπο</th><th>Τύπος</th></tr>
+          <tr><td>eu</td><td>fal<strong>ava</strong></td></tr>
+          <tr><td>tu</td><td>fal<strong>avas</strong></td></tr>
+          <tr><td>ele/ela/você</td><td>fal<strong>ava</strong></td></tr>
+          <tr><td>nós</td><td>fal<strong>ávamos</strong></td></tr>
+          <tr><td>eles/vocês</td><td>fal<strong>avam</strong></td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <span class="badge badge-amber">Verbs -ER / -IR</span>
+        <p style="font-size:0.88rem; margin-bottom:6px;">Ex: <strong>comer / partir</strong></p>
+        <table>
+          <tr><th>Πρόσωπο</th><th>comer / partir</th></tr>
+          <tr><td>eu</td><td>com<strong>ia</strong> / part<strong>ia</strong></td></tr>
+          <tr><td>tu</td><td>com<strong>ias</strong> / part<strong>ias</strong></td></tr>
+          <tr><td>ele/você</td><td>com<strong>ia</strong> / part<strong>ia</strong></td></tr>
+          <tr><td>nós</td><td>com<strong>íamos</strong> / part<strong>íamos</strong></td></tr>
+          <tr><td>eles/vocês</td><td>com<strong>iam</strong> / part<strong>iam</strong></td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="badge badge-coral">Ανώμαλα ρήματα στο Imperfeito</span>
+      <table>
+        <tr><th>Infinitivo</th><th>eu</th><th>ele/ela</th><th>Ελληνικό αντίστοιχο</th></tr>
+        <tr><td>ser (είμαι)</td><td>era</td><td>era</td><td>ήμουν</td></tr>
+        <tr><td>ter (έχω)</td><td>tinha</td><td>tinha</td><td>είχα</td></tr>
+        <tr><td>vir (έρχομαι)</td><td>vinha</td><td>vinha</td><td>ερχόμουν</td></tr>
+        <tr><td>pôr (βάζω)</td><td>punha</td><td>punha</td><td>έβαζα</td></tr>
+      </table>
+    </div>
+
+    <h3>Σήματα χρόνου — Imperfeito</h3>
+    <div class="card">
+      <table>
+        <tr><th>Πορτογαλικά</th><th>Ελληνικά</th></tr>
+        <tr><td>sempre, todo dia, geralmente</td><td>πάντα, κάθε μέρα, συνήθως</td></tr>
+        <tr><td>quando era criança / jovem</td><td>όταν ήμουν παιδί / νέος</td></tr>
+        <tr><td>antigamente, antes</td><td>παλιά, πριν</td></tr>
+        <tr><td>naquele tempo, naquela época</td><td>εκείνη την εποχή</td></tr>
+        <tr><td>enquanto (+ imperfeito)</td><td>ενώ (+ παρατατικός)</td></tr>
+      </table>
+    </div>
+
+    <h2>2. Pretérito Perfeito Simples — Ο Αόριστος</h2>
+    <div class="card">
+      <p>Το <strong>Pretérito Perfeito</strong> αντιστοιχεί στον <strong>Αόριστο</strong> των Νέων Ελληνικών. Εκφράζει:</p>
+      <ul>
+        <li>Μια <strong>ολοκληρωμένη, μεμονωμένη</strong> δράση στο παρελθόν</li>
+        <li>Κάτι που συνέβη σε <strong>συγκεκριμένη χρονική στιγμή</strong></li>
+        <li>Μια αλυσίδα <strong>διαδοχικών ενεργειών</strong> («πήγα, είδα, νίκησα»)</li>
+        <li>Δράση που <strong>διέκοψε</strong> μια άλλη σε εξέλιξη</li>
+      </ul>
+    </div>
+
+    <h3>Πώς σχηματίζεται το Perfeito</h3>
+    <div class="grid2">
+      <div class="card">
+        <span class="badge badge-blue">Verbs -AR</span>
+        <p style="font-size:0.88rem; margin-bottom:6px;">Ex: <strong>falar</strong></p>
+        <table>
+          <tr><th>Πρόσωπο</th><th>Τύπος</th></tr>
+          <tr><td>eu</td><td>fal<strong>ei</strong></td></tr>
+          <tr><td>tu</td><td>fal<strong>aste</strong></td></tr>
+          <tr><td>ele/você</td><td>fal<strong>ou</strong></td></tr>
+          <tr><td>nós</td><td>fal<strong>amos</strong></td></tr>
+          <tr><td>eles/vocês</td><td>fal<strong>aram</strong></td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <span class="badge badge-amber">Verbs -ER / -IR</span>
+        <p style="font-size:0.88rem; margin-bottom:6px;">Ex: <strong>comer / partir</strong></p>
+        <table>
+          <tr><th>Πρόσωπο</th><th>comer / partir</th></tr>
+          <tr><td>eu</td><td>com<strong>i</strong> / part<strong>i</strong></td></tr>
+          <tr><td>tu</td><td>com<strong>este</strong> / part<strong>iste</strong></td></tr>
+          <tr><td>ele/você</td><td>com<strong>eu</strong> / part<strong>iu</strong></td></tr>
+          <tr><td>nós</td><td>com<strong>emos</strong> / part<strong>imos</strong></td></tr>
+          <tr><td>eles/vocês</td><td>com<strong>eram</strong> / part<strong>iram</strong></td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="badge badge-coral">Κυριότερα ανώμαλα ρήματα — Perfeito</span>
+      <table>
+        <tr><th>Infinitivo</th><th>eu</th><th>ele/ela</th><th>Ελληνικό αντίστοιχο</th></tr>
+        <tr><td>ser / ir</td><td>fui</td><td>foi</td><td>ήμουν / πήγα</td></tr>
+        <tr><td>ter</td><td>tive</td><td>teve</td><td>είχα</td></tr>
+        <tr><td>fazer</td><td>fiz</td><td>fez</td><td>έκανα</td></tr>
+        <tr><td>poder</td><td>pude</td><td>pôde</td><td>μπόρεσα</td></tr>
+        <tr><td>dizer</td><td>disse</td><td>disse</td><td>είπα</td></tr>
+        <tr><td>trazer</td><td>trouxe</td><td>trouxe</td><td>έφερα</td></tr>
+        <tr><td>querer</td><td>quis</td><td>quis</td><td>ήθελα</td></tr>
+        <tr><td>saber</td><td>soube</td><td>soube</td><td>έμαθα</td></tr>
+        <tr><td>vir</td><td>vim</td><td>veio</td><td>ήρθα</td></tr>
+        <tr><td>ver</td><td>vi</td><td>viu</td><td>είδα</td></tr>
+      </table>
+    </div>
+
+    <h3>Σήματα χρόνου — Perfeito</h3>
+    <div class="card">
+      <table>
+        <tr><th>Πορτογαλικά</th><th>Ελληνικά</th></tr>
+        <tr><td>ontem, anteontem</td><td>χθες, προχθές</td></tr>
+        <tr><td>há dois dias / anos</td><td>πριν δύο μέρες / χρόνια</td></tr>
+        <tr><td>no ano passado, na semana passada</td><td>πέρυσι, την περασμένη εβδομάδα</td></tr>
+        <tr><td>de repente, de uma vez</td><td>ξαφνικά, μονομιάς</td></tr>
+        <tr><td>logo, em seguida, depois</td><td>αμέσως, στη συνέχεια, μετά</td></tr>
+        <tr><td>aí, então</td><td>τότε (σημείο αφήγησης)</td></tr>
+      </table>
+    </div>
+
+  </div>
+
+  <!-- TAB: COMPARACAO -->
+  <div class="section" id="tab-comparacao">
+
+    <h2>Σύγκριση: Πορτογαλικά ↔ Νέα Ελληνικά</h2>
+
+    <div class="card">
+      <span class="badge badge-blue">Παράλληλη δομή χρόνων</span>
+      <table>
+        <tr><th>Ελληνικός χρόνος</th><th>Πορτογαλικός χρόνος</th><th>Λειτουργία</th></tr>
+        <tr><td>Παρατατικός <span class="greek">έγραφα, τρώγαμε</span></td><td>Imperfeito <span class="greek">escrevia, comíamos</span></td><td>Συνέχεια, περιγραφή, συνήθεια</td></tr>
+        <tr><td>Αόριστος <span class="greek">έγραψα, φάγαμε</span></td><td>Perfeito Simples <span class="greek">escrevi, comemos</span></td><td>Ολοκληρωμένη, μεμονωμένη δράση</td></tr>
+        <tr><td>Αόριστος «ήταν» (1 φορά)</td><td>foi</td><td>Ταυτόσημοι τύποι!</td></tr>
+        <tr><td>Παρατατικός «ήταν» (συνεχής)</td><td>era</td><td>Πλαίσιο, κατάσταση</td></tr>
+      </table>
+    </div>
+
+    <div class="note">
+      <strong>Σημαντική διαφορά:</strong> Στα Νέα Ελληνικά, ο τύπος «ήταν» χρησιμοποιείται τόσο για τον Παρατατικό όσο και για τον Αόριστο. Στα Πορτογαλικά διαχωρίζονται: <em>era</em> (παρατατικός) και <em>foi</em> (αόριστος). Αυτό είναι ένα από τα πιο κοινά λάθη των Ελλήνων!
+    </div>
+
+    <div class="card">
+      <span class="badge badge-amber">Παράλληλες προτάσεις</span>
+      <table>
+        <tr><th>Πορτογαλικά (BR)</th><th>Νέα Ελληνικά</th></tr>
+        <tr><td>Quando eu era criança, <em>brincava</em> na rua todos os dias.</td><td>Όταν ήμουν παιδί, <em>έπαιζα</em> στον δρόμο κάθε μέρα.</td></tr>
+        <tr><td>Ontem eu <em>fui</em> ao mercado e <em>comprei</em> frutas.</td><td>Χθες <em>πήγα</em> στην αγορά και <em>αγόρασα</em> φρούτα.</td></tr>
+        <tr><td>Eu <em>lia</em> quando ele <em>chegou</em>.</td><td><em>Διάβαζα</em> όταν αυτός <em>έφτασε</em>.</td></tr>
+        <tr><td>A casa <em>era</em> grande e <em>tinha</em> um jardim lindo.</td><td>Το σπίτι <em>ήταν</em> μεγάλο και <em>είχε</em> έναν όμορφο κήπο.</td></tr>
+        <tr><td>De repente, ela <em>entrou</em> e todos <em>ficaram</em> surpresos.</td><td>Ξαφνικά, αυτή <em>μπήκε</em> και όλοι <em>απόμειναν</em> έκπληκτοι.</td></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <span class="badge badge-teal">Ο κανόνας «Imperfeito + Perfeito» στην αφήγηση</span>
+      <p>Στην αφήγηση, το Imperfeito δίνει το <strong>πλαίσιο</strong> (σκηνικό, περιγραφή) και το Perfeito δίνει τα <strong>γεγονότα</strong> (ό,τι συνέβη). Η ίδια λογική ισχύει στα Ελληνικά με Παρατατικό + Αόριστο.</p>
+      <div class="note" style="margin-top:0.8rem;">
+        <em>Era uma noite fria.</em> (Imperfeito — πλαίσιο)<br>
+        <em>De repente, a luz apagou.</em> (Perfeito — γεγονός)<br><br>
+        Ήταν μια κρύα νύχτα. (Παρατατικός — πλαίσιο)<br>
+        Ξαφνικά, το φως έσβησε. (Αόριστος — γεγονός)
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="badge badge-coral">Παρακείμενος: διαφορά από τα Ελληνικά!</span>
+      <p>Στα Νέα Ελληνικά, ο Παρακείμενος («έχω γράψει») έχει σχετικά περιορισμένη χρήση. Στα Πορτογαλικά της Ευρώπης, το <em>Pretérito Perfeito Composto</em> («tenho escrito») χρησιμοποιείται για επαναλαμβανόμενες δράσεις ως το παρόν — αλλά <strong>στα Βραζιλιάνικα Πορτογαλικά</strong> αυτός ο χρόνος είναι σπάνιος! Στη Βραζιλία χρησιμοποιούν το <em>Perfeito Simples</em> για σχεδόν όλες τις ολοκληρωμένες δράσεις — κάτι που τα κάνει πιο κοντά στα Ελληνικά.</p>
+    </div>
+
+  </div>
+
+  <!-- TAB: EXERCICIOS 1-15 -->
+  <div class="section" id="tab-exercicios1">
+    <h2>Ασκήσεις 1–15</h2>
+    <p style="color:var(--text2); font-size:0.92rem; margin-bottom:1.2rem;">Επιλέξτε Imperfeito ή Pretérito Perfeito και συμπληρώστε τον σωστό τύπο.</p>
+
+    <div class="ex-item"><div class="ex-num">01 — Imperfeito ou Perfeito?</div><div class="ex-sent">Quando eu era criança, <span class="blank">______</span> (brincar) na rua todo dia.</div><div class="ex-gr">Όταν ήμουν παιδί, _______ στον δρόμο κάθε μέρα. (brincar = παίζω)</div></div>
+
+    <div class="ex-item"><div class="ex-num">02</div><div class="ex-sent">Ontem, eu <span class="blank">______</span> (acordar) às sete da manhã.</div><div class="ex-gr">Χθες, εγώ _______ στις επτά το πρωί. (acordar = ξυπνώ)</div></div>
+
+    <div class="ex-item"><div class="ex-num">03</div><div class="ex-sent">Ela <span class="blank">______</span> (estudar) português todo dia quando <span class="blank">______</span> (morar) em Lisboa.</div><div class="ex-gr">Αυτή _______ πορτογαλικά κάθε μέρα όταν _______ στη Λισαβόνα.</div></div>
+
+    <div class="ex-item"><div class="ex-num">04</div><div class="ex-sent">De repente, o telefone <span class="blank">______</span> (tocar) enquanto eu <span class="blank">______</span> (dormir).</div><div class="ex-gr">Ξαφνικά, το τηλέφωνο _______ ενώ εγώ _______.</div></div>
+
+    <div class="ex-item"><div class="ex-num">05</div><div class="ex-sent">Nós <span class="blank">______</span> (ir) à praia no sábado passado.</div><div class="ex-gr">Εμείς _______ στην παραλία το περασμένο Σάββατο.</div></div>
+
+    <div class="ex-item"><div class="ex-num">06</div><div class="ex-sent">Antes, eles <span class="blank">______</span> (viver) no campo, mas agora moram na cidade.</div><div class="ex-gr">Παλιά, αυτοί _______ στην εξοχή, αλλά τώρα μένουν στην πόλη.</div></div>
+
+    <div class="ex-item"><div class="ex-num">07</div><div class="ex-sent">A professora <span class="blank">______</span> (explicar) a lição quando o aluno <span class="blank">______</span> (entrar) na sala.</div><div class="ex-gr">Η δασκάλα _______ το μάθημα όταν ο μαθητής _______ στην τάξη.</div></div>
+
+    <div class="ex-item"><div class="ex-num">08</div><div class="ex-sent">Eu <span class="blank">______</span> (fazer) o bolo e depois <span class="blank">______</span> (colocar) no forno.</div><div class="ex-gr">Εγώ _______ την τούρτα και μετά _______ στο φούρνο.</div></div>
+
+    <div class="ex-item"><div class="ex-num">09</div><div class="ex-sent">Antigamente, as pessoas <span class="blank">______</span> (escrever) cartas à mão.</div><div class="ex-gr">Παλιά, οι άνθρωποι _______ γράμματα στο χέρι.</div></div>
+
+    <div class="ex-item"><div class="ex-num">10</div><div class="ex-sent">Ele <span class="blank">______</span> (chegar) atrasado ontem e <span class="blank">______</span> (pedir) desculpas.</div><div class="ex-gr">Αυτός _______ αργά χθες και _______ συγγνώμη.</div></div>
+
+    <div class="ex-item"><div class="ex-num">11</div><div class="ex-sent">Naquele tempo, eu <span class="blank">______</span> (ter) muito tempo livre.</div><div class="ex-gr">Εκείνη την εποχή, εγώ _______ πολύ ελεύθερο χρόνο.</div></div>
+
+    <div class="ex-item"><div class="ex-num">12</div><div class="ex-sent">Eles <span class="blank">______</span> (viajar) para o Japão há dois anos.</div><div class="ex-gr">Αυτοί _______ στην Ιαπωνία πριν δύο χρόνια.</div></div>
+
+    <div class="ex-item"><div class="ex-num">13</div><div class="ex-sent">O céu <span class="blank">______</span> (estar) nublado e <span class="blank">______</span> (chover) muito quando saímos.</div><div class="ex-gr">Ο ουρανός _______ συννεφιασμένος και _______ πολύ όταν βγήκαμε.</div></div>
+
+    <div class="ex-item"><div class="ex-num">14</div><div class="ex-sent">Você <span class="blank">______</span> (ver) aquele filme na semana passada?</div><div class="ex-gr">Εσύ _______ εκείνη την ταινία την περασμένη εβδομάδα;</div></div>
+
+    <div class="ex-item"><div class="ex-num">15</div><div class="ex-sent">Nós sempre <span class="blank">______</span> (almoçar) juntos quando <span class="blank">______</span> (trabalhar) na mesma empresa.</div><div class="ex-gr">Εμείς πάντα _______ μαζί όταν _______ στην ίδια εταιρεία.</div></div>
+
+    <div class="ans-toggle">
+      <button onclick="toggleAns('ans1', this)">Ver respostas 1–15 ↓</button>
+    </div>
+    <div class="answers" id="ans1">
+      <div class="ans-grid">
+        <div class="ans-card">01 <strong>brincava</strong> <span class="greek">— έπαιζα</span></div>
+        <div class="ans-card">02 <strong>acordei</strong> <span class="greek">— ξύπνησα</span></div>
+        <div class="ans-card">03 <strong>estudava / morava</strong> <span class="greek">— μελετούσε / έμενε</span></div>
+        <div class="ans-card">04 <strong>tocou / dormia</strong> <span class="greek">— χτύπησε / κοιμόμουν</span></div>
+        <div class="ans-card">05 <strong>fomos</strong> <span class="greek">— πήγαμε</span></div>
+        <div class="ans-card">06 <strong>viviam</strong> <span class="greek">— ζούσαν</span></div>
+        <div class="ans-card">07 <strong>explicava / entrou</strong> <span class="greek">— εξηγούσε / μπήκε</span></div>
+        <div class="ans-card">08 <strong>fiz / coloquei</strong> <span class="greek">— έφτιαξα / έβαλα</span></div>
+        <div class="ans-card">09 <strong>escreviam</strong> <span class="greek">— έγραφαν</span></div>
+        <div class="ans-card">10 <strong>chegou / pediu</strong> <span class="greek">— έφτασε / ζήτησε</span></div>
+        <div class="ans-card">11 <strong>tinha</strong> <span class="greek">— είχα</span></div>
+        <div class="ans-card">12 <strong>viajaram</strong> <span class="greek">— ταξίδεψαν</span></div>
+        <div class="ans-card">13 <strong>estava / chovia</strong> <span class="greek">— ήταν / έβρεχε</span></div>
+        <div class="ans-card">14 <strong>viu</strong> <span class="greek">— είδες</span></div>
+        <div class="ans-card">15 <strong>almoçávamos / trabalhávamos</strong> <span class="greek">— γευματίζαμε / εργαζόμασταν</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB: EXERCICIOS 16-30 -->
+  <div class="section" id="tab-exercicios2">
+    <h2>Ασκήσεις 16–30</h2>
+    <p style="color:var(--text2); font-size:0.92rem; margin-bottom:1.2rem;">Συνεχίζετε! Imperfeito ή Pretérito Perfeito Simples;</p>
+
+    <div class="ex-item"><div class="ex-num">16</div><div class="ex-sent">Ela <span class="blank">______</span> (querer) ir ao teatro, mas <span class="blank">______</span> (ficar) em casa porque <span class="blank">______</span> (estar) doente.</div><div class="ex-gr">Αυτή _______ να πάει στο θέατρο, αλλά _______ σπίτι γιατί _______ άρρωστη.</div></div>
+
+    <div class="ex-item"><div class="ex-num">17</div><div class="ex-sent">O João <span class="blank">______</span> (ser) muito tímido quando <span class="blank">______</span> (ser) jovem.</div><div class="ex-gr">Ο João _______ πολύ ντροπαλός όταν _______ νέος.</div></div>
+
+    <div class="ex-item"><div class="ex-num">18</div><div class="ex-sent">Nós <span class="blank">______</span> (terminar) o projeto e <span class="blank">______</span> (enviar) por e-mail.</div><div class="ex-gr">Εμείς _______ το έργο και _______ με e-mail.</div></div>
+
+    <div class="ex-item"><div class="ex-num">19</div><div class="ex-sent">As crianças <span class="blank">______</span> (brincar) no jardim quando <span class="blank">______</span> (começar) a chover.</div><div class="ex-gr">Τα παιδιά _______ στον κήπο όταν _______ να βρέχει.</div></div>
+
+    <div class="ex-item"><div class="ex-num">20</div><div class="ex-sent">Eu nunca <span class="blank">______</span> (comer) sushi antes de ir ao Japão.</div><div class="ex-gr">Εγώ ποτέ δεν _______ σούσι πριν πάω στην Ιαπωνία.</div></div>
+
+    <div class="ex-item"><div class="ex-num">21</div><div class="ex-sent">Eles <span class="blank">______</span> (sair) cedo e <span class="blank">______</span> (pegar) o primeiro ônibus.</div><div class="ex-gr">Αυτοί _______ νωρίς και _______ το πρώτο λεωφορείο.</div></div>
+
+    <div class="ex-item"><div class="ex-num">22</div><div class="ex-sent">Geralmente, minha avó <span class="blank">______</span> (cozinhar) muito bem e todos <span class="blank">______</span> (adorar) a comida dela.</div><div class="ex-gr">Συνήθως, η γιαγιά μου _______ πολύ καλά και όλοι _______ το φαγητό της.</div></div>
+
+    <div class="ex-item"><div class="ex-num">23</div><div class="ex-sent">Você <span class="blank">______</span> (trazer) os documentos para a reunião ontem?</div><div class="ex-gr">Εσύ _______ τα έγγραφα στη συνάντηση χθες;</div></div>
+
+    <div class="ex-item"><div class="ex-num">24</div><div class="ex-sent">Enquanto ela <span class="blank">______</span> (falar) ao telefone, o bebê <span class="blank">______</span> (cair) do sofá.</div><div class="ex-gr">Ενώ αυτή _______ στο τηλέφωνο, το μωρό _______ από τον καναπέ.</div></div>
+
+    <div class="ex-item"><div class="ex-num">25</div><div class="ex-sent">Naquele ano, nós <span class="blank">______</span> (morar) em São Paulo e eu <span class="blank">______</span> (trabalhar) numa multinacional.</div><div class="ex-gr">Εκείνη τη χρονιά, εμείς _______ στο Σάο Πάολο και εγώ _______ σε μια πολυεθνική.</div></div>
+
+    <div class="ex-item"><div class="ex-num">26</div><div class="ex-sent">De repente, alguém <span class="blank">______</span> (bater) na porta e todos <span class="blank">______</span> (assustar).</div><div class="ex-gr">Ξαφνικά, κάποιος _______ στην πόρτα και όλοι _______.</div></div>
+
+    <div class="ex-item"><div class="ex-num">27</div><div class="ex-sent">Eu <span class="blank">______</span> (conhecer) o Pedro quando <span class="blank">______</span> (estudar) na universidade.</div><div class="ex-gr">Εγώ _______ τον Pedro όταν _______ στο πανεπιστήμιο.</div></div>
+
+    <div class="ex-item"><div class="ex-num">28</div><div class="ex-sent">Antigamente, não <span class="blank">______</span> (existir) celulares e as pessoas <span class="blank">______</span> (usar) orelhões.</div><div class="ex-gr">Παλιά, δεν _______ κινητά τηλέφωνα και οι άνθρωποι _______ δημόσια τηλέφωνα.</div></div>
+
+    <div class="ex-item"><div class="ex-num">29</div><div class="ex-sent">Eles <span class="blank">______</span> (ver) um filme e depois <span class="blank">______</span> (ir) jantar.</div><div class="ex-gr">Αυτοί _______ μια ταινία και μετά _______ για δείπνο.</div></div>
+
+    <div class="ex-item"><div class="ex-num">30</div><div class="ex-sent">A casa <span class="blank">______</span> (ser) antiga, <span class="blank">______</span> (ter) janelas grandes e <span class="blank">______</span> (ficar) perto do mar.</div><div class="ex-gr">Το σπίτι _______ παλιό, _______ μεγάλα παράθυρα και _______ κοντά στη θάλασσα.</div></div>
+
+    <div class="ans-toggle">
+      <button onclick="toggleAns('ans2', this)">Ver respostas 16–30 ↓</button>
+    </div>
+    <div class="answers" id="ans2">
+      <div class="ans-grid">
+        <div class="ans-card">16 <strong>queria / ficou / estava</strong> <span class="greek">— ήθελε / έμεινε / ήταν</span></div>
+        <div class="ans-card">17 <strong>era / era</strong> <span class="greek">— ήταν / ήταν</span></div>
+        <div class="ans-card">18 <strong>terminamos / enviamos</strong> <span class="greek">— τελειώσαμε / στείλαμε</span></div>
+        <div class="ans-card">19 <strong>brincavam / começou</strong> <span class="greek">— έπαιζαν / άρχισε</span></div>
+        <div class="ans-card">20 <strong>comi</strong> <span class="greek">— έφαγα</span></div>
+        <div class="ans-card">21 <strong>saíram / pegaram</strong> <span class="greek">— βγήκαν / πήραν</span></div>
+        <div class="ans-card">22 <strong>cozinhava / adoravam</strong> <span class="greek">— μαγείρευε / λάτρευαν</span></div>
+        <div class="ans-card">23 <strong>trouxe</strong> <span class="greek">— έφερες</span></div>
+        <div class="ans-card">24 <strong>falava / caiu</strong> <span class="greek">— μιλούσε / έπεσε</span></div>
+        <div class="ans-card">25 <strong>morávamos / trabalhava</strong> <span class="greek">— μέναμε / εργαζόμουν</span></div>
+        <div class="ans-card">26 <strong>bateu / se assustaram</strong> <span class="greek">— χτύπησε / τρόμαξαν</span></div>
+        <div class="ans-card">27 <strong>conheci / estudava</strong> <span class="greek">— γνώρισα / σπούδαζα</span></div>
+        <div class="ans-card">28 <strong>existiam / usavam</strong> <span class="greek">— υπήρχαν / χρησιμοποιούσαν</span></div>
+        <div class="ans-card">29 <strong>viram / foram</strong> <span class="greek">— είδαν / πήγαν</span></div>
+        <div class="ans-card">30 <strong>era / tinha / ficava</strong> <span class="greek">— ήταν / είχε / ήταν</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB: RESPOSTAS -->
+  <div class="section" id="tab-respostas">
+    <h2>Πλήρης λίστα απαντήσεων — 30 ασκήσεις</h2>
+    <div class="card">
+      <table class="full-ans-table">
+        <tr><th>#</th><th>Απάντηση (PT)</th><th>Ελληνική μετάφραση</th><th>Χρόνος</th></tr>
+        <tr><td>01</td><td>brincava</td><td>έπαιζα</td><td>Imperfeito</td></tr>
+        <tr><td>02</td><td>acordei</td><td>ξύπνησα</td><td>Perfeito</td></tr>
+        <tr><td>03</td><td>estudava / morava</td><td>μελετούσε / έμενε</td><td>Imperf. / Imperf.</td></tr>
+        <tr><td>04</td><td>tocou / dormia</td><td>χτύπησε / κοιμόμουν</td><td>Perf. / Imperf.</td></tr>
+        <tr><td>05</td><td>fomos</td><td>πήγαμε</td><td>Perfeito</td></tr>
+        <tr><td>06</td><td>viviam</td><td>ζούσαν</td><td>Imperfeito</td></tr>
+        <tr><td>07</td><td>explicava / entrou</td><td>εξηγούσε / μπήκε</td><td>Imperf. / Perf.</td></tr>
+        <tr><td>08</td><td>fiz / coloquei</td><td>έφτιαξα / έβαλα</td><td>Perf. / Perf.</td></tr>
+        <tr><td>09</td><td>escreviam</td><td>έγραφαν</td><td>Imperfeito</td></tr>
+        <tr><td>10</td><td>chegou / pediu</td><td>έφτασε / ζήτησε</td><td>Perf. / Perf.</td></tr>
+        <tr><td>11</td><td>tinha</td><td>είχα</td><td>Imperfeito</td></tr>
+        <tr><td>12</td><td>viajaram</td><td>ταξίδεψαν</td><td>Perfeito</td></tr>
+        <tr><td>13</td><td>estava / chovia</td><td>ήταν / έβρεχε</td><td>Imperf. / Imperf.</td></tr>
+        <tr><td>14</td><td>viu</td><td>είδες</td><td>Perfeito</td></tr>
+        <tr><td>15</td><td>almoçávamos / trabalhávamos</td><td>γευματίζαμε / εργαζόμασταν</td><td>Imperf. / Imperf.</td></tr>
+        <tr><td>16</td><td>queria / ficou / estava</td><td>ήθελε / έμεινε / ήταν</td><td>Imp./Perf./Imp.</td></tr>
+        <tr><td>17</td><td>era / era</td><td>ήταν / ήταν</td><td>Imperf. / Imperf.</td></tr>
+        <tr><td>18</td><td>terminamos / enviamos</td><td>τελειώσαμε / στείλαμε</td><td>Perf. / Perf.</td></tr>
+        <tr><td>19</td><td>brincavam / começou</td><td>έπαιζαν / άρχισε</td><td>Imperf. / Perf.</td></tr>
+        <tr><td>20</td><td>comi</td><td>έφαγα</td><td>Perfeito</td></tr>
+        <tr><td>21</td><td>saíram / pegaram</td><td>βγήκαν / πήραν</td><td>Perf. / Perf.</td></tr>
+        <tr><td>22</td><td>cozinhava / adoravam</td><td>μαγείρευε / λάτρευαν</td><td>Imperf. / Imperf.</td></tr>
+        <tr><td>23</td><td>trouxe</td><td>έφερες</td><td>Perfeito</td></tr>
+        <tr><td>24</td><td>falava / caiu</td><td>μιλούσε / έπεσε</td><td>Imperf. / Perf.</td></tr>
+        <tr><td>25</td><td>morávamos / trabalhava</td><td>μέναμε / εργαζόμουν</td><td>Imperf. / Imperf.</td></tr>
+        <tr><td>26</td><td>bateu / se assustaram</td><td>χτύπησε / τρόμαξαν</td><td>Perf. / Perf.</td></tr>
+        <tr><td>27</td><td>conheci / estudava</td><td>γνώρισα / σπούδαζα</td><td>Perf. / Imperf.</td></tr>
+        <tr><td>28</td><td>existiam / usavam</td><td>υπήρχαν / χρησιμοποιούσαν</td><td>Imperf. / Imperf.</td></tr>
+        <tr><td>29</td><td>viram / foram</td><td>είδαν / πήγαν</td><td>Perf. / Perf.</td></tr>
+        <tr><td>30</td><td>era / tinha / ficava</td><td>ήταν / είχε / ήταν</td><td>Imperf. x3</td></tr>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  Gramática Portuguesa para falantes de Grego — Imperfeito &amp; Pretérito Perfeito
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  function toggleAns(id, btn) {
+    const el = document.getElementById(id);
+    el.classList.toggle('visible');
+    btn.textContent = el.classList.contains('visible')
+      ? 'Ocultar respostas ↑'
+      : (id === 'ans1' ? 'Ver respostas 1–15 ↓' : 'Ver respostas 16–30 ↓');
+  }
+</script>
+</body>
+</html>
